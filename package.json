@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=14.16.0"
   },
-  "description": "Accompagnement Psychologique pour les étudiants",
+  "description": "Accompagnement psychologique pour les enfants et les adolescents",
   "main": "index.js",
   "scripts": {
     "coverage": "nyc --reporter html --reporter text npm run test",
