@@ -1,0 +1,56 @@
+<%- include('partials/header') -%>
+
+<div class="fr-container fr-my-3w">
+
+    <div class="fr-grid-row fr-grid-row--gutters fr-b__two-col">
+        <nav class="fr-col-xs-12 fr-col-md-3 fr-sidemenu fr-sidemenu--sticky" aria-label="Menu latéral">
+            <div class="fr-sidemenu__inner">
+                <ul class="fr-sidemenu__list">
+                    <li class="fr-sidemenu__item">
+                        <a class="fr-sidemenu__link" href="#enfant" target="_self">J’ai moins de 18 ans</a>
+                    </li>
+                    <li class="fr-sidemenu__item">
+                        <a class="fr-sidemenu__link" href="#parent" target="_self">Je suis parent</a>
+                    </li>
+                    <li class="fr-sidemenu__item">
+                        <a class="fr-sidemenu__link" href="#medecin" target="_self">Médecins</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="fr-container fr-col-xs-12 fr-col-md-9">
+            <h1 id="enfant">J’ai moins de 18 ans</h1>
+
+            <div class="fr-mb-3w">
+
+                <ul class="fr-accordion-group">
+                    <% faq.children.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'c' + i}); %>
+                    <% }); %>
+                </ul>
+
+                <h1 id="parent">Je suis parent
+                </h1>
+
+                <ul class="fr-accordion-group">
+                    <% faq.parent.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'p' + i}); %>
+                    <% }); %>
+                </ul>
+
+                <h1 id="medecin">Je suis médecin généraliste</h1>
+
+                <ul class="fr-accordion-group">
+                    <% faq.medecin.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'm' + i}); %>
+                    <% }); %>
+                </ul>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<%- include('partials/footer') -%>

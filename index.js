@@ -15,6 +15,7 @@ const appRepo = 'https://github.com/betagouv/psy-enfant-ado';
 
 const app = express();
 const landingController = require('./controllers/landing-controller');
+const faqController = require('./controllers/faq-controller');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -52,6 +53,7 @@ app.use(function populate (req, res, next) {
 });
 
 app.get('/', landingController.getLanding);
+app.get('/faq', faqController.getFaq);
 
 app.get('/mentions-legales', (req, res) => {
   res.render('legalNotice', {

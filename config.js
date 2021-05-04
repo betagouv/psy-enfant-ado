@@ -1,7 +1,7 @@
 require('dotenv').config();
 
 module.exports = {
-  appName: `Santé Psy Enfant Ado`,
+  appName: `Psy Enfant Ado`,
 
   port: process.env.PORT || 8080,
   teamEmail: process.env.TEAM_EMAIL || 'equipe-santepsyetudiants@beta.gouv.fr',
