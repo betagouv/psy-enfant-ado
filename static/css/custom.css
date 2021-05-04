@@ -1,3 +1,7 @@
 .fr-centered {
     text-align: center;
 }
+
+.fr-accordion-group li:before {
+    content: none; /* overwrite DSFR default */
+}
