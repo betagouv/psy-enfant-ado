@@ -1,0 +1,46 @@
+{
+  "name": "psyenfantado",
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=14.16.0"
+  },
+  "description": "Accompagnement Psychologique pour les étudiants",
+  "main": "index.js",
+  "scripts": {
+    "coverage": "nyc --reporter html --reporter text npm run test",
+    "dev": "nodemon index.js",
+    "lint": "eslint . --fix",
+    "start": "node index.js",
+    "test": "mocha --exit"
+  },
+  "author": "dev-transverse@beta.gouv.fr",
+  "license": "MIT",
+  "dependencies": {
+    "@gouvfr/dsfr": "^1.0.0rc1",
+    "body-parser": "^1.19.0",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.5",
+    "dotenv": "8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-sanitizer": "1.0.6",
+    "express-session": "1.17.1",
+    "express-validator": "^6.10.0",
+    "helmet": "^4.4.1",
+    "jquery": "^3.6.0",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "chai": "^4.3.0",
+    "chai-http": "^4.3.0",
+    "eslint": "^7.19.0",
+    "eslint-plugin-node": "^11.1.0",
+    "husky": "^5.0.9",
+    "mocha": "^8.2.1",
+    "nock": "^13.0.7",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "rewire": "^5.0.0",
+    "sinon": "^9.2.4"
+  }
+}
