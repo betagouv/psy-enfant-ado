@@ -1,6 +1,17 @@
 <%- include('partials/header') -%>
 <div class="fr-container">
-
+    <% if (errors.length || infos.length) { %>
+        <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
+            <div class="fr-col fr-col-xs-10 fr-col-md-8 fr-my-4w">
+                <% errors.forEach(function(error) { %>
+                    <%- include('partials/notification-error', {error: error}) -%>
+                <% }) %>
+                <% infos.forEach(function(info) { %>
+                    <%- include('partials/notification-info', {info: info}) -%>
+                <% }) %>
+            </div>
+        </div>
+    <% } %>
     <div class="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-mt-1v fr-pb-1v">
         <div id="hero-col-1" class="fr-col-md-5 fr-col-xs-6 fr-pr-6w fr-pt-6w">
             <h1>En parler, c’est déjà se soigner</h1>
@@ -8,3 +19,35 @@
         </div>
     </div>
 </div>
+<div class="fr-container--fluid fr-centered fr-pb-2w fr-pt-2w fr-scheme-light-beige">
+    <div class="fr-grid-row fr-grid-row--center">
+        <div class="fr-col-xs-12">
+            <h2>Comment ça se passe? </h2>
+            <h3>Trois étapes indispensables</h3>
+        </div>
+    </div>
+
+    <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
+        <div class="fr-col-xs-12 fr-col-md-3">
+            <div class="fr-text--lg fr-pb-2w fr-mb-1v">Consultez un médecin</div>
+            <div class="fr-text--sm fr-mb-1v">Tout médecin peut orienter votre enfant vers un accompagnement
+                psychologique (lepédiatre, le médecin généraliste, le médecin scolaire, celui du service de PMI,
+                del’hôpital...)
+            </div>
+        </div>
+        <div class="fr-col-xs-12 fr-col-md-3">
+            <div class="fr-text--lg fr-pb-2w fr-mb-1v">Choisissez un psychologue</div>
+            <div class="fr-text--sm fr-mb-1v">Vous choisissez, parmi la liste des psychologues partenaires, le
+                professionnel quiaccompagnera votre enfant et vous.
+            </div>
+        </div>
+        <div class="fr-col-xs-12 fr-col-md-3">
+            <div class="fr-text--lg fr-pb-2w fr-mb-1v">Faites bénéficier votre enfant d'un suivi</div>
+            <div class="fr-text--sm fr-mb-1v">Vous prenez rendez-vous avec le psychologue choisi, qui suivra votre
+                enfantpendant 10 séances au maximum.
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>
