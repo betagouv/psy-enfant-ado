@@ -5,3 +5,15 @@
 .fr-accordion-group li:before {
     content: none; /* overwrite DSFR default */
 }
+
+.fr-bg--alt {
+    background-color: #e6cf0b;
+}
+.fr-bg--light {
+    background-color: #e4e0cf;
+}
+.fr-btn--secondary {
+    color: #3f3e3e;
+    border: solid 1px #3f3e3e;
+    box-shadow: none;
+}
