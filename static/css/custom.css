@@ -17,3 +17,8 @@
     border: solid 1px #3f3e3e;
     box-shadow: none;
 }
+.fr-callout.fr-callout-none {
+    background: none;
+    border-left: solid 4px #e18d7e;
+    box-shadow: none;
+}
