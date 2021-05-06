@@ -7,7 +7,7 @@ const expect = require('chai').expect;
 chai.use(chaiHttp)
 chai.should()
 
-describe('Home page', function () {
+describe('Static pages', function () {
 
   it('/ should display home page', function async () {
     return chai.request(app)
@@ -16,6 +16,16 @@ describe('Home page', function () {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
         expect(res.text).to.contains('En parler, c’est déjà se soigner')
+      });
+  });
+
+  it('/faq should display the FAQ', function async () {
+    return chai.request(app)
+      .get('/faq')
+      .end(async (err, res) => {
+        expect(err).to.be.null;
+        expect(res).to.have.status(200);
+        expect(res.text).to.contains('J’ai moins de 18 ans\n')
       });
   });
 });
