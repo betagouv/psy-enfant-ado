@@ -13,43 +13,90 @@
                         <a class="fr-sidemenu__link" href="#parent" target="_self">Je suis parent</a>
                     </li>
                     <li class="fr-sidemenu__item">
-                        <a class="fr-sidemenu__link" href="#medecin" target="_self">Médecins</a>
+                        <a class="fr-sidemenu__link" href="#psy" target="_self">Je suis psychologue</a>
+                    </li>
+                    <li class="fr-sidemenu__item">
+                        <a class="fr-sidemenu__link" href="#doctor" target="_self">Je suis médecins</a>
+                    </li>
+                    <li class="fr-sidemenu__item">
+                        <a class="fr-sidemenu__link" href="#other" target="_self">Autres questions</a>
                     </li>
                 </ul>
             </div>
         </nav>
 
         <div class="fr-container fr-col-xs-12 fr-col-md-9">
-            <h1 id="enfant">J’ai moins de 18 ans</h1>
 
             <div class="fr-mb-3w">
+                <ul class="fr-accordion-group">
+                    <% faq.general.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'general' + i}); %>
+                    <% }); %>
+                </ul>
+                <h2 id="enfant">J’ai moins de 18 ans</h2>
 
                 <ul class="fr-accordion-group">
                     <% faq.children.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'c' + i}); %>
+                        <%- include('partials/faq-item', {...q, id: 'children' + i}); %>
                     <% }); %>
                 </ul>
 
-                <h1 id="parent">Je suis parent
-                </h1>
+                <h2 id="parent">Je suis parent</h2>
 
                 <ul class="fr-accordion-group">
                     <% faq.parent.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'p' + i}); %>
+                        <%- include('partials/faq-item', {...q, id: 'parent' + i}); %>
                     <% }); %>
                 </ul>
 
-                <h1 id="medecin">Je suis médecin généraliste</h1>
+                <h2 id="psy">Je suis psychologue</h2>
+
+                <h3>Eligibilité</h3>
+                <ul class="fr-accordion-group">
+                    <% faq.eligibility.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'eligibility' + i}); %>
+                    <% }); %>
+                </ul>
+
+                <h3>Candidature</h3>
+                <ul class="fr-accordion-group">
+                    <% faq.application.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'application' + i}); %>
+                    <% }); %>
+                </ul>
+
+                <h3>Déroulé</h3>
+                <ul class="fr-accordion-group">
+                    <% faq.process.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'process' + i}); %>
+                    <% }); %>
+                </ul>
+
+                <h3>Tarif des séances et remboursement</h3>
+                <ul class="fr-accordion-group">
+                    <% faq.pricing.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'pricing' + i}); %>
+                    <% }); %>
+                </ul>
+
+                <h2 id="doctor">Je suis médecin généraliste</h2>
 
                 <ul class="fr-accordion-group">
-                    <% faq.medecin.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'm' + i}); %>
+                    <% faq.doctor.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'doctor' + i}); %>
+                    <% }); %>
+                </ul>
+
+                <h2 id="doctor">Autre questions</h2>
+
+                <ul class="fr-accordion-group">
+                    <% faq.other.forEach(function(q, i){ %>
+                        <%- include('partials/faq-item', {...q, id: 'other' + i}); %>
                     <% }); %>
                 </ul>
 
             </div>
         </div>
-
     </div>
 </div>
 
