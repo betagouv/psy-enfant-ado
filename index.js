@@ -30,11 +30,13 @@ app.use('/static/jquery', express.static(
   path.join(__dirname, 'node_modules/jquery/dist'))
 );
 
-app.use(session({ cookie: { maxAge: 60000 },
+app.use(session({
+  cookie: { maxAge: 60000 },
   secret: config.secret,
   resave: false,
   saveUninitialized: false,
-  maxAge: parseInt(config.sessionDurationHours) * 60 * 60 * 1000}));
+  maxAge: parseInt(config.sessionDurationHours) * 60 * 60 * 1000
+}));
 app.use(flash());
 
 app.use(expressSanitizer());
@@ -52,7 +54,10 @@ app.use(function populate (req, res, next) {
   next();
 });
 
-app.get('/', landingController.getLanding);
+app.get('/', async (req, res) => {
+  res.render('coming-soon');
+});
+app.get('/landing', landingController.getLanding);
 app.get('/faq', faqController.getFaq);
 
 app.get('/mentions-legales', (req, res) => {
