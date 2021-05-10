@@ -1,7 +1,10 @@
 /* eslint-disable max-len */
 module.exports = [
   {
-    q: 'En tant que médecin, je suis contacté par une famille d’un enfant ou adolescent. Que dois-je faire ? ',
-    r: 'Votre enfant pourra bénéficier du dispositif dès la mise en ligne de l’annuaire des psychologues volontaires, au début du mois de juin.'
+    q: 'Qu’est-ce que la plateforme <a href="https://psyenfantado.sante.gouv.fr" target="_blank">psyenfantado.sante.gouv.fr</a> ?',
+    r: 'C’est la plateforme du dispositif de soutien psychologique aux enfants et adolescents. <br/>' +
+      'Elle permet aux médecins de disposer des informations utiles pour orienter les enfants et adolescents vers les psychologues engagés dans le dispositif. <br/>' +
+      'La plateforme met à jour régulièrement la liste des psychologues participant au dispositif, afin d’informer au mieux les familles des psychologues exerçant dans les environs. <br/>' +
+      'Enfin, elle permet aussi aux psychologues volontaires de candidater pour participer au dispositif.'
   }
 ]

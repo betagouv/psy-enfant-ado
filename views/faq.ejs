@@ -41,7 +41,7 @@
                     <% }); %>
                 </ul>
 
-                <h2 id="parent">Je suis parent</h2>
+                <h2 id="parent">Je suis parent (ou titulaire de l’autorité parentale)</h2>
 
                 <ul class="fr-accordion-group">
                     <% faq.parent.forEach(function(q, i){ %>
@@ -94,6 +94,7 @@
                         <%- include('partials/faq-item', {...q, id: 'other' + i}); %>
                     <% }); %>
                 </ul>
+               <p><strong>En cas de questions supplémentaires relative à la plateforme, n’hésitez pas à envoyer un message à l’adresse : PsyEnfantAdo@sante.gouv.fr.</strong></p>
 
             </div>
         </div>
