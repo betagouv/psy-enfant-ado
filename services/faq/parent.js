@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+
+const config = require('../../config')
 module.exports = [
   {
     q: 'A partir de quand vos enfants peuvent-ils bénéficier du dispositif ?',
@@ -44,7 +46,7 @@ module.exports = [
   },
   {
     q: 'A qui puis-je m’adresser si la prise en charge se passe mal ?',
-    r: 'Les psychologues ont été sélectionnés selon des critères précis avec des exigences particulières de diplômes, d’expérience et de travail avec les enfants. Néanmoins, très rarement, la prise en charge peut mal se passer. Si un échange avec le professionnel n’est pas suffisant, vous pouvez envoyer un mail à l’adresse support du dispositif psyenfantado@sante.gouv.fr. Nous vous répondrons dans les plus brefs délais.'
+    r: `Les psychologues ont été sélectionnés selon des critères précis avec des exigences particulières de diplômes, d’expérience et de travail avec les enfants. Néanmoins, très rarement, la prise en charge peut mal se passer. Si un échange avec le professionnel n’est pas suffisant, vous pouvez envoyer un mail à l’adresse support du dispositif ${config.contactEmail}. Nous vous répondrons dans les plus brefs délais.`
   },
   {
     q: 'Vous ne trouvez pas la réponse à votre question ici ?',

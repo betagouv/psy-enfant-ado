@@ -1,31 +1,17 @@
 <%- include('partials/header') -%>
 
 <div class="fr-container">
-    <% if (errors.length || infos.length) { %>
-        <div class="fr-grid-row fr-grid-row--center">
-            <div class="fr-col fr-col-xs-10 fr-col-md-8 fr-my-4w">
-                <% errors.forEach(function(error) { %>
-                    <%- include('partials/notification-error', {error: error}) -%>
-                <% }) %>
-                <% infos.forEach(function(info) { %>
-                    <%- include('partials/notification-info', {info: info}) -%>
-                <% }) %>
-            </div>
-        </div>
-    <% } %>
     <div class="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-my-4w">
         <div id="hero-col-1" class="fr-col-md-5 fr-col-xs-6 fr-pr-4w fr-pt-6w">
             <h1>En parler, c’est déjà se soigner</h1>
             <p>Faites bénéficier votre enfant d’un accompagnement psychologique gratuit</p>
         </div>
         <div id="hero-col-2" class="fr-col-md-7 fr-col-xs-6">
-            <div>
-                <img
-                        style="max-width: 100%;"
-                        src="/static/images/illustration-home.svg"
-                        alt="En parler, c’est déjà se soigner"
-                />
-            </div>
+            <img
+                style="width: 100%; min-height: 350px"
+                src="/static/images/illustration-home.svg"
+                alt="En parler, c’est déjà se soigner"
+            />
         </div>
     </div>
 </div>

@@ -4,7 +4,6 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const expressSanitizer = require('express-sanitizer');
 const path = require('path');
-const flash = require('connect-flash');
 const session = require('express-session');
 
 const config = require('./config');
@@ -19,7 +18,6 @@ const faqController = require('./controllers/faq-controller');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(flash());
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/static', express.static('static'));
@@ -37,7 +35,6 @@ app.use(session({
   saveUninitialized: false,
   maxAge: parseInt(config.sessionDurationHours) * 60 * 60 * 1000
 }));
-app.use(flash());
 
 app.use(expressSanitizer());
 
@@ -48,9 +45,6 @@ app.use(function populate (req, res, next) {
   res.locals.appRepo = appRepo;
   res.locals.page = req.url;
   res.locals.contactEmail = config.contactEmail;
-  res.locals.errors = req.flash('error');
-  res.locals.infos = req.flash('info');
-  res.locals.successes = req.flash('success');
   next();
 });
 
@@ -61,13 +55,18 @@ app.get('/landing', landingController.getLanding);
 app.get('/faq', faqController.getFaq);
 
 app.get('/mentions-legales', (req, res) => {
-  res.render('legalNotice', {
+  res.render('legal-notice', {
     pageTitle: 'Mentions Légales',
   });
 });
 
+app.get('/donnees-personnelles-et-gestion-des-cookies', (req, res) => {
+  res.render('donnees-personnelles-et-gestion-des-cookies', {
+    pageTitle: 'Données personnelles',
+  });
+});
+
 app.get('*', function redirect404 (req, res) {
-  req.flash('error', 'Cette page n\'existe pas.');
   res.redirect('/');
 });
 

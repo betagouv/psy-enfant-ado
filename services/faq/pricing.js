@@ -1,4 +1,6 @@
 /* eslint-disable max-len */
+const config = require('../../config')
+
 module.exports = [
   {
     q: 'Quels sont les tarifs pour ce dispositif ?',
@@ -47,6 +49,6 @@ module.exports = [
   {
     q: 'Vous ne trouvez pas la réponse à votre question ici ?',
     r: 'Si vous êtes déjà partenaire du dispositif, nous vous invitons à contacter votre organisme d’Assurance Maladie par téléphone au 3608.<br/>' +
-      'Si vous n’êtes pas encore partenaire du dispositif et que vous n’avez pas trouvé de réponses à vos questions s’agissant de l’éligibilité et/ou du dossier de candidature, nous vous invitons à contacter l’adresse psyenfantado@sante.gouv.fr.'
+      `Si vous n’êtes pas encore partenaire du dispositif et que vous n’avez pas trouvé de réponses à vos questions s’agissant de l’éligibilité et/ou du dossier de candidature, nous vous invitons à contacter l’adresse ${config.contactEmail}.`
   }
 ];
