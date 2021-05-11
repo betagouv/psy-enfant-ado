@@ -5,7 +5,7 @@ module.exports = [
   {
     q: 'Quels sont les tarifs pour ce dispositif ?',
     r: 'Les tarifs sont de 32€ pour l’entretien initial d’évaluation et 22€ pour les autres séances de prise en charge psychologique. Ainsi, vous êtes rémunérés à hauteur de 230€, en cas de réalisation de la totalité du parcours. <br/>' +
-      'A titre indicatif, le temps d’un’entretien initial d’évaluation est estimé à 45 minutes. Le temps d’une séance de prise en charge psychologique est estimé à 30 min. <br/>' +
+      'A titre indicatif, le temps d’un entretien initial d’évaluation est estimé à 45 minutes. Le temps d’une séance de prise en charge psychologique est estimé à 30 min. <br/>' +
       'Les séances seront prises en charge sans application du ticket modérateur et donc à « 100% » dans le cadre de ce dispositif. <br/>' +
       'Aussi, vous facturez les séances aux tarifs proposés et remboursés par l’Assurance Maladie. Aucun dépassement ne peut être demandé au patient et ne sera possible conformément au consentement à la convention signé lors de l’adhésion au dispositif. <br/>' +
       'Après la fin de la prise en charge proposée dans ce dispositif, si vous considérez que des séances complémentaires sont nécessaires vous devez alors informer, clairement et loyalement, le titulaire de l’autorité parentale sur les montants desdites séances et sur l’absence de financement par l’Assurance Maladie. '
