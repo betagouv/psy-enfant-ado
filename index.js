@@ -48,10 +48,7 @@ app.use(function populate (req, res, next) {
   next();
 });
 
-app.get('/', async (req, res) => {
-  res.render('coming-soon');
-});
-app.get('/landing', landingController.getLanding);
+app.get('/', landingController.getLanding);
 app.get('/faq', faqController.getFaq);
 
 app.get('/mentions-legales', (req, res) => {
