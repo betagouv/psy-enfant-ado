@@ -17,6 +17,14 @@
     border: solid 1px #3f3e3e;
     box-shadow: none;
 }
+.fr-btn--alt {
+    background-color: #611438;
+}
+a.fr-btn--alt[href]:hover,
+.fr-btn--alt:hover {
+    background-color: #450d28;
+    background-image: none;
+}
 .fr-callout.fr-callout-none {
     background: none;
     border-left: solid 4px #e18d7e;
