@@ -7,6 +7,7 @@ const path = require('path');
 const session = require('express-session');
 
 const config = require('./config');
+const sentry = require('./services/sentry');
 
 const appName = config.appName;
 const appDescription = 'Accompagnement psychologique pour les enfants et les adolescents';
@@ -69,6 +70,8 @@ app.get('/donnees-personnelles-et-gestion-des-cookies', (req, res) => {
 app.get('*', function redirect404 (req, res) {
   res.redirect('/');
 });
+
+sentry.initCaptureConsoleWithHandler(app);
 
 module.exports = app.listen(config.port, () => {
   console.log(`${appName} listening at http://localhost:${config.port}`);

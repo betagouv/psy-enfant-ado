@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres:12.5
+    environment:
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: db
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: bash -c "npm run migrate; npm run seed"
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgres://db:db@db:5432/db
+    depends_on:
+      - db
+    restart: on-failure
