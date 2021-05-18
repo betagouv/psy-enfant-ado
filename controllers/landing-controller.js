@@ -1,4 +1,7 @@
+const config = require('../config');
 
 module.exports.getLanding = async function getLanding(req, res) {
-  res.render('landing');
+  const formUrl = config.demarchesSimplifieesUrl;
+
+  res.render('landing', {formUrl});
 };
