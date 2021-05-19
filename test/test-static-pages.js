@@ -9,19 +9,9 @@ chai.should();
 
 describe('Static pages', function () {
 
-  it('/ should display coming soon page', function async () {
-    return chai.request(app)
-      .get('/')
-      .end(async (err, res) => {
-        expect(err).to.be.null;
-        expect(res).to.have.status(200);
-        expect(res.text).to.contains('Site en cours de construction');
-      });
-  });
-
   it('/ should display home page', function async () {
     return chai.request(app)
-      .get('/landing')
+      .get('/')
       .end(async (err, res) => {
         expect(err).to.be.null;
         expect(res).to.have.status(200);
