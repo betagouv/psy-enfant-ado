@@ -8,5 +8,8 @@ module.exports = {
   uuidNamespace: process.env.UUID_NAMESPACE || "979fcd81-2bfd-4640-9ac0-77ed1033ae60", // used to generate uuid
   sentryDNS: process.env.SENTRY_DNS || false,
   demarchesSimplifieesUrl: process.env.DEMARCHES_SIMPLIFIEES_URL,
+  demarchesSimplifieesId: process.env.DEMARCHES_SIMPLIFIEES_ID,
+  demarchesSimplifieesIdApiUrl: process.env.DEMARCHES_SIMPLIFIEES_API_URL,
+  demarchesSimplifieesIdApiToken: process.env.DEMARCHES_SIMPLIFIEES_API_TOKEN,
   secret: process.env.SECRET || 'Angonyx meeki is a moth of the family Sphingidae'
 };

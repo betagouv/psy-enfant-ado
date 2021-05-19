@@ -1,10 +1,10 @@
 const { gql, GraphQLClient } = require('graphql-request');
 const config = require('../config');
 
-const endpoint = config.apiUrl;
+const endpoint = config.demarchesSimplifieesIdApiUrl;
 const graphQLClient = new GraphQLClient(endpoint, {
   headers: {
-    authorization: `Bearer ${config.apiToken}`,
+    authorization: `Bearer ${config.demarchesSimplifieesIdApiToken}`,
     'Content-Type': 'application/json',
   },
 });
