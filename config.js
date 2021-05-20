@@ -14,5 +14,6 @@ module.exports = {
   demarchesSimplifieesIdApiUrl: process.env.DEMARCHES_SIMPLIFIEES_API_URL  || 'https://www.demarches-simplifiees.fr/api/v2/graphql',
   demarchesSimplifieesIdApiToken: process.env.DEMARCHES_SIMPLIFIEES_API_TOKEN,
   demarchesSimplifieesUrl: process.env.DEMARCHES_SIMPLIFIEES_URL,
-  secret: process.env.SECRET || 'Angonyx meeki is a moth of the family Sphingidae'
+  secret: process.env.SECRET || 'Angonyx meeki is a moth of the family Sphingidae',
+  featurePsyList: process.env.FEATURE_PSY_LIST || false,
 };

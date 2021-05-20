@@ -1,126 +1,134 @@
 <%- include('partials/header') -%>
 
-<div class="fr-container">
-    <div class="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-my-4w">
-        <div id="hero-col-1" class="fr-col-md-5 fr-col-xs-6 fr-pr-4w fr-pt-6w">
-            <h1>En parler, c’est déjà se soigner</h1>
-            <p>Faites bénéficier votre enfant d’un accompagnement psychologique gratuit</p>
-        </div>
-        <div id="hero-col-2" class="fr-col-md-7 fr-col-xs-6">
-            <img
-                    class="hero w-100"
-                    src="/static/images/illustration-home.svg"
-                    alt="En parler, c’est déjà se soigner"
-            />
+    <div class="fr-container">
+        <div class="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-my-4w">
+            <div id="hero-col-1" class="fr-col-md-5 fr-col-xs-6 fr-pr-4w fr-pt-6w">
+                <h1>En parler, c’est déjà se soigner</h1>
+                <p>Faites bénéficier votre enfant d’un accompagnement psychologique gratuit</p>
+            </div>
+            <div id="hero-col-2" class="fr-col-md-7 fr-col-xs-6">
+                <img class="hero w-100" src="/static/images/illustration-home.svg"
+                    alt="En parler, c’est déjà se soigner" />
+            </div>
         </div>
     </div>
-</div>
-<div class="fr-container--fluid fr-centered fr-pt-4w fr-pb-2w fr-bg--alt">
-    <div class="fr-grid-row fr-grid-row--center">
-        <div class="fr-col-xs-12">
-            <h2>Comment ça se passe&nbsp;? </h2>
-            <h3>Trois étapes indispensables</h3>
+    <div class="fr-container--fluid fr-centered fr-pt-4w fr-pb-2w fr-bg--alt">
+        <div class="fr-grid-row fr-grid-row--center">
+            <div class="fr-col-xs-12">
+                <h2>Comment ça se passe&nbsp;? </h2>
+                <h3>Trois étapes indispensables</h3>
+            </div>
+        </div>
+
+        <div class="fr-grid-row fr-grid-row--center">
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-text--lg fr-pb-2w fr-mb-1v">1. Consultez un médecin</div>
+                <div class="fr-text--sm fr-mb-1v">Tout médecin peut orienter votre enfant vers un accompagnement
+                    psychologique (le pédiatre, le médecin généraliste, le médecin scolaire, celui du service de PMI,
+                    de l’hôpital...)
+                </div>
+            </div>
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-text--lg fr-pb-2w fr-mb-1v">2. Choisissez un psychologue</div>
+                <div class="fr-text--sm fr-mb-1v">Vous choisissez, parmi la liste des psychologues partenaires, le
+                    professionnel qui accompagnera votre enfant et vous.
+                </div>
+            </div>
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-text--lg fr-pb-2w fr-mb-1v">3. Faites bénéficier votre enfant d'un suivi</div>
+                <div class="fr-text--sm fr-mb-1v">Vous prenez rendez-vous avec le psychologue choisi, qui suivra votre
+                    enfant pendant 10 séances au maximum.
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="fr-centered fr-pt-2w fr-pb-6w fr-bg--alt">
+        <p class="fr-mb-2w">Enfants, ados, parents, psychologues, médecins, vous souhaitez plus d’informations&nbsp;?
+        </p>
+        <a class="fr-btn fr-btn--secondary" href="/faq">Consulter la Foire Aux Questions</a>
+    </div>
+
+    <div class="fr-container--fluid fr-bg--light">
+        <div class="fr-container">
+            <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
+                <div class="fr-col fr-col-xs-10 fr-col-md-10 fr-my-4w">
+                    <h2>Je suis parent</h2>
+                    <p class="fr-mb-2w">
+                        Tous les enfants et adolescents âgés de 3 à 17 inclus sont éligibles au dispositif, à condition
+                        qu’ils ne présentent pas de signes de souffrance psychique sévère.
+                    </p>
+                    <p class="fr-mb-2w">
+                        Pour commencer le parcours de soins, contactez un médecin (celui qui suit habituellement votre
+                        enfant, par exemple).
+                    </p>
+
+                    <p class="fr-mb-2w">
+                        Lorsque le médecin (le pédiatre, le médecin généraliste, le médecin scolaire, celui du service
+                        de PMI, de l’hôpital…) aura orienté votre enfant vers une prise en charge psychologique réalisée
+                        par un psychologue, vous pourrez choisir parmi les psychologues partenaires celui qui correspond
+                        le mieux à vos besoins (notamment en fonction de sa localisation).
+                    </p>
+                    <% if (config.featurePsyList) { %>
+                        <h4 class="fr-callout__title">Annuaire des psychologues partenaires</h4>
+                        <a class="fr-btn fr-btn" href="/trouver-un-psychologue">Trouver un psychologue partenaire</a>
+                        <% } else { %>
+                            <div class="fr-callout fr-callout-none">
+                                <h4 class="fr-callout__title">Annuaire en cours de construction</h4>
+                                <p class="fr-callout__text">
+                                    Disponible début juin
+                                </p>
+                            </div>
+                            <% } %>
+                                <p class="fr-my-2w">Des questions sur le dispositif&nbsp;?</p>
+                                <a class="fr-btn fr-btn--secondary" href="/faq#parent">Consulter la Foire Aux
+                                    Questions</a>
+                                <p class="fr-my-2w">Nous vous suggérons aussi ce site de conseils pour gérer les
+                                    difficultés pendant
+                                    cette période de crise :</p>
+                                <a target="_blank" rel="noopener"
+                                    href="https://filsantejeunes.com/mal-etre">filsantejeunes.com/mal-etre</a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <div class="fr-grid-row fr-grid-row--center">
-        <div class="fr-col-xs-12 fr-col-md-3">
-            <div class="fr-text--lg fr-pb-2w fr-mb-1v">1. Consultez un médecin</div>
-            <div class="fr-text--sm fr-mb-1v">Tout médecin peut orienter votre enfant vers un accompagnement
-                psychologique (le pédiatre, le médecin généraliste, le médecin scolaire, celui du service de PMI,
-                de l’hôpital...)
-            </div>
-        </div>
-        <div class="fr-col-xs-12 fr-col-md-3">
-            <div class="fr-text--lg fr-pb-2w fr-mb-1v">2. Choisissez un psychologue</div>
-            <div class="fr-text--sm fr-mb-1v">Vous choisissez, parmi la liste des psychologues partenaires, le
-                professionnel qui accompagnera votre enfant et vous.
-            </div>
-        </div>
-        <div class="fr-col-xs-12 fr-col-md-3">
-            <div class="fr-text--lg fr-pb-2w fr-mb-1v">3. Faites bénéficier votre enfant d'un suivi</div>
-            <div class="fr-text--sm fr-mb-1v">Vous prenez rendez-vous avec le psychologue choisi, qui suivra votre
-                enfant pendant 10 séances au maximum.
-            </div>
-        </div>
-    </div>
-</div>
-<div class="fr-centered fr-pt-2w fr-pb-6w fr-bg--alt">
-    <p class="fr-mb-2w">Enfants, ados, parents, psychologues, médecins, vous souhaitez plus d’informations&nbsp;?</p>
-    <a class="fr-btn fr-btn--secondary" href="/faq">Consulter la Foire Aux Questions</a>
-</div>
-
-<div class="fr-container--fluid fr-bg--light">
     <div class="fr-container">
         <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
             <div class="fr-col fr-col-xs-10 fr-col-md-10 fr-my-4w">
-                <h2>Je suis parent</h2>
+                <h2>Je suis psychologue</h2>
                 <p class="fr-mb-2w">
-                    Tous les enfants et adolescents âgés de 3 à 17 inclus sont éligibles au dispositif, à condition
-                    qu’ils ne présentent pas de signes de souffrance psychique sévère.
+                    Vous souhaitez participer au programme d'accompagnement psychologique des enfants et des
+                    adolescents&nbsp;?
+                    Merci&nbsp;!
                 </p>
                 <p class="fr-mb-2w">
-                    Pour commencer le parcours de soins, contactez un médecin (celui qui suit habituellement votre
-                    enfant, par exemple).
+                    Une fois inscrit(e), et en cas d'éligibilité, vos coordonnées apparaîtront dans l'annuaire public
+                    des
+                    psychologues partenaires sur cette plateforme. La caisse d’assurance maladie à laquelle vous êtes
+                    rattaché(e) vous transmettra rapidement la convention signée. Celle-ci garantit le remboursement de
+                    l'ensemble des séances que vous réaliserez dans le cadre de ce dispositif.
                 </p>
 
-                <p class="fr-mb-2w">
-                    Lorsque le médecin (le pédiatre, le médecin généraliste, le médecin scolaire, celui du service
-                    de PMI, de l’hôpital…) aura orienté votre enfant vers une prise en charge psychologique réalisée
-                    par un psychologue, vous pourrez choisir parmi les psychologues partenaires celui qui correspond
-                    le mieux à vos besoins (notamment en fonction de sa localisation).
-                </p>
-                <div class="fr-callout fr-callout-none">
-                    <h4 class="fr-callout__title">Annuaire en cours de construction</h4>
-                    <p class="fr-callout__text">
-                        Disponible début juin
-                    </p>
-                </div>
                 <p class="fr-my-2w">Des questions sur le dispositif&nbsp;?</p>
-                <a class="fr-btn fr-btn--secondary" href="/faq#parent">Consulter la Foire Aux Questions</a>
-                <p class="fr-my-2w">Nous vous suggérons aussi ce site de conseils pour gérer les difficultés pendant
-                    cette période de crise :</p>
-                <a target="_blank" rel="noopener" href="https://filsantejeunes.com/mal-etre">filsantejeunes.com/mal-etre</a>
+                <a class="fr-btn fr-btn--secondary" href="/faq#psy">Consulter la Foire Aux Questions</a>
+
+                <p class="fr-my-2w">Vous voulez devenir psychologue partenaire du dispositif&nbsp;?</p>
+
+                <% if (formUrl) { %>
+                    <a class="fr-btn fr-btn--alt" href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
+                        Commencer mon inscription
+                    </a>
+                    <% } else { %>
+                        <div class="fr-callout fr-callout-none">
+                            <h4 class="fr-callout__title">Formulaire d’inscription en cours de construction</h4>
+                            <p class="fr-callout__text">
+                                Disponible fin mai
+                            </p>
+                        </div>
+                        <% } %>
+
             </div>
         </div>
     </div>
-</div>
 
-<div class="fr-container">
-    <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
-        <div class="fr-col fr-col-xs-10 fr-col-md-10 fr-my-4w">
-            <h2>Je suis psychologue</h2>
-            <p class="fr-mb-2w">
-                Vous souhaitez participer au programme d'accompagnement psychologique des enfants et des adolescents&nbsp;?
-                Merci&nbsp;!
-            </p>
-            <p class="fr-mb-2w">
-                Une fois inscrit(e), et en cas d'éligibilité, vos coordonnées apparaîtront dans l'annuaire public des
-                psychologues partenaires sur cette plateforme. La caisse d’assurance maladie à laquelle vous êtes
-                rattaché(e) vous transmettra rapidement la convention signée. Celle-ci garantit le remboursement de
-                l'ensemble des séances que vous réaliserez dans le cadre de ce dispositif.
-            </p>
-
-            <p class="fr-my-2w">Des questions sur le dispositif&nbsp;?</p>
-            <a class="fr-btn fr-btn--secondary" href="/faq#psy">Consulter la Foire Aux Questions</a>
-
-            <p class="fr-my-2w">Vous voulez devenir psychologue partenaire du dispositif&nbsp;?</p>
-
-            <% if (formUrl) { %>
-                <a class="fr-btn fr-btn--alt" href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
-                    Commencer mon inscription
-                </a>
-            <% } else { %>
-                <div class="fr-callout fr-callout-none">
-                    <h4 class="fr-callout__title">Formulaire d’inscription en cours de construction</h4>
-                    <p class="fr-callout__text">
-                        Disponible fin mai
-                    </p>
-                </div>
-            <% } %>
-
-        </div>
-    </div>
-</div>
-
-<%- include('partials/footer') -%>
+    <%- include('partials/footer') -%>

@@ -5,7 +5,8 @@ const express = require('express');
 const expressSanitizer = require('express-sanitizer');
 const path = require('path');
 const session = require('express-session');
-
+const flash  = require('connect-flash');
+const cookieParser = require('cookie-parser');
 const config = require('./config');
 const sentry = require('./services/sentry');
 
@@ -15,12 +16,16 @@ const appRepo = 'https://github.com/betagouv/psy-enfant-ado';
 
 const app = express();
 const landingController = require('./controllers/landing-controller');
+const psyListingController = require('./controllers/psy-listing-controller');
 const faqController = require('./controllers/faq-controller');
+
 
 app.use(require('./services/helmet'));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.use(flash());
+app.use(cookieParser(config.secret));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/robots.txt', express.static('static/robots.txt'));
@@ -50,11 +55,19 @@ app.use(function populate (req, res, next) {
   res.locals.appRepo = appRepo;
   res.locals.page = req.url;
   res.locals.contactEmail = config.contactEmail;
+  res.locals.errors = req.flash('error');
+  res.locals.infos = req.flash('info');
+  res.locals.successes = req.flash('success');
   next();
 });
 
 app.get('/', landingController.getLanding);
 app.get('/faq', faqController.getFaq);
+
+
+if (config.featurePsyList) {
+  app.get('/trouver-un-psychologue', psyListingController.getPsychologist);
+}
 
 app.get('/mentions-legales', (req, res) => {
   res.render('legal-notice', {
