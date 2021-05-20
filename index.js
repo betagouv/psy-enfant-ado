@@ -28,6 +28,7 @@ app.use('/static/gouvfr', express.static(
 app.use('/static/jquery', express.static(
   path.join(__dirname, 'node_modules/jquery/dist'))
 );
+app.use('/static/tabulator-tables', express.static('./node_modules/tabulator-tables/dist'));
 
 app.use(session({
   cookie: { maxAge: 60000 },
