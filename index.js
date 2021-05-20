@@ -16,6 +16,8 @@ const app = express();
 const landingController = require('./controllers/landing-controller');
 const faqController = require('./controllers/faq-controller');
 
+app.use(require('./services/helmet'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');

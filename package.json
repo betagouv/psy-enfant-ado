@@ -25,8 +25,7 @@
     "express": "^4.17.1",
     "express-sanitizer": "1.0.6",
     "express-session": "1.17.1",
-    "express-validator": "^6.10.0",
-    "helmet": "^4.4.1",
+    "helmet": "^4.6.0",
     "jquery": "^3.6.0",
     "lodash": "^4.17.20"
   },
