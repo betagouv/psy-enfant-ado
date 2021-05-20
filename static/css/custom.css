@@ -9,24 +9,46 @@
 .fr-bg--alt {
     background-color: #e6cf0b;
 }
+
 .fr-bg--light {
     background-color: #e4e0cf;
 }
+
 .fr-btn--secondary {
     color: #3f3e3e;
     border: solid 1px #3f3e3e;
     box-shadow: none;
 }
+
 .fr-btn--alt {
     background-color: #611438;
 }
+
 a.fr-btn--alt[href]:hover,
 .fr-btn--alt:hover {
     background-color: #450d28;
     background-image: none;
 }
+
 .fr-callout.fr-callout-none {
     background: none;
     border-left: solid 4px #e18d7e;
     box-shadow: none;
+}
+
+.w-100 {
+    width: 100%;
+}
+
+.w-max-200 {
+    max-width: 200px;
+}
+
+.hero {
+    min-height: 350px
+}
+
+.frame {
+    border: 0;
+    height: 100px;
 }

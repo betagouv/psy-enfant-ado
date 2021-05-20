@@ -10,17 +10,20 @@ const config = require('./config');
 const sentry = require('./services/sentry');
 
 const appName = config.appName;
-const appDescription = 'Accompagnement psychologique pour les enfants et les adolescents';
+const appDescription = config.appDescription;
 const appRepo = 'https://github.com/betagouv/psy-enfant-ado';
 
 const app = express();
 const landingController = require('./controllers/landing-controller');
 const faqController = require('./controllers/faq-controller');
 
+app.use(require('./services/helmet'));
+
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
+app.use('/robots.txt', express.static('static/robots.txt'));
 app.use('/static', express.static('static'));
 app.use('/static/gouvfr', express.static(
   path.join(__dirname, 'node_modules/@gouvfr/dsfr/dist'))
@@ -50,10 +53,7 @@ app.use(function populate (req, res, next) {
   next();
 });
 
-app.get('/', async (req, res) => {
-  res.render('coming-soon');
-});
-app.get('/landing', landingController.getLanding);
+app.get('/', landingController.getLanding);
 app.get('/faq', faqController.getFaq);
 
 app.get('/mentions-legales', (req, res) => {
