@@ -9,7 +9,7 @@ const session = require('express-session');
 const config = require('./config');
 
 const appName = config.appName;
-const appDescription = 'Accompagnement psychologique pour les enfants et les adolescents';
+const appDescription = config.appDescription;
 const appRepo = 'https://github.com/betagouv/psy-enfant-ado';
 
 const app = express();

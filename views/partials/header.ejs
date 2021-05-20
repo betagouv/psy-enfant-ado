@@ -3,19 +3,21 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>
-        <% if (locals.pageTitle) { %>
-            <%= pageTitle %> | <%= appName %>
-        <% } else { %>
-            <%= appName %>
-        <% } %>
-    </title>
+    <title><%= appName %></title>
+    <meta property="og:title" content="<%= appName %>"/>
+
+    <meta name="description" content="<%= appName %>"/>
+    <meta property="og:description" content="<%= appName %>"/>
+
+    <meta property="og:image" content="/static/images/illustration-home.svg"/>
+    <meta property="og:type" content="website"/>
+
     <link rel="stylesheet" type="text/css" href="/static/gouvfr/css/dsfr.min.css">
     <link rel="stylesheet" href="/static/css/custom.css">
     <link rel="apple-touch-icon" href="/static/gouvfr/favicons/apple-touch-icon.png"><!-- 180×180 -->
     <link rel="icon" href="/static/gouvfr/favicons/favicon.svg" type="image/svg+xml">
     <link rel="shortcut icon" href="/static/gouvfr/favicons/favicon.ico" type="image/x-icon"><!-- 32×32 -->
-    <link rel="manifest" href="/dist/favicons/manifest.webmanifest" crossorigin="use-credentials">
+    <link rel="manifest" href="/static/gouvfr/favicons/manifest.webmanifest" crossorigin="use-credentials">
     <meta name="google-site-verification" content="zNdXLfed6yt4HNp6wEpt4FSL-oABqiW0RJUSIspvaIU"/>
     <script src="/static/js/matomo.js"></script>
 </head>
