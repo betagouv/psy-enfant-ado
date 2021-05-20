@@ -16,7 +16,7 @@
                         <a class="fr-sidemenu__link" href="#psy" target="_self">Je suis psychologue</a>
                     </li>
                     <li class="fr-sidemenu__item">
-                        <a class="fr-sidemenu__link" href="#doctor" target="_self">Je suis médecins</a>
+                        <a class="fr-sidemenu__link" href="#doctor" target="_self">Je suis médecin</a>
                     </li>
                     <li class="fr-sidemenu__item">
                         <a class="fr-sidemenu__link" href="#other" target="_self">Autres questions</a>
@@ -94,7 +94,7 @@
                         <%- include('partials/faq-item', {...q, id: 'other' + i}); %>
                     <% }); %>
                 </ul>
-               <p><strong>En cas de questions supplémentaires relative à la plateforme, n’hésitez pas à envoyer un message à l’adresse : PsyEnfantAdo@sante.gouv.fr.</strong></p>
+               <p><strong>En cas de questions supplémentaires relative à la plateforme, n’hésitez pas à envoyer un message à l’adresse : <%= contactEmail %>.</strong></p>
 
             </div>
         </div>
