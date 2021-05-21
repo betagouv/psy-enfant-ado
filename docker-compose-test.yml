@@ -1,12 +1,14 @@
 version: '3'
 services:
-  web:
+  init_db:
     build: .
-    command: bash -c "npm run migrate; npm run test"
+    command: bash -c "echo 'first npm install can be a bit long'; npm install; npm run migrate; npm run test;"
     volumes:
       - .:/app
     environment:
       DATABASE_URL: postgres://db:db@db:5432/db
     depends_on:
       - db
-    restart: on-failure
+  web:
+    build: .
+    command: bash -c "echo 'run test run inside init_db'"

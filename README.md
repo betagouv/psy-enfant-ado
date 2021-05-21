@@ -15,11 +15,11 @@ docker-compose up -d # start PG, create SQL tables, and import some data
 
 ### Test
 ```bash
-docker-compose up -d # start PG, create SQL tables, and import some data
+docker-compose up db init_db -d # start PG, create SQL tables, and import some data
 npm test
 ```
 
-Alternativement, en une seule ligne (utilisé par la CI) :
+Alternativement, en une seule ligne (utilisée par la CI) :
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose-test.yml up;
 ```
