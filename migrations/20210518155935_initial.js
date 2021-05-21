@@ -34,14 +34,13 @@ exports.up = function (knex) {
           table.text('cursor');
           table.timestamp('createdAt').defaultTo(knex.fn.now());
           table.timestamp('updatedAt');
-        })
-      })
-}
-
+        });
+      });
+};
 
 exports.down = function (knex) {
   return knex.schema.dropTable(dbPsychologists.psychologistsTable)
   .then(() => {
     knex.schema.dropTable(dbDsApiCursor.dsApiCursorTable);
-  })
+  });
 };

@@ -44,7 +44,6 @@ describe('DB Psychologists', () => {
     });
   });
 
-
   describe('addFrenchLanguageIfMissing', () => {
     const addFrenchLanguageIfMissing = dbPsychologists.__get__('addFrenchLanguageIfMissing');
     it('should add french if missing with one language', async () => {
@@ -91,5 +90,4 @@ describe('DB Psychologists', () => {
       assert.isUndefined(shouldBeOne[0].loginEmail);
     });
   });
-
 });

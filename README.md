@@ -9,9 +9,8 @@ Vous devez avoir npm installé et [docker-compose](https://docs.docker.com/compo
 ```bash
 git clone https://github.com/betagouv/psy-enfant-ado
 cd psy-enfant-ado
-npm install
 docker-compose up -d # start PG, create SQL tables, and import some data
-npm run dev
+# go to http://localhost:8080
 ```
 
 ### Test
