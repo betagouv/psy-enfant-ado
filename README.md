@@ -1,4 +1,4 @@
-# PsyEnfantAdo | https://psyenfantado.beta.gouv.fr
+# PsyEnfantAdo | https://www.psyenfantado.sante.gouv.fr/
 Faites bénéficier votre enfant d’un accompagnement psychologique gratuit
 
 CI branche `main` :  ![image](https://github.com/betagouv/psy-enfant-ado/workflows/Node.js%20CI/badge.svg)
@@ -9,8 +9,9 @@ Vous devez avoir npm installé et [docker-compose](https://docs.docker.com/compo
 ```bash
 git clone https://github.com/betagouv/psy-enfant-ado
 cd psy-enfant-ado
-npm install
 docker-compose up -d # start PG, create SQL tables, and import some data
+# Or use this if you don't want to use docker-compose
+npm install
 npm run dev
 ```
 
