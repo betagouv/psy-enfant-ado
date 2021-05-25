@@ -12,3 +12,5 @@ services:
   web:
     build: .
     command: bash -c "echo 'run test run inside init_db'"
+  depends_on:
+    - init_db
