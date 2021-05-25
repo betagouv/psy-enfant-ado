@@ -16,7 +16,7 @@ npm run dev
 
 ### Test
 ```bash
-docker-compose up -d # start PG, create SQL tables, and import some data
+docker-compose up db init_db -d # start PG, create SQL tables, and import some data
 npm test
 ```
 

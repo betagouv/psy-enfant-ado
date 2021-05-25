@@ -7,16 +7,11 @@
         }
     },
     "scripts": {
-        "first-deploy": "bash scalingo-dev-seed.sh",
-        "postdeploy": "npm run migrate"
+        "first-deploy": "bash scalingo-dev-seed.sh"
     },
     "formation": {
         "web": {
             "amount": 1,
-            "size": "S"
-        },
-        "updateDataDSToPG": {
-            "amount": 0,
             "size": "S"
         }
     }
