@@ -1,0 +1,22 @@
+version: '3'
+services:
+  db:
+    image: postgres:12.5
+    environment:
+      POSTGRES_USER: db
+      POSTGRES_PASSWORD: db
+    ports:
+      - "5432:5432"
+  web:
+    build: .
+    command: bash -c "echo 'starting app... - first npm install can be a bit long'; npm install; npm run migrate; npm run seed; npm run dev"
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgres://db:db@db:5432/db
+    ports:
+      - "8080:8080"
+      - "9229:9229"
+    depends_on:
+      - db
+    restart: on-failure

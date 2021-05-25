@@ -17,6 +17,9 @@
   "license": "MIT",
   "dependencies": {
     "@gouvfr/dsfr": "^1.0.0rc1",
+    "@sentry/integrations": "^6.4.0",
+    "@sentry/node": "^6.4.0",
+    "@sentry/tracing": "^6.4.0",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",

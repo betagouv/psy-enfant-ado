@@ -1,0 +1,18 @@
+{
+    "name": "psy-enfant-ado",
+    "env": {
+        "HOSTNAME_WITH_PROTOCOL": {
+            "description": "Url with protocol, ex: https://my-scalingo-app-pr36.scalingo.io",
+            "generator": "url"
+        }
+    },
+    "scripts": {
+        "first-deploy": "bash scalingo-dev-seed.sh"
+    },
+    "formation": {
+        "web": {
+            "amount": 1,
+            "size": "S"
+        }
+    }
+}
