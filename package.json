@@ -50,6 +50,7 @@
     "chai-http": "^4.3.0",
     "eslint": "^7.19.0",
     "eslint-config-airbnb": "^18.2.1",
+    "eslint-plugin-import": "^2.23.3",
     "eslint-plugin-mocha-no-only": "^1.1.1",
     "eslint-plugin-node": "^11.1.0",
     "husky": "^5.0.9",

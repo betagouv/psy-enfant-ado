@@ -2,6 +2,7 @@ const Sentry = require('@sentry/node');
 const sentryIntegrations = require('@sentry/integrations');
 
 const config = require('../config');
+
 const logLevel = ['error'];
 
 /**

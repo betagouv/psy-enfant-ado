@@ -8,8 +8,9 @@ exports.seed = async function seed(knex) {
 
   const numberOfPsyToCreate = 100;
 
-  const randomAcceptedPsy = Array(numberOfPsyToCreate).fill(0).map((_) => clean.getOnePsy(`${clean.getRandomInt()}@beta.gouv.fr`,
-    demarchesSimplifiees.DOSSIER_STATE.accepte, false));
+  const randomAcceptedPsy = Array(numberOfPsyToCreate).fill(0).map(
+    () => clean.getOnePsy(`${clean.getRandomInt()}@beta.gouv.fr`, demarchesSimplifiees.DOSSIER_STATE.accepte, false),
+  );
 
   const psyWithDifferentStateArchivedStatus = [
     clean.getOnePsy('archived@beta.gouv.fr', demarchesSimplifiees.DOSSIER_STATE.accepte, true),
