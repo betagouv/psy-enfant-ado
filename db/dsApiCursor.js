@@ -4,13 +4,18 @@ const date = require('../services/date');
 
 module.exports.dsApiCursorTable = 'ds_api_cursor';
 
-module.exports.getCursorFromDB = async function getCursorFromDB() {
+/**
+ * l'API DS nous retourne 100 éléments à chaque appel, et nous indique la page où l'on se trouve
+ * en stockant la dernière page lue (cursor), on limite le nombre d'appel à l'API en ne lisant que
+ * les pages necessaires
+ */
+module.exports.getCursorFromDB = async function getCursorFromDB () {
   try {
     const lastCursor = await knex(module.exports.dsApiCursorTable)
-    .where('id', 1)
-    .first();
+      .where('id', 1)
+      .first();
 
-    console.debug(`getLatestCursorSaved: Got the latest cursor saved in PG ${JSON.stringify(lastCursor)}`);
+    console.debug(`getCursorFromDB: Got the latest cursor saved in PG ${JSON.stringify(lastCursor)}`);
     if (lastCursor) {
       return lastCursor.cursor;
     }
@@ -22,22 +27,7 @@ module.exports.getCursorFromDB = async function getCursorFromDB() {
   }
 };
 
-/**
- * l'API DS nous retourne 100 éléments à chaque appel, et nous indique la page où l'on se trouve
- * en stockant la dernière page lue (cursor), on limite le nombre d'appel à l'API en ne lisant que
- * les pages necessaires
- * @param updateEverything : boolean, if true do not use latest cursor 
- */
-module.exports.getLatestCursorSaved = function getLatestCursorSaved(updateEverything = false) {
-  if (!updateEverything) {
-    return module.exports.getCursorFromDB();
-  }
-  console.log(`Not using cursor saved inside PG due to parameter ${updateEverything}`);
-
-  return undefined;
-};
-
-module.exports.saveLatestCursor = async function saveLatestCursor(cursor) {
+module.exports.saveLatestCursor = async function saveLatestCursor (cursor) {
   try {
     const now = date.getDateNowPG();
 
@@ -48,11 +38,11 @@ module.exports.saveLatestCursor = async function saveLatestCursor(cursor) {
         console.log(`Updating the cursor ${cursor} in PG`);
 
         return trx.into(module.exports.dsApiCursorTable)
-        .where('id', 1)
-        .update({
-          cursor,
-          updatedAt: now,
-        });
+          .where('id', 1)
+          .update({
+            cursor,
+            updatedAt: now,
+          });
       } // no cursor already saved, we are going to create one entry
       console.log(`Saving a new cursor ${cursor} to PG`);
 

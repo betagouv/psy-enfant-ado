@@ -158,7 +158,7 @@ async function getAllPsychologistList(cursor, accumulator = []) {
  * if we have more than 100 elements in DS, we have to use pagination (cursor)
  * cursor : String - next page to query the API
  */
-async function getPsychologistList(cursor) {
+module.exports.getPsychologistList = async function getPsychologistList(cursor) {
   const time = `Fetching all psychologists from DS (query id #${Math.random().toString()})`;
 
   console.time(time);
@@ -166,8 +166,7 @@ async function getPsychologistList(cursor) {
   console.timeEnd(time);
 
   return psychologists;
-}
-exports.getPsychologistList = getPsychologistList;
+};
 
 /**
  * Output : "55"
