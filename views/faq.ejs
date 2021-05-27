@@ -50,7 +50,24 @@
                 </ul>
 
                 <h2 id="psy">Je suis psychologue</h2>
+                <div className="fr-mb-3w">
+                    <div>
+                        <span class="fr-fi-arrow-right-line fr-fi--md"/>
+                        <span>Vous voulez plus d&lsquo;infos sur le dispositif ?</span>
+                    </div>
+                    <div>
+                        <a target="_blank"
+                           class="fr-btn fr-btn--alt fr-mt-2w fr-mr-2w"
+                           href="/static/documents/Guide-PsyEnfantAdo-psychologues.pdf">
+                            Voir la brochure à destination des psychologues
+                        </a>
 
+                    </div>
+                    <div class="fr-text--xs fr-mt-2w">
+                        Note : si vous utilisez Safari et que le flyer ne s&lsquo;affiche pas (&quot;Module bloqué&quot;),
+                        essayez Firefox ou Chrome.
+                    </div>
+                </div>
                 <h3>Eligibilité</h3>
                 <ul class="fr-accordion-group">
                     <% faq.eligibility.forEach(function(q, i){ %>
@@ -94,7 +111,8 @@
                         <%- include('partials/faq-item', {...q, id: 'other' + i}); %>
                     <% }); %>
                 </ul>
-               <p><strong>En cas de questions supplémentaires relative à la plateforme, n’hésitez pas à envoyer un message à l’adresse : <%= contactEmail %>.</strong></p>
+                <p><strong>En cas de questions supplémentaires relative à la plateforme, n’hésitez pas à envoyer un
+                        message à l’adresse : <%= contactEmail %>.</strong></p>
 
             </div>
         </div>
