@@ -62,8 +62,10 @@ API de démarches simplifiées :
 
 Pour mettre à jour toutes les données venant de DS vers PG, un cron est lancé à intervalle régulier (voir la page containers de Scalingo) :
 
-$ node ./cron_jobs/cron.js
-
+```bash
+docker exec -ti psy-enfant-ado_web_1 bash # local
+node cron_jobs/cron # container / production
+```
 
 ### Pour tester les évolutions de base de données
 

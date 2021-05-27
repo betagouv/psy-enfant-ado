@@ -14,5 +14,7 @@ module.exports = {
   demarchesSimplifieesIdApiToken: process.env.DEMARCHES_SIMPLIFIEES_API_TOKEN,
   sentryDNS: process.env.SENTRY_DNS || false,
   demarchesSimplifieesUrl: process.env.DEMARCHES_SIMPLIFIEES_URL,
-  secret: process.env.SECRET || 'Angonyx meeki is a moth of the family Sphingidae'
+  secret: process.env.SECRET || 'Angonyx meeki is a moth of the family Sphingidae',
+  featurePsyList: process.env.FEATURE_PSY_LIST || false,
+  featureImportData: process.env.FEATURE_IMPORT_DATA || false,
 };

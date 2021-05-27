@@ -78,7 +78,7 @@ module.exports.savePsychologist = async function savePsychologist(psyList) {
         training: psy.training,
         adeli: psy.adeli,
         diploma: psy.diploma,
-        languages: addFrenchLanguageIfMissing(psy.languages),
+        languages: psy.languages,
         updatedAt,
       });
     } catch (err) {

@@ -145,6 +145,7 @@ async function getAllPsychologistList(cursor, accumulator = []) {
   if (nextCursor) {
     return getAllPsychologistList(nextCursor, nextAccumulator);
   }
+
   return {
     psychologists: nextAccumulator,
     lastCursor: cursor,
