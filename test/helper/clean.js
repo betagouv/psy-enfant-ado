@@ -14,7 +14,7 @@ module.exports.getRandomInt = function getRandomInt() {
   return ourRandom.toString();
 };
 
-module.exports.getOnePsy = function getOnePsy(personalEmail = 'loginemail@beta.gouv.fr',
+module.exports.getOnePsy = function getOnePsy(email = 'loginemail@beta.gouv.fr',
   state = 'accepte', archived = false) {
   const dossierNumber = uuid.randomUuid();
   return {
@@ -25,26 +25,19 @@ module.exports.getOnePsy = function getOnePsy(personalEmail = 'loginemail@beta.g
     state,
     adeli: `${module.exports.getRandomInt()}829302942`,
     address: `${module.exports.getRandomInt()} SOLA 66110 MONTBOLO`,
-    diploma: 'Psychologie clinique de la santé',
     phone: '0468396600',
     email: `${module.exports.getRandomInt()}@beta.gouv.fr`,
-    personalEmail,
     website: `${module.exports.getRandomInt()}beta.gouv.fr`,
     teleconsultation: Math.random() < 0.5,
-    description: 'description',
-    // eslint-disable-next-line max-len
-    training: '["Connaissance et pratique des outils diagnostic psychologique","Connaissance des troubles psychopathologiques du jeune adulte : dépressions","risques suicidaires","addictions","comportements à risque","troubles alimentaires","décompensation schizophrénique","psychoses émergeantes ainsi qu’une pratique de leur repérage","Connaissance et pratique des dispositifs d’accompagnement psychologique et d’orientation (CMP...)"]',
     departement: `${module.exports.getRandomInt()} - Calvados`,
-    region: 'Normandie',
     languages: 'Français ,Anglais, et Espagnol',
   };
 };
 
-module.exports.psyList = function getPsyList(personalEmail = 'loginemail@beta.gouv.fr',
+module.exports.psyList = function getPsyList(email = 'loginemail@beta.gouv.fr',
   state = 'accepte', archived = false) {
-  const universityId = uuid.randomUuid();
   return [
-    module.exports.getOnePsy(personalEmail, state, archived, universityId),
+    module.exports.getOnePsy(email, state, archived),
   ];
 };
 

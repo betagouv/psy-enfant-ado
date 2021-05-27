@@ -14,12 +14,10 @@ module.exports.getPsychologists = async () => {
       'email',
       'address',
       'departement',
-      'region',
       'phone',
       'website',
       'teleconsultation',
-      'languages',
-      'description',
+      'languages'
     )
         .select()
         .from(module.exports.psychologistsTable)
@@ -67,17 +65,12 @@ module.exports.savePsychologist = async function savePsychologist(psyList) {
         archived: psy.archived,
         state: psy.state,
         address: psy.address,
-        region: psy.region,
         departement: psy.departement,
         phone: psy.phone,
         website: psy.website,
         email: psy.email,
-        personalEmail: psy.personalEmail,
         teleconsultation: psy.teleconsultation,
-        description: psy.description,
-        training: psy.training,
         adeli: psy.adeli,
-        diploma: psy.diploma,
         languages: psy.languages,
         updatedAt,
       });

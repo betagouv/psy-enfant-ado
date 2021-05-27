@@ -30,7 +30,7 @@ async function importDataFromDSToPG(cursor) {
 }
 
 module.exports.importEveryDataFromDSToPG = async function importEveryDataFromDSToPG() {
-  return  importDataFromDSToPG();
+  return importDataFromDSToPG();
 };
 
 module.exports.importLatestDataFromDSToPG = async function importLatestDataFromDSToPG() {

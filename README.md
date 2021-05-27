@@ -88,7 +88,7 @@ Avec [le scalingo CLI](https://doc.scalingo.com/cli) et le nom de l'app sur scal
 On peut insérer des données comme ceci :
 ```sql
 INSERT INTO public.psychologists
-("dossierNumber", adeli, "firstNames", "lastName", email, address, departement, region, phone, website, teleconsultation, description, languages, training, diploma, "createdAt", "updatedAt", archived, state, "personalEmail")
+("dossierNumber", adeli, "firstNames", "lastName", email, address, departement,  phone, website, teleconsultation, languages, "createdAt", "updatedAt", archived, state)
 VALUES('77356ab0-349b-4980-899f-bad2ce87e2f1', 'adeli', 'firstname', 'lastname', 'publicemail@beta.gouv.fr', '', '', '', '', '', false, 'accfzfz', '', '[]', '',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false, 'accepte', 'private.email@beta.gouv.fr');
 ```
 
@@ -100,7 +100,7 @@ Puis une fois la console node ouverte :
 ```js
 const dbPsychologists = require('./db/psychologists')
 
-let psy = { 'dossierNumber': '77356ab0-349b-4980-899f-bad2ce87e2f1', 'adeli': 123, firstNames: 'Stevie', 'lastName': 'Wonder', 'email': 'meetwithstevie@wonder.com', archived: true, state: 'accepte', personalEmail: 'stevie@wonder.com'}
+let psy = { 'dossierNumber': '77356ab0-349b-4980-899f-bad2ce87e2f1', 'adeli': 123, firstNames: 'Stevie', 'lastName': 'Wonder', 'email': 'meetwithstevie@wonder.com', archived: true, state: 'accepte'}
 
 dbPsychologists.savePsychologistInPG([psy])
 ```

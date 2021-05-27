@@ -11,18 +11,13 @@ exports.up = function (knex) {
         table.string('adeli').notNullable(); // all therapists should be registered and have a number
         table.text('firstNames').notNullable();
         table.text('lastName').notNullable();
-        table.text('email').notNullable(); // this will be the login for the user
-        table.text('personalEmail').notNullable(); // login for Demarches Simplifiees
+        table.text('email').notNullable();
         table.text('address');
         table.string('departement');
-        table.string('region');
         table.string('phone');
         table.string('website');
         table.boolean('teleconsultation');
-        table.text('description');
         table.text('languages');
-        table.json('training'); // Formations et expériences
-        table.text('diploma');
         table.boolean('archived'); // archived on Demarches Simplifiees
         table.text('state'); // state on Demarches Simplifiees
         table.timestamp('createdAt').defaultTo(knex.fn.now());

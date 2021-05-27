@@ -1,53 +1,46 @@
 require('dotenv').config();
 const sinon = require('sinon');
+const _ = require('lodash');
 const dbPsychologists = require('../db/psychologists');
 const dbDsApiCursor = require('../db/dsApiCursor');
 const demarchesSimplifiees = require('../services/demarchesSimplifiees');
+const graphql = require('../services/graphql');
+const dossierResponse = require('./dossier.json');
+const dossierResponseEmpty = require('./dossier-empty.json');
 
 const cronDemarchesSimplifiees = require('../cron_jobs/cronDemarchesSimplifiees');
 const clean = require('./helper/clean');
 
 describe('Import Data from DS to PG', () => {
-  let getCursorFromDBStub;
-  let getPsychologistListStub;
-  let savePsychologistStub;
-  let getNumberOfPsychologistsStub;
-  let saveLatestCursorStub;
+  let graphqlRequest;
+
+  beforeEach(async () => {
+    await clean.cleanAllPsychologists();
+  });
 
   afterEach(async () => {
-    getCursorFromDBStub.restore();
-    getPsychologistListStub.restore();
-    savePsychologistStub.restore();
-    getNumberOfPsychologistsStub.restore();
-    saveLatestCursorStub.restore();
+    graphqlRequest.restore();
+
     return Promise.resolve();
   });
 
   it('should get a cursor, then all psychologist from DS API, then save cursor and psylist', async () => {
 
-    // eslint-disable-next-line max-len
-    const cursor = '{"id":1,"cursor":"test","createdAt":"2021-02-19T13:16:45.382Z","updatedAt":"2021-02-19T13:16:45.380Z"}';
-    const dsApiData = {
-      psychologists: clean.psyList(),
-      cursor: 'test',
-    };
-    getCursorFromDBStub = sinon.stub(dbDsApiCursor, 'getCursorFromDB')
-      .returns(Promise.resolve(cursor));
-    getPsychologistListStub = sinon.stub(demarchesSimplifiees, 'getPsychologistList')
-      .returns(Promise.resolve(dsApiData));
-    savePsychologistStub = sinon.stub(dbPsychologists, 'savePsychologist')
-      .returns(Promise.resolve());
-    getNumberOfPsychologistsStub = sinon.stub(dbPsychologists, 'getNumberOfPsychologists')
-      .returns(Promise.resolve([{ count: 1 }]));
-    saveLatestCursorStub = sinon.stub(dbDsApiCursor, 'saveLatestCursor')
-    .returns(Promise.resolve());
+    graphqlRequest = sinon.stub(graphql, 'requestPsychologist')
+      .onCall(0)
+      .returns(Promise.resolve(dossierResponse));
+
+    graphqlRequest.onCall(1)
+      .returns(Promise.resolve(dossierResponseEmpty));
 
     await cronDemarchesSimplifiees.importLatestDataFromDSToPG();
 
-    sinon.assert.called(getCursorFromDBStub);
-    sinon.assert.called(getPsychologistListStub);
-    sinon.assert.called(savePsychologistStub);
-    sinon.assert.called(saveLatestCursorStub);
-    sinon.assert.called(getNumberOfPsychologistsStub);
+    sinon.assert.called(graphqlRequest);
+    const counts = await dbPsychologists.getNumberOfPsychologists()
+    const accepted = counts.find(myElement => (!myElement.archived && myElement.state === 'accepté'));
+    const en_instruction = counts.find(myElement => (!myElement.archived && myElement.state === 'en_instruction'));
+
+    accepted.count.should.be.equal('1');
+    en_instruction.count.should.be.equal('1');
   });
 });
