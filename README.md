@@ -31,6 +31,21 @@ Voir [ce lien](https://docs.docker.com/compose/extends/#understanding-multiple-c
 ```bash
 npm run lint
 ```
+## Déployé le site
+Psy enfant ado possède 2 environements hebergés sur scalingo 
+Staging et Prod
+
+La branch dev est automatiquement déployé sur Staging et la branche main sur Prod.
+Les PR se font sur dev (squash).
+
+Pour déployer, il faut rebase dev sur main:
+```bash
+git checkout dev
+git pull origin dev
+git checkout main
+git rebase dev
+git push origin main
+```
 
 ## Données
 ### Démarches Simplifiées (DS) 
