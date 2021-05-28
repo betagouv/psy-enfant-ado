@@ -35,4 +35,13 @@ describe('Static pages', function () {
         expect(res.text).to.contains('User-agent: *');
       });
   });
+
+  it('/documents should return a static doc', function async () {
+    return chai.request(app)
+      .get('/static/documents/Guide-PsyEnfantAdo-Psychologues.pdf')
+      .then(async (res) => {
+        expect(res).to.have.status(200);
+        expect(res.type).to.eql('application/pdf');
+      });
+  });
 });
