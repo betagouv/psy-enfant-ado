@@ -7,14 +7,14 @@ module.exports.getPsychologist = async function getPsychologist(req, res) {
     const psyList = await dbPsychologists.getPsychologists();
     console.timeEnd(time);
 
-    res.render('psyListing', {
+    res.render('psy-listing', {
       psyList,
       errors: req.flash('error'),
     });
   } catch (err) {
     req.flash('error', 'Impossible de récupérer les psychologues. Réessayez ultérieurement.');
     console.error('getPsychologist', err);
-    res.render('psyListing', {
+    res.render('psy-listing', {
       psyList: [],
     });
   }
