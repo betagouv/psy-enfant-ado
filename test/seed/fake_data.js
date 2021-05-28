@@ -8,7 +8,7 @@ exports.seed = async function seed (knex) {
 
   const numberOfPsyToCreate = 100
 
-  const psyList = Array(numberOfPsyToCreate).fill(0).map ( _ => {
+  const psyList = Array(numberOfPsyToCreate).fill(0).map ( () => {
     return clean.getOnePsy(demarchesSimplifiees.DOSSIER_STATE.accepte, false);
   })
 
