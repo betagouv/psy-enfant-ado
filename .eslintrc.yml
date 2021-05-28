@@ -17,7 +17,7 @@ parserOptions:
 
 rules:
   no-trailing-spaces: ["error", { "ignoreComments": true }]
-  max-len: ["error", { "code": 120 }]
+  max-len: ["error", { "code": 160 }]
   no-underscore-dangle: "off"
   no-unused-vars: "error"
   no-inner-declarations: "off"

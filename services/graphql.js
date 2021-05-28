@@ -90,9 +90,7 @@ async function requestPsychologist(afterCursor) {
   console.debug('GraphQL query sent:', query);
 
   try {
-    const psychologists = await graphQLClient.request(query);
-
-    return psychologists;
+    return await graphQLClient.request(query);
   } catch (err) {
     console.error('API has returned error', err);
     logErrorsFromDS(err);

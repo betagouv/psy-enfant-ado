@@ -17,7 +17,7 @@ module.exports.getPsychologists = async () => {
       'phone',
       'website',
       'teleconsultation',
-      'languages'
+      'languages',
     )
         .select()
         .from(module.exports.psychologistsTable)
@@ -61,7 +61,7 @@ module.exports.savePsychologist = async function savePsychologist(psyList) {
       .onConflict(upsertingKey)
       .merge({
         ...psy,
-        updatedAt
+        updatedAt,
       });
     } catch (err) {
       console.error(`Error to insert ${psy}`, err);
@@ -77,9 +77,8 @@ module.exports.savePsychologist = async function savePsychologist(psyList) {
 };
 
 module.exports.getNumberOfPsychologists = async function getNumberOfPsychologists() {
-  return await knex(module.exports.psychologistsTable)
+  return knex(module.exports.psychologistsTable)
     .select('archived', 'state')
     .count('*')
     .groupBy('archived', 'state');
-
 };

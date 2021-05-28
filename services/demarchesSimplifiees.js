@@ -53,7 +53,6 @@ function getUuidDossierNumber(number) {
 }
 
 function parseDossierMetadata(dossier) {
-  // console.log("dossier.champs", dossier.champs)
   const { state } = dossier;
   const { archived } = dossier;
   const lastName = dossier.demandeur.nom.trim();
@@ -71,7 +70,7 @@ function parseDossierMetadata(dossier) {
   const adeli = getChampValue(dossier.champs, 'Numéro ADELI');
   const languages = getChampValue(dossier.champs, 'Langues parlées (optionnel)');
 
-  const psy = {
+  return {
     dossierNumber,
     state,
     archived,
@@ -86,8 +85,6 @@ function parseDossierMetadata(dossier) {
     adeli,
     languages,
   };
-
-  return psy;
 }
 
 function parsePsychologist(apiResponse) {

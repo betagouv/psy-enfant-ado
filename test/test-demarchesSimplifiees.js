@@ -39,7 +39,7 @@ describe('Demarches Simplifiess', () => {
           archived: false,
           state: 'en_instruction',
           adeli: '339308207',
-          address: `15 Impasse de la 4ème République 33140 Villenave-d'Ornon`,
+          address: '15 Impasse de la 4ème République 33140 Villenave-d\'Ornon',
           phone: '0600000000',
           email: 'pj@beta.beta.gouv.fr',
           website: 'beta.gouv.fr',
