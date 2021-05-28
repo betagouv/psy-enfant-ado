@@ -14,12 +14,10 @@ module.exports.getPsychologists = async () => {
       'email',
       'address',
       'departement',
-      'region',
       'phone',
       'website',
       'teleconsultation',
-      'languages',
-      'description',
+      'languages'
     )
         .select()
         .from(module.exports.psychologistsTable)
@@ -61,25 +59,9 @@ module.exports.savePsychologist = async function savePsychologist(psyList) {
       return knex(module.exports.psychologistsTable)
       .insert(psy)
       .onConflict(upsertingKey)
-      .merge({ // update every field and add updatedAt
-        firstNames: psy.firstNames,
-        lastName: psy.lastName,
-        archived: psy.archived,
-        state: psy.state,
-        address: psy.address,
-        region: psy.region,
-        departement: psy.departement,
-        phone: psy.phone,
-        website: psy.website,
-        email: psy.email,
-        personalEmail: psy.personalEmail,
-        teleconsultation: psy.teleconsultation,
-        description: psy.description,
-        training: psy.training,
-        adeli: psy.adeli,
-        diploma: psy.diploma,
-        languages: addFrenchLanguageIfMissing(psy.languages),
-        updatedAt,
+      .merge({
+        ...psy,
+        updatedAt
       });
     } catch (err) {
       console.error(`Error to insert ${psy}`, err);
@@ -92,4 +74,12 @@ module.exports.savePsychologist = async function savePsychologist(psyList) {
   console.log('UPSERT into PG : done');
 
   return query;
+};
+
+module.exports.getNumberOfPsychologists = async function getNumberOfPsychologists() {
+  return await knex(module.exports.psychologistsTable)
+    .select('archived', 'state')
+    .count('*')
+    .groupBy('archived', 'state');
+
 };

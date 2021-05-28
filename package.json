@@ -12,7 +12,7 @@
     "lint": "eslint . --fix",
     "ejslint": "ejslint **/*.ejs",
     "start": "node index.js",
-    "test": "mocha --exit",
+    "test": "PORT=8081 mocha --exit",
     "seed": "knex seed:run",
     "migrate": "knex migrate:latest",
     "migrate-one": "knex migrate:up",

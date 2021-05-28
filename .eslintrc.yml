@@ -19,6 +19,7 @@ rules:
   no-trailing-spaces: ["error", { "ignoreComments": true }]
   max-len: ["error", { "code": 120 }]
   no-underscore-dangle: "off"
+  no-unused-vars: "error"
   no-inner-declarations: "off"
   no-console: "off"
   camelcase: "warn"
@@ -26,7 +27,7 @@ rules:
   func-names: "warn"
   no-restricted-syntax: "warn"
   guard-for-in: "warn"
-  eqeqeq: "warn"
+  eqeqeq: "error"
   indent: 
     - "error"
     - 2
@@ -35,7 +36,7 @@ rules:
   import/order: "off"
   radix: "off"
   no-new: "off"
-  no-plusplus: "off" 
+  no-plusplus: "off"
   no-multi-str: "off"
   mocha-no-only/mocha-no-only: ["error"]
 

@@ -12,54 +12,40 @@ describe('Demarches Simplifiess', () => {
     it('should return an array of psychologists from a JSON', async () => {
       const apiResponse = testDossiers;
 
-      const getUuidDossierNumber = demarchesSimplifiees.__get__('getUuidDossierNumber');
-
       const parsePsychologist = demarchesSimplifiees.__get__('parsePsychologist');
       const output = parsePsychologist(apiResponse);
       // eslint-disable-next-line max-len
-      const description = "Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum, et, plus récemment, par son inclusion dans des applications de mise en page de texte, comme Aldus PageMaker.";
       const result = [
         {
-          dossierNumber: getUuidDossierNumber(1),
-          lastName: 'Last',
-          firstNames: 'First',
+          dossierNumber: 'd6933940-657a-5c17-b478-8f34e74105df',
+          lastName: 'BetaFR',
+          firstNames: 'BetaE Michel',
           archived: false,
-          state: 'accepte',
-          adeli: '829302942',
-          address: 'SSR CL AL SOLA 66110 MONTBOLO',
-          diploma: 'Psychologie clinique de la santé',
-          phone: '0468396600',
-          email: 'psychologue.test@beta.gouv.fr',
-          personalEmail: 'loginemail@beta.gouv.fr',
-          website: 'beta.gouv.fr',
+          state: 'accepté',
+          adeli: '759374531',
+          address: '39 Rue Saint-Fargeau 75020 Paris',
+          phone: '0600000000',
+          email: 'beta@beta.gouv.fr',
+          website: '',
           teleconsultation: true,
-          description,
           // eslint-disable-next-line max-len
-          training: '["Connaissance et pratique des outils diagnostic psychologique","Connaissance des troubles psychopathologiques du jeune adulte : dépressions","risques suicidaires","addictions","comportements à risque","troubles alimentaires","décompensation schizophrénique","psychoses émergeantes ainsi qu’une pratique de leur repérage","Connaissance et pratique des dispositifs d’accompagnement psychologique et d’orientation (CMP...)"]',
-          departement: '14 - Calvados',
-          region: 'Normandie',
-          languages: 'Français ,Anglais, et Espagnol',
+          departement: '75 - Paris',
+          languages: 'italien, espagnol, arabe oriental, arabe classique, anglais',
         },
         {
-          dossierNumber: getUuidDossierNumber(2),
-          lastName: '2ème',
-          firstNames: 'Personne',
+          dossierNumber: 'd76c571a-b3c2-577a-8ba1-d0133b045f55',
+          lastName: 'BetaDU',
+          firstNames: 'BetaP',
           archived: false,
-          state: 'accepte',
-          adeli: '829302942',
-          address: 'SSR CL AL SOLA 66110 MONTBOLO',
-          phone: '0468396600',
-          diploma: 'Psychologie clinique de la santé',
-          email: 'psychologue.test@beta.gouv.fr',
-          personalEmail: 'loginEmail2@beta.gouv.fr',
+          state: 'en_instruction',
+          adeli: '339308207',
+          address: `15 Impasse de la 4ème République 33140 Villenave-d'Ornon`,
+          phone: '0600000000',
+          email: 'pj@beta.beta.gouv.fr',
           website: 'beta.gouv.fr',
           teleconsultation: false,
-          description,
-          // eslint-disable-next-line max-len
-          training: '["Connaissance et pratique des outils diagnostic psychologique","Connaissance des troubles psychopathologiques du jeune adulte : dépressions","risques suicidaires","addictions","comportements à risque","troubles alimentaires","décompensation schizophrénique","psychoses émergeantes ainsi qu’une pratique de leur repérage","Connaissance et pratique des dispositifs d’accompagnement psychologique et d’orientation (CMP...)"]',
-          departement: '14 - Calvados',
-          region: 'Normandie',
-          languages: 'Français ,Anglais, et Espagnol',
+          departement: '33 - Gironde',
+          languages: '',
         },
       ];
 
@@ -115,26 +101,6 @@ describe('Demarches Simplifiess', () => {
       const result = uuid.generateUuidFromString(`${config.demarchesSimplifieesId}-${dossierNumber}`);
 
       output.should.equal(result);
-    });
-  });
-
-  describe('parseTraining', () => {
-    it('should return an array of a string if only one element', async () => {
-      const apiResponse = 'training1';
-
-      const parseTraining = demarchesSimplifiees.__get__('parseTraining');
-      const output = parseTraining(apiResponse);
-
-      output.should.equal(JSON.stringify([apiResponse]));
-    });
-
-    it('should return an array of several strings if multiples specialities/Trainings', async () => {
-      const apiResponse = 'training1, training2';
-
-      const parseTraining = demarchesSimplifiees.__get__('parseTraining');
-      const output = parseTraining(apiResponse);
-
-      output.should.equal(JSON.stringify(['training1', 'training2']));
     });
   });
 

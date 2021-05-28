@@ -27,7 +27,7 @@ function getNextCursor(apiResponse) {
 }
 
 function getChampValue(champData, attributeName, stringValue = true) {
-  const potentialStringValue = champData.find((champ) => champ.label === attributeName);
+  const potentialStringValue = champData.find((champ) => champ.label.includes(attributeName));
 
   if (typeof potentialStringValue === 'undefined') {
     console.warn(`Champ from API ${attributeName} does not exist`);
@@ -48,45 +48,27 @@ function parseTeleconsultation(inputString) {
   return inputString === 'true';
 }
 
-/**
- * transform string "speciality1, speciality2" to array ["speciality1", "speciality2"]
- * as a JSON to store it inside PG
- */
-function parseTraining(inputString) {
-  if (inputString.includes(',')) {
-    return JSON.stringify(inputString.split(', '));
-  }
-  return JSON.stringify([inputString]);
-}
-
 function getUuidDossierNumber(number) {
   return uuid.generateUuidFromString(`${config.demarchesSimplifieesId}-${number}`);
 }
 
 function parseDossierMetadata(dossier) {
+  // console.log("dossier.champs", dossier.champs)
   const { state } = dossier;
   const { archived } = dossier;
   const lastName = dossier.demandeur.nom.trim();
   const firstNames = dossier.demandeur.prenom.trim();
-  const personalEmail = dossier.usager.email.trim();
   const dossierNumber = getUuidDossierNumber(dossier.number);
-  const region = dossier.groupeInstructeur.label;
-  const address = getChampValue(dossier.champs, 'Adresse du cabinet');
-  const departement = getChampValue(dossier.champs, 'Votre département'); // "14 - Calvados"
-  const phone = getChampValue(dossier.champs, 'Téléphone du secrétariat');
+  const departement = dossier.groupeInstructeur.label;
+  const address = getChampValue(dossier.champs, 'Adresse postale du cabinet');
+  const phone = getChampValue(dossier.champs, 'Numéro de téléphone');
   const teleconsultation = parseTeleconsultation(
-    getChampValue(dossier.champs, 'Proposez-vous de la téléconsultation ?'),
+    getChampValue(dossier.champs, 'Proposez-vous des séances à distance ?'),
   );
-  const website = getChampValue(dossier.champs, 'Site web professionnel (optionnel)');
+  const website = getChampValue(dossier.champs, 'Avez-vous un site web');
   const email = getChampValue(dossier.champs, 'Email de contact');
-  const description = getChampValue(dossier.champs, 'Paragraphe de présentation (optionnel)');
 
-  // @TODO comma separated values not reliable
-  const training = parseTraining(
-    getChampValue(dossier.champs, 'Formations et expériences'),
-  );
-  const adeli = getChampValue(dossier.champs, 'Numéro Adeli');
-  const diploma = getChampValue(dossier.champs, 'Intitulé ou spécialité de votre master de psychologie');
+  const adeli = getChampValue(dossier.champs, 'Numéro ADELI');
   const languages = getChampValue(dossier.champs, 'Langues parlées (optionnel)');
 
   const psy = {
@@ -96,17 +78,12 @@ function parseDossierMetadata(dossier) {
     lastName,
     firstNames,
     address,
-    region,
     departement,
     phone,
     website,
     email,
-    personalEmail,
     teleconsultation,
-    description,
-    training,
     adeli,
-    diploma,
     languages,
   };
 
@@ -135,7 +112,6 @@ function parsePsychologist(apiResponse) {
  */
 async function getAllPsychologistList(cursor, accumulator = []) {
   const apiResponse = await graphql.requestPsychologist(cursor);
-
   const nextCursor = getNextCursor(apiResponse);
 
   const nextAccumulator = accumulator.concat(
@@ -145,6 +121,7 @@ async function getAllPsychologistList(cursor, accumulator = []) {
   if (nextCursor) {
     return getAllPsychologistList(nextCursor, nextAccumulator);
   }
+
   return {
     psychologists: nextAccumulator,
     lastCursor: cursor,
@@ -158,7 +135,7 @@ async function getAllPsychologistList(cursor, accumulator = []) {
  * if we have more than 100 elements in DS, we have to use pagination (cursor)
  * cursor : String - next page to query the API
  */
-async function getPsychologistList(cursor) {
+module.exports.getPsychologistList = async function getPsychologistList(cursor) {
   const time = `Fetching all psychologists from DS (query id #${Math.random().toString()})`;
 
   console.time(time);
@@ -166,8 +143,7 @@ async function getPsychologistList(cursor) {
   console.timeEnd(time);
 
   return psychologists;
-}
-exports.getPsychologistList = getPsychologistList;
+};
 
 /**
  * Output : "55"

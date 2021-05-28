@@ -20,7 +20,7 @@ npm run dev
 
 ### Test
 ```bash
-docker-compose up db init_db -d # start PG, create SQL tables, and import some data
+docker-compose up -d db init_db # start PG, create SQL tables, and import some data
 npm test
 ```
 
@@ -33,6 +33,21 @@ Voir [ce lien](https://docs.docker.com/compose/extends/#understanding-multiple-c
 ### Lint
 ```bash
 npm run lint
+```
+## Déployé le site
+Psy enfant ado possède 2 environements hebergés sur scalingo 
+Staging et Prod
+
+La branch dev est automatiquement déployé sur Staging et la branche main sur Prod.
+Les PR se font sur dev (squash).
+
+Pour déployer, il faut rebase dev sur main:
+```bash
+git checkout dev
+git pull origin dev
+git checkout main
+git rebase dev
+git push origin main
 ```
 
 ## Données
@@ -50,8 +65,10 @@ API de démarches simplifiées :
 
 Pour mettre à jour toutes les données venant de DS vers PG, un cron est lancé à intervalle régulier (voir la page containers de Scalingo) :
 
-$ node ./cron_jobs/cron.js
-
+```bash
+docker exec -ti psy-enfant-ado_web_1 bash # local
+node cron_jobs/cron # container / production
+```
 
 ### Pour tester les évolutions de base de données
 
@@ -74,7 +91,7 @@ Avec [le scalingo CLI](https://doc.scalingo.com/cli) et le nom de l'app sur scal
 On peut insérer des données comme ceci :
 ```sql
 INSERT INTO public.psychologists
-("dossierNumber", adeli, "firstNames", "lastName", email, address, departement, region, phone, website, teleconsultation, description, languages, training, diploma, "createdAt", "updatedAt", archived, state, "personalEmail")
+("dossierNumber", adeli, "firstNames", "lastName", email, address, departement,  phone, website, teleconsultation, languages, "createdAt", "updatedAt", archived, state)
 VALUES('77356ab0-349b-4980-899f-bad2ce87e2f1', 'adeli', 'firstname', 'lastname', 'publicemail@beta.gouv.fr', '', '', '', '', '', false, 'accfzfz', '', '[]', '',CURRENT_TIMESTAMP, CURRENT_TIMESTAMP, false, 'accepte', 'private.email@beta.gouv.fr');
 ```
 
@@ -86,7 +103,7 @@ Puis une fois la console node ouverte :
 ```js
 const dbPsychologists = require('./db/psychologists')
 
-let psy = { 'dossierNumber': '77356ab0-349b-4980-899f-bad2ce87e2f1', 'adeli': 123, firstNames: 'Stevie', 'lastName': 'Wonder', 'email': 'meetwithstevie@wonder.com', archived: true, state: 'accepte', personalEmail: 'stevie@wonder.com'}
+let psy = { 'dossierNumber': '77356ab0-349b-4980-899f-bad2ce87e2f1', 'adeli': 123, firstNames: 'Stevie', 'lastName': 'Wonder', 'email': 'meetwithstevie@wonder.com', archived: true, state: 'accepte'}
 
 dbPsychologists.savePsychologistInPG([psy])
 ```
