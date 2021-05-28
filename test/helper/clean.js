@@ -14,8 +14,7 @@ module.exports.getRandomInt = function getRandomInt() {
   return ourRandom.toString();
 };
 
-module.exports.getOnePsy = function getOnePsy(email = 'loginemail@beta.gouv.fr',
-  state = 'accepte', archived = false) {
+module.exports.getOnePsy = function getOnePsy(state = 'accepte', archived = false) {
   const dossierNumber = uuid.randomUuid();
   return {
     dossierNumber,
@@ -25,7 +24,7 @@ module.exports.getOnePsy = function getOnePsy(email = 'loginemail@beta.gouv.fr',
     state,
     adeli: `${module.exports.getRandomInt()}829302942`,
     address: `${module.exports.getRandomInt()} SOLA 66110 MONTBOLO`,
-    phone: '0468396600',
+    phone: `${module.exports.getRandomInt()}68396600`,
     email: `${module.exports.getRandomInt()}@beta.gouv.fr`,
     website: `${module.exports.getRandomInt()}beta.gouv.fr`,
     teleconsultation: Math.random() < 0.5,
