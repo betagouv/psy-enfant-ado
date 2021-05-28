@@ -41,9 +41,10 @@ describe('DB Psychologists', () => {
       // we do it twice in a row to UPsert it (field updatedAt will change)
       await dbPsychologists.savePsychologist(psyList);
       const psyUpsert = await testDataPsychologistsExist(psyList[0].dossierNumber);
-      let { updatedAt, ...resultUpsert } = psyUpsert;
+      let { createdAt, updatedAt, ...resultUpsert } = psyUpsert;
       expect(resultUpsert).to.eql(psyList[0]);
       expect(updatedAt).to.be.an.instanceof(Date);
+      expect(createdAt).to.be.an.instanceof(Date);
     });
   });
 
