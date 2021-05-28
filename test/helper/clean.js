@@ -33,10 +33,9 @@ module.exports.getOnePsy = function getOnePsy(state = 'accepte', archived = fals
   };
 };
 
-module.exports.psyList = function getPsyList(email = 'loginemail@beta.gouv.fr',
-  state = 'accepte', archived = false) {
+module.exports.psyList = function getPsyList(state = 'accepte', archived = false) {
   return [
-    module.exports.getOnePsy(email, state, archived),
+    module.exports.getOnePsy(state, archived),
   ];
 };
 
