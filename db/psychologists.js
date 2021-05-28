@@ -59,20 +59,9 @@ module.exports.savePsychologist = async function savePsychologist(psyList) {
       return knex(module.exports.psychologistsTable)
       .insert(psy)
       .onConflict(upsertingKey)
-      .merge({ // update every field and add updatedAt
-        firstNames: psy.firstNames,
-        lastName: psy.lastName,
-        archived: psy.archived,
-        state: psy.state,
-        address: psy.address,
-        departement: psy.departement,
-        phone: psy.phone,
-        website: psy.website,
-        email: psy.email,
-        teleconsultation: psy.teleconsultation,
-        adeli: psy.adeli,
-        languages: psy.languages,
-        updatedAt,
+      .merge({
+        ...psy,
+        updatedAt
       });
     } catch (err) {
       console.error(`Error to insert ${psy}`, err);

@@ -1,8 +1,9 @@
-const { assert } = require('chai');
+const { expect, assert } = require('chai');
 const rewire = require('rewire');
 require('dotenv').config();
 
 const dbPsychologists = rewire('../db/psychologists');
+const _ = require('lodash');
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig);
 const clean = require('./helper/clean');
@@ -10,12 +11,10 @@ const clean = require('./helper/clean');
 describe('DB Psychologists', () => {
   const psyList = clean.psyList();
 
-  async function testDataPsychologistsExist(dossierNumber) {
-    const exist = await knex(dbPsychologists.psychologistsTable)
+  async function testDataPsychologistsExist (dossierNumber) {
+    return await knex(dbPsychologists.psychologistsTable)
       .where('dossierNumber', dossierNumber)
       .first();
-
-    return exist;
   }
 
   afterEach(async () => {
@@ -27,23 +26,26 @@ describe('DB Psychologists', () => {
       await dbPsychologists.savePsychologist(psyList);
 
       const psy = await testDataPsychologistsExist(psyList[0].dossierNumber);
-      const exist = (psy !== undefined);
-      exist.should.be.equal(true);
+      const { createdAt, updatedAt, ...result } = psy;
+      expect(result).to.eql(psyList[0]);
+      expect(createdAt).to.be.an.instanceof(Date);
+      expect(updatedAt).to.be.null;
     });
 
     it('should UPsert one psychologist', async () => {
       // doing a classic insert
       await dbPsychologists.savePsychologist(psyList);
       const psyInsert = await testDataPsychologistsExist(psyList[0].dossierNumber);
-      assert.isNull(psyInsert.updatedAt);
+      expect(_.omit(psyInsert, ['createdAt', 'updatedAt'])).to.eql(psyList[0]);
 
       // we do it twice in a row to UPsert it (field updatedAt will change)
       await dbPsychologists.savePsychologist(psyList);
       const psyUpsert = await testDataPsychologistsExist(psyList[0].dossierNumber);
-      assert.isNotNull(psyUpsert.updatedAt);
+      let { createdAt, updatedAt, ...resultUpsert } = psyUpsert;
+      expect(resultUpsert).to.eql(psyList[0]);
+      expect(updatedAt).to.be.an.instanceof(Date);
     });
   });
-
 
   describe('addFrenchLanguageIfMissing', () => {
     const addFrenchLanguageIfMissing = dbPsychologists.__get__('addFrenchLanguageIfMissing');
@@ -63,7 +65,7 @@ describe('DB Psychologists', () => {
       addFrenchLanguageIfMissing('français, italien').should.equal('français, italien');
     });
 
-    it("should not add french if 'francais' is there", async () => {
+    it('should not add french if \'francais\' is there', async () => {
       addFrenchLanguageIfMissing('francais').should.equal('francais');
     });
 
