@@ -26,7 +26,7 @@ function getNextCursor(apiResponse) {
   return undefined;
 }
 
-function getChampValue(champData, attributeName, stringValue = true) {  
+function getChampValue(champData, attributeName, stringValue = true) {
   const potentialStringValue = champData.find((champ) => champ.label.includes(attributeName));
 
   if (typeof potentialStringValue === 'undefined') {

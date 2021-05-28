@@ -16,7 +16,7 @@ rules:
   no-trailing-spaces: ["error", { "ignoreComments": true }]
   max-len: ["error", { "code": 120 }]
   no-underscore-dangle: "off"
-  no-unused-vars: "off"
+  no-unused-vars: "error"
   no-inner-declarations: "off"
   no-console: "off"
   camelcase: "warn"
@@ -24,7 +24,7 @@ rules:
   func-names: "warn"
   no-restricted-syntax: "warn"
   guard-for-in: "warn"
-  eqeqeq: "off"
+  eqeqeq: "error"
   indent: 
     - "error"
     - 2
