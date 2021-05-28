@@ -12,8 +12,6 @@ describe('Demarches Simplifiess', () => {
     it('should return an array of psychologists from a JSON', async () => {
       const apiResponse = testDossiers;
 
-      const getUuidDossierNumber = demarchesSimplifiees.__get__('getUuidDossierNumber');
-
       const parsePsychologist = demarchesSimplifiees.__get__('parsePsychologist');
       const output = parsePsychologist(apiResponse);
       // eslint-disable-next-line max-len
