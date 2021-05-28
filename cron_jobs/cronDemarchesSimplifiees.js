@@ -17,7 +17,7 @@ async function importDataFromDSToPG(cursor) {
       const numberOfPsychologists = await dbPsychologists.getNumberOfPsychologists();
       console.log('psychologists inside PG :', numberOfPsychologists);
     } else {
-      console.warn('No psychologists to save');
+      console.log('No psychologists to save');
     }
 
     console.log('importDataFromDSToPG done');

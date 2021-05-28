@@ -30,27 +30,12 @@ module.exports.getCursorFromDB = async function getCursorFromDB () {
 module.exports.saveLatestCursor = async function saveLatestCursor (cursor) {
   try {
     const now = date.getDateNowPG();
-
-    const alreadySavedCursor = await module.exports.getCursorFromDB();
     // eslint-disable-next-line func-names
     return await knex.transaction((trx) => { // add transaction in case 2 cron jobs modify this cursor
-      if (alreadySavedCursor) {
-        console.log(`Updating the cursor ${cursor} in PG`);
-
-        return trx.into(module.exports.dsApiCursorTable)
-          .where('id', 1)
-          .update({
-            cursor,
-            updatedAt: now,
-          });
-      } // no cursor already saved, we are going to create one entry
-      console.log(`Saving a new cursor ${cursor} to PG`);
-
-      return trx.into(module.exports.dsApiCursorTable).insert({
-        id: 1,
-        cursor,
-        updatedAt: now,
-      });
+      return trx.into(module.exports.dsApiCursorTable)
+        .insert({ id: 1, cursor, updatedAt: now })
+        .onConflict('id')
+        .merge();
     });
   } catch (err) {
     console.error(`Impossible de sauvegarder le dernier cursor ${cursor} de l'api DS`, err);
