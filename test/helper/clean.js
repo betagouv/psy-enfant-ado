@@ -2,7 +2,6 @@ const knexConfig = require('../../knexfile');
 const knex = require('knex')(knexConfig);
 const dbPsychologists = require('../../db/psychologists');
 const dbDsApiCursor = require('../../db/dsApiCursor');
-const uuid = require('../../services/uuid');
 
 module.exports.getRandomInt = function getRandomInt() {
   const min = Math.ceil(1);
@@ -15,7 +14,7 @@ module.exports.getRandomInt = function getRandomInt() {
 };
 
 module.exports.getOnePsy = function getOnePsy(state = 'accepte', archived = false) {
-  const dossierNumber = uuid.randomUuid();
+  const dossierNumber = Math.random().toString();
   return {
     dossierNumber,
     firstNames: `${module.exports.getRandomInt()}First`,

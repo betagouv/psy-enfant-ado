@@ -1,7 +1,7 @@
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig);
 const date = require('../services/date');
-const demarchesSimplifiees = require('../services/demarchesSimplifiees');
+const demarchesSimplifiees = require('../services/demarches-simplifiees');
 
 module.exports.psychologistsTable = 'psychologists';
 

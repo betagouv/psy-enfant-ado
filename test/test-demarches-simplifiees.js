@@ -2,22 +2,21 @@ require('dotenv').config();
 const rewire = require('rewire');
 const { assert } = require('chai');
 const testDossiers = require('./dossier.json');
-const uuid = require('../services/uuid');
-const config = require('../config');
 
-const demarchesSimplifiees = rewire('../services/demarchesSimplifiees.js');
+const demarchesSimplifiees = rewire('../services/demarches-simplifiees.js');
 
 describe('Demarches Simplifiess', () => {
   describe('parsePsychologist', () => {
     it('should return an array of psychologists from a JSON', async () => {
       const apiResponse = testDossiers;
 
+      apiResponse.demarche.dossiers.nodes[1].website = 'ss';
       const parsePsychologist = demarchesSimplifiees.__get__('parsePsychologist');
       const output = parsePsychologist(apiResponse);
       // eslint-disable-next-line max-len
       const result = [
         {
-          dossierNumber: 'd6933940-657a-5c17-b478-8f34e74105df',
+          dossierNumber: '4488284',
           lastName: 'BetaFR',
           firstNames: 'BetaE Michel',
           archived: false,
@@ -33,7 +32,7 @@ describe('Demarches Simplifiess', () => {
           languages: 'italien, espagnol, arabe oriental, arabe classique, anglais',
         },
         {
-          dossierNumber: 'd76c571a-b3c2-577a-8ba1-d0133b045f55',
+          dossierNumber: '4488079',
           lastName: 'BetaDU',
           firstNames: 'BetaP',
           archived: false,
@@ -42,7 +41,7 @@ describe('Demarches Simplifiess', () => {
           address: `15 Impasse de la 4ème République 33140 Villenave-d'Ornon`,
           phone: '0600000000',
           email: 'pj@beta.beta.gouv.fr',
-          website: 'beta.gouv.fr',
+          website: 'https://beta.gouv.fr',
           teleconsultation: false,
           departement: '33 - Gironde',
           languages: '',
@@ -90,21 +89,7 @@ describe('Demarches Simplifiess', () => {
 
       assert.isUndefined(getNextCursor(apiResponse));
     });
-  });
 
-  describe('getUuidDossierNumber', () => {
-    it('should return a uuid based on the given id', async () => {
-      const dossierNumber = 1;
-
-      const getUuidDossierNumber = demarchesSimplifiees.__get__('getUuidDossierNumber');
-      const output = getUuidDossierNumber(dossierNumber);
-      const result = uuid.generateUuidFromString(`${config.demarchesSimplifieesId}-${dossierNumber}`);
-
-      output.should.equal(result);
-    });
-  });
-
-  describe('getNextCursor', () => {
     it('should return cursor string if there is more page to load', async () => {
       const cursor = 'MQ';
       const apiResponse = {
@@ -150,6 +135,75 @@ describe('Demarches Simplifiess', () => {
       const output = demarchesSimplifiees.getDepartementNumberFromString(departementString);
 
       output.should.equal(departementNumber);
+    });
+  });
+
+  describe('parseWebsite', () => {
+    const parseWebsite = demarchesSimplifiees.__get__('parseWebsite');
+
+    it('should lowercase website', async () => {
+
+      const apiResponse = {
+        champs: [{
+          id: 'Q2hhbXAtMTYzOTQwMQ==',
+          label: 'Avez-vous un site web ? Si oui, merci de mettre le lien (optionnel)',
+          stringValue: 'https://FFF.com',
+        }]
+      };
+
+      parseWebsite(apiResponse).should.equal('https://fff.com');
+    });
+
+    it('should trim website', async () => {
+
+      const apiResponse = {
+        champs: [{
+          id: 'Q2hhbXAtMTYzOTQwMQ==',
+          label: 'Avez-vous un site web ? Si oui, merci de mettre le lien (optionnel)',
+          stringValue: '    https://fff.com  ',
+        }]
+      };
+
+      parseWebsite(apiResponse).should.equal('https://fff.com');
+    });
+
+    it('should exclude if contains space in the middle', async () => {
+
+      const apiResponse = {
+        champs: [{
+          id: 'Q2hhbXAtMTYzOTQwMQ==',
+          label: 'Avez-vous un site web ? Si oui, merci de mettre le lien (optionnel)',
+          stringValue: '    https: //fff.com  ',
+        }]
+      };
+
+      parseWebsite(apiResponse).should.equal('');
+    });
+
+    it('should exclude if not contains dot', async () => {
+
+      const apiResponse = {
+        champs: [{
+          id: 'Q2hhbXAtMTYzOTQwMQ==',
+          label: 'Avez-vous un site web ? Si oui, merci de mettre le lien (optionnel)',
+          stringValue: 'NON',
+        }]
+      };
+
+      parseWebsite(apiResponse).should.equal('');
+    });
+
+    it('should add https:// if not their', async () => {
+
+      const apiResponse = {
+        champs: [{
+          id: 'Q2hhbXAtMTYzOTQwMQ==',
+          label: 'Avez-vous un site web ? Si oui, merci de mettre le lien (optionnel)',
+          stringValue: 'choco.com',
+        }]
+      };
+
+      parseWebsite(apiResponse).should.equal('https://choco.com');
     });
   });
 
