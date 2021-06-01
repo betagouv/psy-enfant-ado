@@ -1,7 +1,6 @@
 /* eslint-disable camelcase */
 const graphql = require('./graphql');
-const uuid = require('./uuid');
-const config = require('../config');
+const _ = require('lodash');
 
 // @see https://demarches-simplifiees-graphql.netlify.app/dossierstate.doc.html
 // eslint-disable-next-line no-unused-vars
@@ -18,7 +17,7 @@ exports.DOSSIER_STATE = {
  * hasNextPage: boolean
  * endCursor : string
  */
-function getNextCursor(apiResponse) {
+function getNextCursor (apiResponse) {
   const { pageInfo } = apiResponse.demarche.dossiers;
   if (pageInfo.hasNextPage) {
     return pageInfo.endCursor;
@@ -26,7 +25,7 @@ function getNextCursor(apiResponse) {
   return undefined;
 }
 
-function getChampValue(champData, attributeName, stringValue = true) {
+function getChampValue (champData, attributeName, stringValue = true) {
   const potentialStringValue = champData.find((champ) => champ.label.includes(attributeName));
 
   if (typeof potentialStringValue === 'undefined') {
@@ -40,31 +39,47 @@ function getChampValue(champData, attributeName, stringValue = true) {
   return potentialStringValue.value.trim();
 }
 
+const FORBIDDEN_CHARS = new RegExp([' ', ';'].join('|'));
+
+function parseWebsite (dossier, dossierNumber) {
+  const website = getChampValue(dossier.champs, 'Avez-vous un site web');
+  if (!website) return '';
+
+  let formatted = website.toLowerCase().trim();
+
+  if (FORBIDDEN_CHARS.test(formatted) || !formatted.includes('.')) {
+    console.error('Error: wrong website format', website, '(', dossierNumber, ')');
+    return '';
+  }
+
+  if (!formatted.startsWith('http://') && !formatted.startsWith('https://')) {
+    formatted = 'https://' + formatted;
+  }
+
+  return formatted;
+}
+
 /**
  * transform string to boolean
  * @param {*} inputString 'true' or 'false'
  */
-function parseTeleconsultation(inputString) {
+function parseTeleconsultation (inputString) {
   return inputString === 'true';
 }
 
-function getUuidDossierNumber(number) {
-  return uuid.generateUuidFromString(`${config.demarchesSimplifieesId}-${number}`);
-}
-
-function parseDossierMetadata(dossier) {
+function parseDossierMetadata (dossier) {
   const { state } = dossier;
   const { archived } = dossier;
   const lastName = dossier.demandeur.nom.trim();
   const firstNames = dossier.demandeur.prenom.trim();
-  const dossierNumber = getUuidDossierNumber(dossier.number);
+  const dossierNumber = dossier.number.toString();
   const departement = dossier.groupeInstructeur.label;
   const address = getChampValue(dossier.champs, 'Adresse postale du cabinet');
   const phone = getChampValue(dossier.champs, 'Numéro de téléphone');
   const teleconsultation = parseTeleconsultation(
     getChampValue(dossier.champs, 'Proposez-vous des séances à distance ?'),
   );
-  const website = getChampValue(dossier.champs, 'Avez-vous un site web');
+  const website = parseWebsite(dossier, dossierNumber);
   const email = getChampValue(dossier.champs, 'Email de contact');
 
   const adeli = getChampValue(dossier.champs, 'Numéro ADELI');
@@ -87,7 +102,7 @@ function parseDossierMetadata(dossier) {
   };
 }
 
-function parsePsychologist(apiResponse) {
+function parsePsychologist (apiResponse) {
   console.debug(`Parsing ${apiResponse.demarche.dossiers.nodes.length} psychologists from DS API`);
 
   const dossiers = apiResponse.demarche.dossiers.nodes;
@@ -107,7 +122,7 @@ function parsePsychologist(apiResponse) {
  * @param {*} cursor
  * @param {*} accumulator
  */
-async function getAllPsychologistList(cursor, accumulator = []) {
+async function getAllPsychologistList (cursor, accumulator = []) {
   const apiResponse = await graphql.requestPsychologist(cursor);
   const nextCursor = getNextCursor(apiResponse);
 
@@ -132,7 +147,7 @@ async function getAllPsychologistList(cursor, accumulator = []) {
  * if we have more than 100 elements in DS, we have to use pagination (cursor)
  * cursor : String - next page to query the API
  */
-module.exports.getPsychologistList = async function getPsychologistList(cursor) {
+module.exports.getPsychologistList = async function getPsychologistList (cursor) {
   const time = `Fetching all psychologists from DS (query id #${Math.random().toString()})`;
 
   console.time(time);
@@ -140,17 +155,4 @@ module.exports.getPsychologistList = async function getPsychologistList(cursor) 
   console.timeEnd(time);
 
   return psychologists;
-};
-
-/**
- * Output : "55"
- * @param {} departementString ex : '55 - Indre-et-Loire'
- */
-module.exports.getDepartementNumberFromString = function getDepartementNumberFromString(departementString) {
-  if (!departementString) {
-    return null;
-  }
-  // Note : this is not robust. If Demarches Simplifiées changes their format it will break.
-  const parts = departementString.split(' - ');
-  return parts[0];
 };

@@ -14,18 +14,15 @@ const graphQLClient = new GraphQLClient(endpoint, {
  * @see https://demarches-simplifiees-graphql.netlify.app/pageinfo.doc.html
  * @param {*} cursor : String
  */
-function getWhereConditionAfterCursor(cursor) {
-  if (cursor) {
-    return `(after: "${cursor}")`;
-  }
-  return '';
+function getWhereConditionAfterCursor (cursor) {
+  return cursor ? `(after: "${cursor}")` : '';
 }
 
 /**
  * log errors from DS
- * @param {*} apiResponse 
+ * @param {*} apiResponse
  */
-function logErrorsFromDS(apiResponse) {
+function logErrorsFromDS (apiResponse) {
   if (apiResponse.response) {
     if (apiResponse.response.errors.length > 0) {
       apiResponse.response.errors.forEach((err) => {
@@ -37,18 +34,18 @@ function logErrorsFromDS(apiResponse) {
 
 /**
  * # Arguments pour dossiers
-    # after: Returns the elements in the list that come after the
-    # specified cursor. (endCursor). est un String, utilisez les guillemets
-    # order: L’ordre des dossiers.
-    # createdSince: Dossiers déposés depuis la date.
-    # updatedSince: Dossiers mis à jour depuis la date.
-    # state: Dossiers avec statut. n'est pas un String, ne pas utilez de guillemets
-    # archived: Si présent, permet de filtrer les dossiers archivés 
-     
-    mandatory field "usager.email" is used as the login email
+ # after: Returns the elements in the list that come after the
+ # specified cursor. (endCursor). est un String, utilisez les guillemets
+ # order: L’ordre des dossiers.
+ # createdSince: Dossiers déposés depuis la date.
+ # updatedSince: Dossiers mis à jour depuis la date.
+ # state: Dossiers avec statut. n'est pas un String, ne pas utilez de guillemets
+ # archived: Si présent, permet de filtrer les dossiers archivés
+
+ mandatory field "usager.email" is used as the login email
  * @see https://demarches-simplifiees-graphql.netlify.app/demarche.doc.html
  */
-async function requestPsychologist(afterCursor) {
+async function requestPsychologist (afterCursor) {
   const paginationCondition = getWhereConditionAfterCursor(afterCursor);
   const query = gql`
     {
@@ -87,7 +84,7 @@ async function requestPsychologist(afterCursor) {
     }
   `;
 
-  console.debug('GraphQL query sent:', query);
+  console.debug(`GraphQL query sent: Demarche [${config.demarchesSimplifieesId}] dossiers ${paginationCondition} `);
 
   try {
     return await graphQLClient.request(query);
@@ -99,4 +96,4 @@ async function requestPsychologist(afterCursor) {
   }
 }
 
-exports.requestPsychologist = requestPsychologist;
+module.exports.requestPsychologist = requestPsychologist;

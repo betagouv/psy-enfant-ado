@@ -1,5 +1,5 @@
 const dbPsychologists = require('../../db/psychologists');
-const demarchesSimplifiees = require('../../services/demarchesSimplifiees');
+const demarchesSimplifiees = require('../../services/demarches-simplifiees');
 const clean = require('../helper/clean');
 
 exports.seed = async function seed(knex) {

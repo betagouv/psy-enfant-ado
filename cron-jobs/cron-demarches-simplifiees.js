@@ -1,8 +1,8 @@
 require('dotenv').config();
 
-const dbsApiCursor = require('../db/dsApiCursor');
+const dbsApiCursor = require('../db/ds-api-cursor');
 const dbPsychologists = require('../db/psychologists');
-const demarchesSimplifiees = require('../services/demarchesSimplifiees');
+const demarchesSimplifiees = require('../services/demarches-simplifiees');
 
 async function importDataFromDSToPG(cursor) {
   try {

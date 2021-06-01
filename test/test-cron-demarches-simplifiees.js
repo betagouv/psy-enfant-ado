@@ -5,7 +5,7 @@ const graphql = require('../services/graphql');
 const dossierResponse = require('./dossier.json');
 const dossierResponseEmpty = require('./dossier-empty.json');
 
-const cronDemarchesSimplifiees = require('../cron_jobs/cronDemarchesSimplifiees');
+const cronDemarchesSimplifiees = require('../cron-jobs/cron-demarches-simplifiees');
 const clean = require('./helper/clean');
 
 describe('Import Data from DS to PG', () => {

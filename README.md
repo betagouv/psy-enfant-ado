@@ -67,7 +67,7 @@ Pour mettre à jour toutes les données venant de DS vers PG, un cron est lancé
 
 ```bash
 docker exec -ti psy-enfant-ado_web_1 bash # local
-node cron_jobs/cron # container / production
+node cron-jobs/cron # container / production
 ```
 
 ### Pour tester les évolutions de base de données
@@ -77,7 +77,7 @@ node cron_jobs/cron # container / production
     $ npm run makeMigration migration-name
 
 #### Importer des fausses données
-Voir le fichier dans `test/seed/fake_data.js` qui va créer quelques psychologues
+Voir le fichier dans `test/seed/fake-data.js` qui va créer quelques psychologues
 
 Pour l'exécuter:
 
