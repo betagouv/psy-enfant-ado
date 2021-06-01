@@ -1,5 +1,5 @@
 const cron = require('cron');
-const cronDemarchesSimplifiees = require('./cronDemarchesSimplifiees');
+const cronDemarchesSimplifiees = require('./cron-demarches-simplifiees');
 const config = require('../config');
 const sentry = require('../services/sentry');
 

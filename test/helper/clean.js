@@ -1,7 +1,7 @@
 const knexConfig = require('../../knexfile');
 const knex = require('knex')(knexConfig);
 const dbPsychologists = require('../../db/psychologists');
-const dbDsApiCursor = require('../../db/dsApiCursor');
+const dbDsApiCursor = require('../../db/ds-api-cursor');
 
 module.exports.getRandomInt = function getRandomInt() {
   const min = Math.ceil(1);

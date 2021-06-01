@@ -1,6 +1,6 @@
 /* eslint-disable func-names */
 const dbPsychologists = require('../db/psychologists');
-const dbDsApiCursor = require('../db/dsApiCursor');
+const dbDsApiCursor = require('../db/ds-api-cursor');
 
 exports.up = function (knex) {
   console.log(`Creating ${dbPsychologists.psychologistsTable} table`);
