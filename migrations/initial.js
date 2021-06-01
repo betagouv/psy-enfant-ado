@@ -13,8 +13,8 @@ exports.up = function (knex) {
         table.text('lastName').notNullable();
         table.text('email').notNullable();
         table.text('address');
-        table.string('departement');
-        table.string('phone');
+        table.string('departement').notNullable();
+        table.string('phone').notNullable();
         table.string('website');
         table.boolean('teleconsultation');
         table.text('languages');
@@ -31,8 +31,7 @@ exports.up = function (knex) {
           table.timestamp('updatedAt');
         })
       })
-}
-
+};
 
 exports.down = function (knex) {
   return knex.schema.dropTable(dbPsychologists.psychologistsTable)
