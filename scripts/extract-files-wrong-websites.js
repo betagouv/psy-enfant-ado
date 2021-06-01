@@ -9,7 +9,7 @@ file.write('dossierNumber,website\n');
 
 try {
   knex.select().table('psychologists').then(function (psychologists) {
-    console.log('>>>>> GOT', psychologists.length);
+    console.log('Number of psy', psychologists.length);
 
     _.forEach(psychologists, function (psy) {
       if (psy.website && psy.state === 'en_instruction') {
@@ -30,4 +30,3 @@ try {
   console.error('Impossible de récupérer les psychologistes', err);
   throw new Error('Impossible de récupérer les psychologistes');
 }
-

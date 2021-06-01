@@ -128,16 +128,6 @@ describe('Demarches Simplifiess', () => {
     });
   });
 
-  describe('getDepartementNumberFromString', () => {
-    it('should return departement number from departement and number', async () => {
-      const departementNumber = '55';
-      const departementString = `${departementNumber} - Indre-et-Loire`;
-      const output = demarchesSimplifiees.getDepartementNumberFromString(departementString);
-
-      output.should.equal(departementNumber);
-    });
-  });
-
   describe('parseWebsite', () => {
     const parseWebsite = demarchesSimplifiees.__get__('parseWebsite');
 

@@ -15,10 +15,7 @@ const graphQLClient = new GraphQLClient(endpoint, {
  * @param {*} cursor : String
  */
 function getWhereConditionAfterCursor (cursor) {
-  if (cursor) {
-    return `(after: "${cursor}")`;
-  }
-  return '';
+  return cursor ? `(after: "${cursor}")` : '';
 }
 
 /**
@@ -90,9 +87,7 @@ async function requestPsychologist (afterCursor) {
   console.debug(`GraphQL query sent: Demarche [${config.demarchesSimplifieesId}] dossiers ${paginationCondition} `);
 
   try {
-    const psychologists = await graphQLClient.request(query);
-
-    return psychologists;
+    return await graphQLClient.request(query);
   } catch (err) {
     console.error('API has returned error', err);
     logErrorsFromDS(err);
@@ -101,4 +96,4 @@ async function requestPsychologist (afterCursor) {
   }
 }
 
-exports.requestPsychologist = requestPsychologist;
+module.exports.requestPsychologist = requestPsychologist;
