@@ -1,4 +1,4 @@
-'use strict';
+/* eslint-disable no-process-exit */
 
 const fs = require('fs');
 const knexConfig = require('../knexfile');
@@ -8,17 +8,17 @@ var file = fs.createWriteStream('files.csv');
 file.write('dossierNumber,website\n');
 
 try {
-  knex.select().table('psychologists').then(function (psychologists) {
+  knex.select().table('psychologists').then((psychologists) => {
     console.log('Number of psy', psychologists.length);
 
-    _.forEach(psychologists, function (psy) {
+    _.forEach(psychologists, (psy) => {
       if (psy.website && psy.state === 'en_instruction') {
         const website = psy.website.toLowerCase();
         if (!website.includes('.')) {
-          file.write(psy.dossierNumber, psy.website)
-        } else if ( !website.startsWith('http') && !website.startsWith('www')) {
+          file.write(psy.dossierNumber, psy.website);
+        } else if (!website.startsWith('http') && !website.startsWith('www')) {
           if (psy.state === 'en_instruction') {
-            file.write(psy.dossierNumber, website)
+            file.write(psy.dossierNumber, website);
           }
         }
       }

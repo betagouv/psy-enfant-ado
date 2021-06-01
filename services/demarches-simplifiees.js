@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 const graphql = require('./graphql');
-const _ = require('lodash');
 
 // @see https://demarches-simplifiees-graphql.netlify.app/dossierstate.doc.html
 // eslint-disable-next-line no-unused-vars
