@@ -3,7 +3,7 @@ const cronDemarchesSimplifiees = require('./cron-demarches-simplifiees');
 const config = require('../config');
 const sentry = require('../services/sentry');
 
-sentry.initCaptureConsoleWithHandler();
+sentry.initCaptureConsole();
 
 const jobs = [
   {
