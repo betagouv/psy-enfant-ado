@@ -58,6 +58,13 @@ function parseWebsite (dossier, dossierNumber) {
   return formatted;
 }
 
+function parsePhone (dossier) {
+  const phone = getChampValue(dossier.champs, 'Numéro de téléphone');
+  if (!phone) return '';
+
+  return phone.replace(/[. ,:-]+/g, '');
+}
+
 /**
  * transform string to boolean
  * @param {*} inputString 'true' or 'false'
@@ -74,7 +81,7 @@ function parseDossierMetadata (dossier) {
   const dossierNumber = dossier.number.toString();
   const departement = dossier.groupeInstructeur.label;
   const address = getChampValue(dossier.champs, 'Adresse postale du cabinet');
-  const phone = getChampValue(dossier.champs, 'Numéro de téléphone');
+  const phone = parsePhone(dossier);
   const teleconsultation = parseTeleconsultation(
     getChampValue(dossier.champs, 'Proposez-vous des séances à distance ?'),
   );
