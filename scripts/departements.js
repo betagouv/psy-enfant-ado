@@ -7,7 +7,7 @@ const knex = require('knex')(knexConfig);
 const _ = require('lodash');
 var file = fs.createWriteStream('departments-stats.csv');
 
-log('Dep','total');
+log('Dep', 'total');
 
 let deps = [
   { count: 0, name: '01 - Ain' },
@@ -119,15 +119,15 @@ function log (text, count) {
 }
 
 function displayList (list) {
-  list.forEach(function (item) {
+  list.forEach((item) => {
     log(item.name, item.count);
   });
 }
 
 try {
-  knex.select().table('psychologists').then(function (psychologists) {
+  knex.select().table('psychologists').then((psychologists) => {
 
-    _.forEach(psychologists, function (psy) {
+    _.forEach(psychologists, (psy) => {
       _.find(deps, { name: psy.departement }).count++;
     });
 
@@ -136,13 +136,12 @@ try {
 
     displayList(deps);
 
-    log('', '')
-    log('Nombre total de dossier déposés' ,psychologists.length);
-    log('Nombre total de dossier en instruction' , enInstruction.length );
-    log('Nombre de départements sans dossiers' , noDossier.length );
+    log('', '');
+    log('Nombre total de dossier déposés', psychologists.length);
+    log('Nombre total de dossier en instruction', enInstruction.length);
+    log('Nombre de départements sans dossiers', noDossier.length);
 
-
-    setTimeout(function () {
+    setTimeout(() => {
       process.exit();
     }, 200);
     // displayList(_.orderBy(deps, 'count', 'desc'));
