@@ -1,5 +1,5 @@
 <%- include('partials/header') -%>
-  <link href="/static/tabulator-tables/css/tabulator_modern.min.css" rel="stylesheet">
+  <link href="/static/tabulator-tables/css/tabulator_simple.css" rel="stylesheet">
   <script type="text/javascript" src="/static/tabulator-tables/js/tabulator.min.js"></script>
   <div class="fr-container">
     <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
@@ -25,16 +25,11 @@
                 <input class="fr-input midlength-input" id="lastName-filter-value" type="text" placeholder="Delgado">
               </div>
               <div class="fr-input-group">
-                <label class="fr-label" for="address-filter-value">Rechercher votre ville ou code postal : </label>
-                <input class="fr-input midlength-input" id="address-filter-value" type="text"
-                  placeholder="Amiens ou 80000">
-              </div>
-              <div class="fr-input-group">
                 <label class="fr-label" for="departement-filter-value">Rechercher par département: </label>
                 <input class="fr-input midlength-input" id="departement-filter-value" type="text"
                   placeholder="Somme ou 80">
               </div>
-              <div id="psy-table"></div>
+              <div id="psy-table" class="fr-mt-6w"></div>
               <!-- Import data as recommended by OWASP :
   https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#html-entity-encoding
             -->
