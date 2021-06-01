@@ -7,9 +7,18 @@ services:
       POSTGRES_PASSWORD: db
     ports:
       - "5432:5432"
+  init_db:
+    build: .
+    command: bash -c "echo 'first npm install can be a bit long'; npm install; npm run migrate; npm run seed;"
+    volumes:
+      - .:/app
+    environment:
+      DATABASE_URL: postgres://db:db@db:5432/db
+    depends_on:
+      - db
   web:
     build: .
-    command: bash -c "echo 'starting app... - first npm install can be a bit long'; npm install; npm run migrate; npm run seed; npm run dev"
+    command: bash -c "npm run dev"
     volumes:
       - .:/app
     environment:
@@ -18,5 +27,5 @@ services:
       - "8080:8080"
       - "9229:9229"
     depends_on:
-      - db
+      - init_db
     restart: on-failure

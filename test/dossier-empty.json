@@ -1,0 +1,12 @@
+{
+  "demarche": {
+  "dossiers": {
+    "pageInfo": {
+      "hasNextPage": false,
+      "endCursor": ""
+    },
+    "nodes": [
+    ]
+  }
+}
+}

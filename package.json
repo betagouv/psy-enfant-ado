@@ -11,7 +11,11 @@
     "dev": "nodemon index.js",
     "lint": "eslint . --fix",
     "start": "node index.js",
-    "test": "mocha --exit"
+    "test": "PORT=8081 mocha --exit",
+    "seed": "knex seed:run",
+    "migrate": "knex migrate:latest",
+    "migrate-one": "knex migrate:up",
+    "makeMigration": "knex migrate:make"
   },
   "author": "dev-transverse@beta.gouv.fr",
   "license": "MIT",
@@ -23,14 +27,21 @@
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
+    "cron": "^1.8.2",
     "dotenv": "8.2.0",
     "ejs": "^3.1.5",
     "express": "^4.17.1",
     "express-sanitizer": "1.0.6",
     "express-session": "1.17.1",
+    "express-validator": "^6.10.0",
+    "graphql": "^15.5.0",
+    "graphql-request": "^3.4.0",
     "helmet": "^4.6.0",
     "jquery": "^3.6.0",
-    "lodash": "^4.17.20"
+    "knex": "^0.95.6",
+    "lodash": "^4.17.20",
+    "pg": "^8.6.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "chai": "^4.3.0",
