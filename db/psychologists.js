@@ -7,7 +7,7 @@ module.exports.psychologistsTable = 'psychologists';
 
 module.exports.getPsychologists = async () => {
   try {
-    const psychologists = knex.column(
+    return knex.column(
       knex.raw('UPPER("lastName") as "lastName"'), // force to use quote otherwise knex understands it as "lastname"
       'adeli',
       'firstNames',
@@ -24,22 +24,18 @@ module.exports.getPsychologists = async () => {
         .whereNot('archived', true)
         .where('state', demarchesSimplifiees.DOSSIER_STATE.accepte)
         .orderByRaw('RANDOM ()');
-    return psychologists;
   } catch (err) {
     console.error('Impossible de récupérer les psychologistes', err);
     throw new Error('Impossible de récupérer les psychologistes');
   }
 };
 
+const FRENCH = 'Français';
 function addFrenchLanguageIfMissing(languages) {
-  const frenchRegexp = new RegExp(/fran[çc]ais/, 'g');
-  const french = 'Français';
-  if (!frenchRegexp.test(languages.toLowerCase())) {
-    if (languages.trim().length === 0) {
-      return french;
-    }
-    return `${french}, ${languages}`;
-  }
+  if (!languages.trim().length) return FRENCH;
+  const FRENCH_REGEXP = new RegExp(/fran[çc]ais/, 'g');
+  if (!FRENCH_REGEXP.test(languages.toLowerCase())) return `${FRENCH}, ${languages}`;
+
   return languages;
 }
 

@@ -47,7 +47,9 @@ function parseWebsite (dossier, dossierNumber) {
   let formatted = website.toLowerCase().trim();
 
   if (FORBIDDEN_CHARS.test(formatted) || !formatted.includes('.')) {
-    console.error('Error: wrong website format', website, '(', dossierNumber, ')');
+    if (dossier.state === exports.DOSSIER_STATE.accepte) {
+      console.error('Error: wrong website format', website, '(', dossierNumber, ')');
+    }
     return '';
   }
 

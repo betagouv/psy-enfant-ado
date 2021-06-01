@@ -177,7 +177,8 @@ describe('Demarches Simplifiess', () => {
           id: 'Q2hhbXAtMTYzOTQwMQ==',
           label: 'Avez-vous un site web ? Si oui, merci de mettre le lien (optionnel)',
           stringValue: 'NON',
-        }]
+        }],
+        state: 'accepte'
       };
 
       parseWebsite(apiResponse).should.equal('');
