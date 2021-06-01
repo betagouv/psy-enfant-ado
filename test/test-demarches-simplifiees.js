@@ -197,6 +197,34 @@ describe('Demarches Simplifiess', () => {
     });
   });
 
+  describe('parsePhone', () => {
+    const parsePhone = demarchesSimplifiees.__get__('parsePhone');
+
+    it('should return the phone if formatted', async () => {
+
+      const apiResponse = {
+        champs: [{
+          label: 'Numéro de téléphone',
+          stringValue: '012345678',
+        }]
+      };
+
+      parsePhone(apiResponse).should.equal('012345678');
+    });
+
+    it('should remove all not needed chars', async () => {
+
+      const apiResponse = {
+        champs: [{
+          label: 'Numéro de téléphone',
+          stringValue: ' +33 12 34.56-78    ',
+        }]
+      };
+
+      parsePhone(apiResponse).should.equal('+3312345678');
+    });
+  });
+
   describe('getChampValue', () => {
     it('should return stringValue for field Champ', async () => {
       const result = 'Psychologie clinique de la santé';
