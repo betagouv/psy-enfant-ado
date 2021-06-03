@@ -11,19 +11,6 @@ exports.DOSSIER_STATE = {
   sans_suite: 'sans_suite',
 };
 
-/**
- * @param api reponse with 2 informations :
- * hasNextPage: boolean
- * endCursor : string
- */
-function getNextCursor (apiResponse) {
-  const { pageInfo } = apiResponse.demarche.dossiers;
-  if (pageInfo.hasNextPage) {
-    return pageInfo.endCursor;
-  }
-  return undefined;
-}
-
 function getChampValue (champData, attributeName, stringValue = true) {
   const potentialStringValue = champData.find((champ) => champ.label.includes(attributeName));
 
@@ -116,9 +103,7 @@ function parsePsychologist (apiResponse) {
   const dossiers = apiResponse.demarche.dossiers.nodes;
 
   if (dossiers.length > 0) {
-    const psychologists = dossiers.map((dossier) => parseDossierMetadata(dossier));
-
-    return psychologists;
+    return dossiers.map((dossier) => parseDossierMetadata(dossier));
   }
   console.error('Aucun psychologiste trouvé.');
 
@@ -132,19 +117,19 @@ function parsePsychologist (apiResponse) {
  */
 async function getAllPsychologistList (cursor, accumulator = []) {
   const apiResponse = await graphql.requestPsychologist(cursor);
-  const nextCursor = getNextCursor(apiResponse);
+  const { pageInfo } = apiResponse.demarche.dossiers;
 
   const nextAccumulator = accumulator.concat(
     parsePsychologist(apiResponse),
   );
 
-  if (nextCursor) {
-    return getAllPsychologistList(nextCursor, nextAccumulator);
+  if (pageInfo.hasNextPage) {
+    return getAllPsychologistList(pageInfo.endCursor, nextAccumulator);
   }
 
   return {
     psychologists: nextAccumulator,
-    lastCursor: cursor,
+    lastCursor: pageInfo.endCursor
   };
 }
 
