@@ -11,7 +11,7 @@ try {
   knex.select().table('psychologists').then((psychologists) => {
     console.log('Number of psy', psychologists.length);
 
-    _.forEach(psychologists, (psy) => {
+    psychologists.forEach((psy) => {
       if (psy.website && psy.state === 'en_instruction') {
         const website = psy.website.toLowerCase();
         if (!website.includes('.')) {

@@ -13,7 +13,7 @@ let deps = [
   { count: 0, name: '01 - Ain' },
   { count: 0, name: '02 - Aisne' },
   { count: 0, name: '03 - Allier' },
-  { count: 0, name: '04 - Alpes de Hte provence' },
+  { count: 0, name: '04 - Alpes de Haute Provence' },
   { count: 0, name: '05 - Hautes Alpes' },
   { count: 0, name: '06 - Alpes Maritimes' },
   { count: 0, name: '07 - Ardèche' },
@@ -73,7 +73,7 @@ let deps = [
   { count: 0, name: '60 - Oise' },
   { count: 0, name: '61 - Orne' },
   { count: 0, name: '62 - Pas de Calais' },
-  { count: 0, name: '63 - Puy de Dôme' },
+  { count: 0, name: '63 - Puy-de-Dôme' },
   { count: 0, name: '64 - Pyrennées Atlantiques' },
   { count: 0, name: '65 - Hautes Pyrénées' },
   { count: 0, name: '66 - Pyrénées Orientales' },
@@ -127,8 +127,10 @@ function displayList (list) {
 try {
   knex.select().table('psychologists').then((psychologists) => {
 
-    _.forEach(psychologists, (psy) => {
-      _.find(deps, { name: psy.departement }).count++;
+    psychologists.forEach((psy) => {
+      let dep = _.find(deps, { name: psy.departement });
+      if (!dep) console.log('>>>>>>>>>', psy.departement);
+      dep.count++;
     });
 
     const enInstruction = _.filter(psychologists, { state: 'en_instruction' });
