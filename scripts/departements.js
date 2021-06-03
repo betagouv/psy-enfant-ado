@@ -125,28 +125,31 @@ function displayList (list) {
 }
 
 try {
-  knex.select().table('psychologists').then((psychologists) => {
+  knex.select().table('psychologists').then((valids) => {
 
-    psychologists.forEach((psy) => {
+    valids = _.reject(_.reject(valids, { state: 'refuse' }), { state: 'sans_suite' });
+
+    valids.forEach((psy) => {
       let dep = _.find(deps, { name: psy.departement });
       if (!dep) console.log('>>>>>>>>>', psy.departement);
       dep.count++;
     });
 
-    const enInstruction = _.filter(psychologists, { state: 'en_instruction' });
+    const enInstruction = _.filter(valids, { state: 'en_instruction' });
+    const accepte = _.filter(valids, { state: 'accepte' });
     const noDossier = _.filter(deps, { count: 0 });
 
     displayList(deps);
 
     log('', '');
-    log('Nombre total de dossier déposés', psychologists.length);
+    log('Nombre total de dossier déposés', valids.length);
     log('Nombre total de dossier en instruction', enInstruction.length);
+    log('Nombre total de dossier en accepté', accepte.length);
     log('Nombre de départements sans dossiers', noDossier.length);
 
     setTimeout(() => {
       process.exit();
     }, 200);
-    // displayList(_.orderBy(deps, 'count', 'desc'));
   });
 
 } catch (err) {
