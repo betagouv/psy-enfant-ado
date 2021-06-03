@@ -21,7 +21,7 @@ function upsertFilterForField (fieldName, newValue) {
   table.addFilter(fieldName, 'like', newValue);
 }
 
-var setupFilter = function (fieldName) {
+var setupFilter = function (fieldName, trigger) {
   var filterEl = document.getElementById(fieldName + '-filter-value');
 
   // Trigger setFilter function with correct parameters
@@ -29,10 +29,11 @@ var setupFilter = function (fieldName) {
     upsertFilterForField(fieldName, filterEl.value);
   }
 
-  filterEl.addEventListener('keyup', updateFilter);
+  filterEl.addEventListener(trigger, updateFilter);
 };
-setupFilter('lastName');
-setupFilter('departement');
+
+setupFilter('lastName', 'keyup');
+setupFilter('departement', 'change');
 
 var psyListElement = document.getElementById('psy-list');
 var psyList = JSON.parse(psyListElement.textContent);
@@ -65,7 +66,6 @@ var table = new Tabulator('#psy-table', {
   movableColumns: false,        //allow column order to be changed
   resizableRows: false,          //allow row order to be changed
   resizableColumns: true,
-  variableHeight: false,
   columnHeaderVertAlign: 'middle',
   columns: [
     {
@@ -85,14 +85,14 @@ var table = new Tabulator('#psy-table', {
       field: 'departement',
       sorter: 'string',
       maxWidth: 400,
-      widthGrow: 3,
+      widthGrow: 4,
       minWidth: 250,
       responsive: 0,
       headerSort: false,
       cssClass: 'fr-p-3v',
       formatter: function (cell) {
         var d = cell.getRow().getData();
-        return '<a href="https://www.openstreetmap.org/search?query=' + d.address + '" target="_blank">50 SOLA 66110 MONTBOLO</a><br/>' +
+        return '<a href="https://www.openstreetmap.org/search?query=' + d.address + '" target="_blank">' + d.address + '</a><br/>' +
           '<span>' + d.departement + '</span><br/>';
       }
     },
@@ -123,7 +123,12 @@ var table = new Tabulator('#psy-table', {
       cssClass: 'fr-p-3v'
     },
     {
-      title: 'Langues parlées', field: 'languages', formatter: 'textarea', headerSort: false, width: 150, cssClass: 'fr-p-3v'
+      title: 'Langues parlées',
+      field: 'languages',
+      formatter: 'textarea',
+      headerSort: false,
+      width: 150,
+      cssClass: 'fr-p-3v'
     },
     {
       title: 'Site web',
