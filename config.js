@@ -12,7 +12,7 @@ module.exports = {
   // eslint-disable-next-line max-len
   demarchesSimplifieesIdApiUrl: process.env.DEMARCHES_SIMPLIFIEES_API_URL || 'https://www.demarches-simplifiees.fr/api/v2/graphql',
   demarchesSimplifieesIdApiToken: process.env.DEMARCHES_SIMPLIFIEES_API_TOKEN,
-  sentryDNS: process.env.SENTRY_DNS || false,
+  sentryDSN: process.env.SENTRY_DSN || false,
   demarchesSimplifieesUrl: process.env.DEMARCHES_SIMPLIFIEES_URL,
   secret: process.env.SECRET || 'Angonyx meeki is a moth of the family Sphingidae',
   featurePsyList: process.env.FEATURE_PSY_LIST || false,

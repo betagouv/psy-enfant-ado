@@ -9,7 +9,7 @@ module.exports.dsApiCursorTable = 'ds_api_cursor';
  * en stockant la dernière page lue (cursor), on limite le nombre d'appel à l'API en ne lisant que
  * les pages necessaires
  */
-module.exports.getCursorFromDB = async function getCursorFromDB() {
+module.exports.getCursorFromDB = async function getCursorFromDB () {
   try {
     const lastCursor = await knex(module.exports.dsApiCursorTable)
       .where('id', 1)
@@ -27,14 +27,16 @@ module.exports.getCursorFromDB = async function getCursorFromDB() {
   }
 };
 
-module.exports.saveLatestCursor = async function saveLatestCursor(cursor) {
+module.exports.saveLatestCursor = async function saveLatestCursor (cursor) {
   try {
     const now = date.getDateNowPG();
     // eslint-disable-next-line func-names
-    return await knex.transaction((trx) => trx.into(module.exports.dsApiCursorTable) // add transaction in case 2 cron jobs modify this cursor
+    return await knex.transaction((trx) => { // add transaction in case 2 cron jobs modify this cursor
+      return trx.into(module.exports.dsApiCursorTable)
         .insert({ id: 1, cursor, updatedAt: now })
         .onConflict('id')
-        .merge());
+        .merge();
+    });
   } catch (err) {
     console.error(`Impossible de sauvegarder le dernier cursor ${cursor} de l'api DS`, err);
     throw new Error('Impossible de sauvegarder le dernier cursor de l\'api DS');

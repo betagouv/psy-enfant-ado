@@ -7,13 +7,13 @@ const knex = require('knex')(knexConfig);
 const _ = require('lodash');
 var file = fs.createWriteStream('departments-stats.csv');
 
-log('Dep','total');
+log('Dep', 'total');
 
 let deps = [
   { count: 0, name: '01 - Ain' },
   { count: 0, name: '02 - Aisne' },
   { count: 0, name: '03 - Allier' },
-  { count: 0, name: '04 - Alpes de Hte provence' },
+  { count: 0, name: '04 - Alpes de Haute Provence' },
   { count: 0, name: '05 - Hautes Alpes' },
   { count: 0, name: '06 - Alpes Maritimes' },
   { count: 0, name: '07 - Ardèche' },
@@ -73,7 +73,7 @@ let deps = [
   { count: 0, name: '60 - Oise' },
   { count: 0, name: '61 - Orne' },
   { count: 0, name: '62 - Pas de Calais' },
-  { count: 0, name: '63 - Puy de Dôme' },
+  { count: 0, name: '63 - Puy-de-Dôme' },
   { count: 0, name: '64 - Pyrennées Atlantiques' },
   { count: 0, name: '65 - Hautes Pyrénées' },
   { count: 0, name: '66 - Pyrénées Orientales' },
@@ -119,33 +119,37 @@ function log (text, count) {
 }
 
 function displayList (list) {
-  list.forEach(function (item) {
+  list.forEach((item) => {
     log(item.name, item.count);
   });
 }
 
 try {
-  knex.select().table('psychologists').then(function (psychologists) {
+  knex.select().table('psychologists').then((valids) => {
 
-    _.forEach(psychologists, function (psy) {
-      _.find(deps, { name: psy.departement }).count++;
+    valids = _.reject(_.reject(valids, { state: 'refuse' }), { state: 'sans_suite' });
+
+    valids.forEach((psy) => {
+      let dep = _.find(deps, { name: psy.departement });
+      if (!dep) console.log('>>>>>>>>>', psy.departement);
+      dep.count++;
     });
 
-    const enInstruction = _.filter(psychologists, { state: 'en_instruction' });
+    const enInstruction = _.filter(valids, { state: 'en_instruction' });
+    const accepte = _.filter(valids, { state: 'accepte' });
     const noDossier = _.filter(deps, { count: 0 });
 
     displayList(deps);
 
-    log('', '')
-    log('Nombre total de dossier déposés' ,psychologists.length);
-    log('Nombre total de dossier en instruction' , enInstruction.length );
-    log('Nombre de départements sans dossiers' , noDossier.length );
+    log('', '');
+    log('Nombre total de dossier déposés', valids.length);
+    log('Nombre total de dossier en instruction', enInstruction.length);
+    log('Nombre total de dossier en accepté', accepte.length);
+    log('Nombre de départements sans dossiers', noDossier.length);
 
-
-    setTimeout(function () {
+    setTimeout(() => {
       process.exit();
     }, 200);
-    // displayList(_.orderBy(deps, 'count', 'desc'));
   });
 
 } catch (err) {

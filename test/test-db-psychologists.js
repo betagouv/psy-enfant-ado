@@ -11,8 +11,8 @@ const clean = require('./helper/clean');
 describe('DB Psychologists', () => {
   const psyList = clean.psyList();
 
-  async function testDataPsychologistsExist(dossierNumber) {
-    return knex(dbPsychologists.psychologistsTable)
+  async function testDataPsychologistsExist (dossierNumber) {
+    return await knex(dbPsychologists.psychologistsTable)
       .where('dossierNumber', dossierNumber)
       .first();
   }
@@ -41,7 +41,7 @@ describe('DB Psychologists', () => {
       // we do it twice in a row to UPsert it (field updatedAt will change)
       await dbPsychologists.savePsychologist(psyList);
       const psyUpsert = await testDataPsychologistsExist(psyList[0].dossierNumber);
-      const { createdAt, updatedAt, ...resultUpsert } = psyUpsert;
+      let { createdAt, updatedAt, ...resultUpsert } = psyUpsert;
       expect(resultUpsert).to.eql(psyList[0]);
       expect(updatedAt).to.be.an.instanceof(Date);
       expect(createdAt).to.be.an.instanceof(Date);
@@ -94,4 +94,5 @@ describe('DB Psychologists', () => {
       assert.isUndefined(shouldBeOne[0].loginEmail);
     });
   });
+
 });

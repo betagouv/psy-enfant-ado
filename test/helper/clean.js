@@ -28,7 +28,7 @@ module.exports.getOnePsy = function getOnePsy(state = 'accepte', archived = fals
     website: `${module.exports.getRandomInt()}beta.gouv.fr`,
     teleconsultation: Math.random() < 0.5,
     departement: `${module.exports.getRandomInt()} - Calvados`,
-    languages: 'Français, Anglais, et Espagnol',
+    languages: 'Français, Anglais, et Espagnol'
   };
 };
 

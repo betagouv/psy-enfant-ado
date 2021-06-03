@@ -1,6 +1,5 @@
 require('dotenv').config();
 const rewire = require('rewire');
-const { assert } = require('chai');
 const testDossiers = require('./dossier.json');
 
 const demarchesSimplifiees = rewire('../services/demarches-simplifiees.js');
@@ -38,7 +37,7 @@ describe('Demarches Simplifiess', () => {
           archived: false,
           state: 'en_instruction',
           adeli: '339308207',
-          address: '15 Impasse de la 4ème République 33140 Villenave-d\'Ornon',
+          address: `15 Impasse de la 4ème République 33140 Villenave-d'Ornon`,
           phone: '0600000000',
           email: 'pj@beta.beta.gouv.fr',
           website: 'https://beta.gouv.fr',
@@ -49,82 +48,6 @@ describe('Demarches Simplifiess', () => {
       ];
 
       output.should.eql(result);
-    });
-  });
-
-  describe('getNextCursor', () => {
-    it('should return cursor string if there is more page to load', async () => {
-      const cursor = 'MQ';
-      const apiResponse = {
-        demarche: {
-          dossiers: {
-            pageInfo: {
-              hasNextPage: true,
-              endCursor: cursor,
-            },
-          },
-        },
-      };
-
-      const getNextCursor = demarchesSimplifiees.__get__('getNextCursor');
-      const output = getNextCursor(apiResponse);
-
-      output.should.equal(cursor);
-    });
-
-    it('should return undefined if there is no page to load', async () => {
-      const cursor = 'MQ';
-      const apiResponse = {
-        demarche: {
-          dossiers: {
-            pageInfo: {
-              hasNextPage: false,
-              endCursor: cursor,
-            },
-          },
-        },
-      };
-
-      const getNextCursor = demarchesSimplifiees.__get__('getNextCursor');
-
-      assert.isUndefined(getNextCursor(apiResponse));
-    });
-
-    it('should return cursor string if there is more page to load', async () => {
-      const cursor = 'MQ';
-      const apiResponse = {
-        demarche: {
-          dossiers: {
-            pageInfo: {
-              hasNextPage: true,
-              endCursor: cursor,
-            },
-          },
-        },
-      };
-
-      const getNextCursor = demarchesSimplifiees.__get__('getNextCursor');
-      const output = getNextCursor(apiResponse);
-
-      output.should.equal(cursor);
-    });
-
-    it('should return undefined if there is no page to load', async () => {
-      const cursor = 'MQ';
-      const apiResponse = {
-        demarche: {
-          dossiers: {
-            pageInfo: {
-              hasNextPage: false,
-              endCursor: cursor,
-            },
-          },
-        },
-      };
-
-      const getNextCursor = demarchesSimplifiees.__get__('getNextCursor');
-
-      assert.isUndefined(getNextCursor(apiResponse));
     });
   });
 
@@ -177,7 +100,8 @@ describe('Demarches Simplifiess', () => {
           id: 'Q2hhbXAtMTYzOTQwMQ==',
           label: 'Avez-vous un site web ? Si oui, merci de mettre le lien (optionnel)',
           stringValue: 'NON',
-        }]
+        }],
+        state: 'accepte'
       };
 
       parseWebsite(apiResponse).should.equal('');
