@@ -15,32 +15,38 @@
                     La liste est mise à jour quotidiennement, revenez la consulter si vous n'avez pas pu trouver de
                     psychologue.
                 </p>
-                <p class="fr-mb-2w">
+                <p class="fr-mb-4w">
                     Vous pouvez contacter un psychologue partenaire par téléphone,
                     email ou par son site web.
                 </p>
-                <div class="fr-input-group">
-                    <label class="fr-label" for="departement-filter-value">Rechercher par département</label>
+                <div class="fr-input-group fr-col-xs-12 fr-col-md-3">
+                    <label class="fr-label" for="departement-filter-value">Votre département</label>
                     <select class="fr-select midlength-input" id="departement-filter-value">
-                        <option value="" disabled selected>Votre département</option>
+                        <option value="" disabled selected>Séléctionner</option>
                         <% deps.forEach(function(d){ %>
-                            <option value="<%- d %>"><%- d %></option>
+                            <option value="<%- d.name %>"
+                                    <% if (d.count === 0) { %>disabled
+                                    <% } %>
+                            ><%- d.name %> (<%- d.count %>)
+                            </option>
                         <% }); %>
                     </select>
                 </div>
-                <div class="fr-input-group">
-                    <label class="fr-label" for="lastName-filter-value">Rechercher par nom</label>
-                    <input class="fr-input midlength-input" id="lastName-filter-value" type="text"
-                           placeholder="Delgado">
-                </div>
 
-                <div id="psy-table" class="fr-mt-6w"></div>
-                <!-- Import data as recommended by OWASP :
-    https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#html-entity-encoding
-              -->
-                <div id="psy-list" style="display: none;">
-                    <!-- First HTML-escape the json -->
-                    <%= JSON.stringify(psyList) %>
+                <div id="psy-list-container" style="display: none;">
+                    <div class="fr-input-group fr-col-xs-12 fr-col-md-3">
+                        <label class="fr-label" for="lastName-filter-value">Rechercher par nom</label>
+                        <input class="fr-input midlength-input" id="lastName-filter-value" type="text"
+                               placeholder="Delgado">
+                    </div>
+                    <div id="psy-table" class="fr-mt-6w"></div>
+                    <!-- Import data as recommended by OWASP :
+        https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#html-entity-encoding
+                  -->
+                    <div id="psy-list" style="display: none;">
+                        <!-- First HTML-escape the json -->
+                        <%= JSON.stringify(psyList) %>
+                    </div>
                 </div>
                 <script src="/static/js/build-psy-listing.js"></script>
             <% } %>

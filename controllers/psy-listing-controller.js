@@ -1,7 +1,15 @@
+const _ = require('lodash');
 const deps = require('../data/departements.json');
 const dbPsychologists = require('../db/psychologists');
 
-module.exports.getPsychologist = async function getPsychologist(req, res) {
+const countPsyByDepartments = (psyList) => {
+  return deps.map((dep) => {
+    const count = _.filter(psyList, { departement: dep }, 0).length;
+    return { name: dep, count };
+  });
+};
+
+module.exports.getPsychologist = async function getPsychologist (req, res) {
   try {
     const time = `getting all psychologists from Postgres (query id #${Math.random().toString()})`;
     console.time(time);
@@ -10,7 +18,7 @@ module.exports.getPsychologist = async function getPsychologist(req, res) {
 
     res.render('psy-listing', {
       psyList,
-      deps,
+      deps: countPsyByDepartments(psyList),
     });
   } catch (err) {
     req.flash('error', 'Impossible de récupérer les psychologues. Réessayez ultérieurement.');

@@ -35,6 +35,13 @@ var setupFilter = function (fieldName, trigger) {
 setupFilter('lastName', 'keyup');
 setupFilter('departement', 'change');
 
+var showTable = function  () {
+  document.getElementById('psy-list-container').style.display = 'block';
+  document.getElementById('departement-filter-value').removeEventListener('change', showTable);
+};
+
+document.getElementById('departement-filter-value').addEventListener('change', showTable);
+
 var psyListElement = document.getElementById('psy-list');
 var psyList = JSON.parse(psyListElement.textContent);
 
