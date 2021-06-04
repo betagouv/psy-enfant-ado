@@ -3,7 +3,6 @@
 const fs = require('fs');
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig);
-const _ = require('lodash');
 var file = fs.createWriteStream('files.csv');
 file.write('dossierNumber,website\n');
 

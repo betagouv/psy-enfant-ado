@@ -46,6 +46,8 @@ app.use(function populate (req, res, next) {
 
   res.locals.appName = appName;
   res.locals.appDescription = appDescription;
+  res.locals.appDescriptionFull = appDescription + ' Le « forfait 100% psy enfants » donne accès à 10 séances de ' +
+    'psychologie sans avance de frais pour tous les enfants de 3 à 17 ans.';
   res.locals.appRepo = appRepo;
   res.locals.page = req.url;
   res.locals.contactEmail = config.contactEmail;
