@@ -28,14 +28,19 @@ app.use(cookieParser(config.secret));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/robots.txt', express.static('static/robots.txt'));
-app.use('/static', express.static('static'));
+
+function setNoIndexHeaders (res) {
+  res.setHeader('X-Robots-Tag', 'noindex');
+}
+
+app.use('/static/documents', express.static('static/documents'));
+app.use('/static', express.static('static', { 'setHeaders': setNoIndexHeaders }));
 app.use('/static/gouvfr', express.static(
-  path.join(__dirname, 'node_modules/@gouvfr/dsfr/dist'),
+  path.join(__dirname, 'node_modules/@gouvfr/dsfr/dist'), { 'setHeaders': setNoIndexHeaders }
 ));
 app.use('/static/jquery', express.static(
-  path.join(__dirname, 'node_modules/jquery/dist'),
+  path.join(__dirname, 'node_modules/jquery/dist'), { 'setHeaders': setNoIndexHeaders }
 ));
-app.use('/static/tabulator-tables', express.static('./node_modules/tabulator-tables/dist'));
 
 app.use(session({
   cookie: { maxAge: 60000 },
@@ -50,6 +55,8 @@ app.use(expressSanitizer());
 app.use((req, res, next) => {
   res.locals.appName = appName;
   res.locals.appDescription = appDescription;
+  res.locals.appDescriptionFull = appDescription + ' Le « forfait 100% psy enfants » donne accès à 10 séances de ' +
+    'psychologie sans avance de frais pour tous les enfants de 3 à 17 ans.';
   res.locals.appRepo = appRepo;
   res.locals.page = req.url;
   res.locals.contactEmail = config.contactEmail;

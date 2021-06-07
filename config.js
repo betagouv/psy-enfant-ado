@@ -1,9 +1,9 @@
 require('dotenv').config();
 
+/* eslint-disable max-len */
 module.exports = {
-  appName: 'Psy Enfant Ado',
-  appDescription: `En parler, c’est déjà se soigner. 
-  Faites bénéficier votre enfant d’un accompagnement psychologique gratuit`,
+  appName: `Psy Enfant Ado`,
+  appDescription: `En parler, c’est déjà se soigner. Faites bénéficier votre enfant d’un accompagnement psychologique gratuit.`,
   port: process.env.PORT || 8080,
   contactEmail: process.env.CONTACT_EMAIL || 'psyenfantado@beta.gouv.fr',
   databaseUrl: process.env.DATABASE_URL || 'postgres://db:db@localhost:5432/db',
