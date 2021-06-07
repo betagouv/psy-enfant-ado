@@ -24,13 +24,19 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use('/robots.txt', express.static('static/robots.txt'));
-app.use('/static', express.static('static'));
+
+function setNoIndexHeaders (res) {
+  res.setHeader('X-Robots-Tag', 'noindex');
+}
+
+app.use('/static/documents', express.static('static/documents'));
+app.use('/static', express.static('static', { 'setHeaders': setNoIndexHeaders }));
 app.use('/static/gouvfr', express.static(
-  path.join(__dirname, 'node_modules/@gouvfr/dsfr/dist'))
-);
+  path.join(__dirname, 'node_modules/@gouvfr/dsfr/dist'), { 'setHeaders': setNoIndexHeaders }
+));
 app.use('/static/jquery', express.static(
-  path.join(__dirname, 'node_modules/jquery/dist'))
-);
+  path.join(__dirname, 'node_modules/jquery/dist'), { 'setHeaders': setNoIndexHeaders }
+));
 
 app.use(session({
   cookie: { maxAge: 60000 },
