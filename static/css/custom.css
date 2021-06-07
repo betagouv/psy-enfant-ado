@@ -54,7 +54,7 @@ a.fr-btn--alt[href]:hover,
 }
 
 #psy-table.tabulator {
-    font-size: 14px;
+    font-size: 12px;
 }
 #psy-table.tabulator .tabulator-header .tabulator-col,
 #psy-table.tabulator .tabulator-row .tabulator-cell {

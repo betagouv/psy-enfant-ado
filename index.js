@@ -34,13 +34,14 @@ function setNoIndexHeaders (res) {
 }
 
 app.use('/static/documents', express.static('static/documents'));
-app.use('/static', express.static('static', { 'setHeaders': setNoIndexHeaders }));
+app.use('/static', express.static('static', { setHeaders: setNoIndexHeaders }));
 app.use('/static/gouvfr', express.static(
-  path.join(__dirname, 'node_modules/@gouvfr/dsfr/dist'), { 'setHeaders': setNoIndexHeaders }
+  path.join(__dirname, 'node_modules/@gouvfr/dsfr/dist'), { setHeaders: setNoIndexHeaders }
 ));
 app.use('/static/jquery', express.static(
-  path.join(__dirname, 'node_modules/jquery/dist'), { 'setHeaders': setNoIndexHeaders }
+  path.join(__dirname, 'node_modules/jquery/dist'), { setHeaders: setNoIndexHeaders }
 ));
+app.use('/static/tabulator-tables', express.static('./node_modules/tabulator-tables/dist', { setHeaders: setNoIndexHeaders }));
 
 app.use(session({
   cookie: { maxAge: 60000 },

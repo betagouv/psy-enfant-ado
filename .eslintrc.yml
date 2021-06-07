@@ -22,6 +22,7 @@ rules:
   no-unused-vars: "error"
   no-inner-declarations: "off"
   no-console: "off"
+  comma-dangle: "off"
   camelcase: "warn"
   no-param-reassign: "warn"
   func-names: "warn"
