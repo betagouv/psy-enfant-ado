@@ -42,6 +42,17 @@ describe('Static pages', function () {
       .then(async (res) => {
         expect(res).to.have.status(200);
         expect(res.type).to.eql('application/pdf');
+        expect(res.headers['x-robots-tag']).to.be.undefined;
+      });
+  });
+
+  it('/* should return a static file and have a noindex header', function async () {
+    return chai.request(app)
+      .get('/static/images/cpam.png')
+      .then(async (res) => {
+        expect(res).to.have.status(200);
+        expect(res.type).to.eql('image/png');
+        expect(res.headers['x-robots-tag']).to.eql('noindex');
       });
   });
 });
