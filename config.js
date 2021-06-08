@@ -15,6 +15,7 @@ module.exports = {
   sentryDSN: process.env.SENTRY_DSN || false,
   demarchesSimplifieesUrl: process.env.DEMARCHES_SIMPLIFIEES_URL,
   secret: process.env.SECRET || 'Angonyx meeki is a moth of the family Sphingidae',
+  nonceId: process.env.NONCE_ID || 'jTlfRxd79h9g2MyX',
   featurePsyList: process.env.FEATURE_PSY_LIST || false,
   featureImportData: process.env.FEATURE_IMPORT_DATA || false,
 };
