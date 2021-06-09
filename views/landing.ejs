@@ -80,7 +80,8 @@
                 <a class="fr-btn fr-btn--secondary" href="/faq#parent">Consulter la Foire Aux Questions</a>
                 <p class="fr-my-2w">Nous vous suggérons aussi ce site de conseils pour gérer les difficultés pendant
                     cette période de crise :</p>
-                <a target="_blank" rel="noopener" href="https://filsantejeunes.com/mal-etre">filsantejeunes.com/mal-etre</a>
+                <a target="_blank" rel="noopener"
+                   href="https://filsantejeunes.com/mal-etre">filsantejeunes.com/mal-etre</a>
             </div>
         </div>
     </div>
@@ -107,7 +108,9 @@
             <p class="fr-my-2w">Vous voulez devenir psychologue partenaire du dispositif&nbsp;?</p>
 
             <% if (formUrl) { %>
-                <a class="fr-btn fr-btn--alt" href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
+                <a class="fr-btn fr-btn--alt"
+                   onclick="gtag('event','conversion',{'allow_custom_scripts': true,'send_to':'DC-2953234/SIG-M0/lppsyenf+unique'});"
+                   href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
                     Commencer mon inscription
                 </a>
             <% } else { %>
