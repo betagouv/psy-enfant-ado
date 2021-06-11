@@ -60,7 +60,6 @@ app.use(function populate (req, res, next) {
   res.locals.appRepo = appRepo;
   res.locals.page = req.url;
   res.locals.contactEmail = config.contactEmail;
-  res.locals.nonceId = config.nonceId;
   next();
 });
 
