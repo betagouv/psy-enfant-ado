@@ -35,7 +35,7 @@ var setupFilter = function (fieldName, trigger) {
 setupFilter('lastName', 'keyup');
 setupFilter('departement', 'change');
 
-var showTable = function  () {
+var showTable = function () {
   document.getElementById('psy-list-container').style.display = 'block';
   document.getElementById('departement-filter-value').removeEventListener('change', showTable);
 };
@@ -46,32 +46,14 @@ var psyListElement = document.getElementById('psy-list');
 var psyList = JSON.parse(psyListElement.textContent);
 
 var table = new Tabulator('#psy-table', {
-  data: psyList, //assign data to table
-  langs: { // http://tabulator.info/docs/4.2/localize#setup
-    'fr-fr': { //French language definition
-      'pagination': {
-        'first': 'Première',
-        'first_title': 'Première Page',
-        'last': 'Dernière',
-        'last_title': 'Dernière Page',
-        'prev': 'Précédent',
-        'prev_title': 'Page Précédente',
-        'next': 'Suivant',
-        'next_title': 'Page Suivante',
-      },
-      'headerFilters': {
-        'default': 'Rechercher par adresse', //default header filter placeholder text
-      }
-    },
-  },
+  data: psyList,
   tooltipsHeader: true,
-  layout: 'fitColumns',       //fit columns to width of table
-  responsiveLayout: true,  //hide columns that dont fit on the table //@TODO
-  tooltips: true,            //show tool tips on cells
-  pagination: 'local',         //paginate the data
-  paginationSize: 50,        //allow XX rows per page of data
-  movableColumns: false,        //allow column order to be changed
-  resizableRows: false,          //allow row order to be changed
+  layout: 'fitColumns',
+  responsiveLayout: 'hide',
+  tooltips: true,
+  pagination: false,
+  movableColumns: false,
+  resizableRows: false,
   resizableColumns: true,
   columnHeaderVertAlign: 'middle',
   columns: [
@@ -81,7 +63,7 @@ var table = new Tabulator('#psy-table', {
       sorter: 'string',
       maxWidth: 400,
       minWidth: 100,
-      widthGrow: 3,
+      responsive: 0,
       cssClass: 'fr-p-3v',
       formatter: function (cell) {
         return cell.getRow().getData().lastName + ' ' + cell.getRow().getData().firstNames;
@@ -92,7 +74,6 @@ var table = new Tabulator('#psy-table', {
       field: 'departement',
       sorter: 'string',
       maxWidth: 400,
-      widthGrow: 4,
       minWidth: 250,
       responsive: 0,
       headerSort: false,
@@ -108,7 +89,7 @@ var table = new Tabulator('#psy-table', {
       field: 'email',
       sorter: 'string',
       maxWidth: 200,
-      widthGrow: 2,
+      responsive: 0,
       headerSort: false,
       cssClass: 'fr-p-3v',
       formatter: function (cell) {
@@ -134,21 +115,21 @@ var table = new Tabulator('#psy-table', {
       field: 'languages',
       formatter: 'textarea',
       headerSort: false,
-      width: 150,
+      responsive: 0,
+      width: 120,
       cssClass: 'fr-p-3v'
     },
     {
       title: 'Site web',
       field: 'website',
       sorter: 'string',
-      maxWidth: 200,
-      widthGrow: 2,
+      maxWidth: 500,
+      responsive: 0,
       formatter: 'link',
       formatterParams: { labelField: 'website', target: '_blank' },
       headerSort: false,
       cssClass: 'fr-p-3v'
     },
-  ],
-  headerFilterPlaceholder: 'Rechercher un psychologue' // http://tabulator.info/docs/4.9/filter#header
+  ]
 });
 table.setLocale('fr-fr');
