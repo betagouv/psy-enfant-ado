@@ -30,13 +30,16 @@ function setNoIndexHeaders (res) {
 }
 
 app.use('/static/documents', express.static('static/documents'));
-app.use('/static', express.static('static', { 'setHeaders': setNoIndexHeaders }));
 app.use('/static/gouvfr', express.static(
   path.join(__dirname, 'node_modules/@gouvfr/dsfr/dist'), { 'setHeaders': setNoIndexHeaders }
 ));
 app.use('/static/jquery', express.static(
   path.join(__dirname, 'node_modules/jquery/dist'), { 'setHeaders': setNoIndexHeaders }
 ));
+app.use('/static/tarteaucitron', express.static(
+  path.join(__dirname, 'node_modules/tarteaucitronjs'), { 'setHeaders': setNoIndexHeaders }
+));
+app.use('/static', express.static('static', { 'setHeaders': setNoIndexHeaders }));
 
 app.use(session({
   cookie: { maxAge: 60000 },
