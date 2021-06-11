@@ -41,6 +41,7 @@
     "knex": "^0.95.6",
     "lodash": "^4.17.20",
     "pg": "^8.6.0",
+    "tarteaucitronjs": "1.9.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
