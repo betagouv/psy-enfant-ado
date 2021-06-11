@@ -146,6 +146,7 @@ try {
     log('Nombre total de dossier déposés', valids.length);
     log('Nombre total de dossier en construction', enConstruction.length);
     log('Nombre total de dossier en instruction', enInstruction.length);
+    log('Nombre total de dossier en construction', enConstruction.length);
     log('Nombre total de dossier en accepté', accepte.length);
     log('Nombre de départements sans dossiers', noDossier.length);
 

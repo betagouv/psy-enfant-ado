@@ -20,33 +20,38 @@
             </div>
         </div>
 
-        <div class="fr-grid-row fr-grid-row--center">
-            <div class="fr-col-xs-12 fr-col-md-3">
-                <div class="fr-text--lg fr-pb-2w fr-mb-1v">1. Consultez un médecin</div>
-                <div class="fr-text--sm fr-mb-1v">Tout médecin peut orienter votre enfant vers un accompagnement
-                    psychologique (le pédiatre, le médecin généraliste, le médecin scolaire, celui du service de PMI,
-                    de l’hôpital...)
-                </div>
+    <div class="fr-grid-row fr-grid-row--center">
+        <div class="fr-col-xs-12 fr-col-md-3">
+            <div class="fr-text--lg fr-pb-2w fr-mb-1v">1. Consultez un médecin</div>
+            <div class="fr-text--sm fr-mb-1v">Tout médecin peut orienter votre enfant vers un accompagnement
+                psychologique (le pédiatre, le médecin généraliste, le médecin scolaire, celui du service de PMI,
+                de l’hôpital...)
             </div>
-            <div class="fr-col-xs-12 fr-col-md-3">
-                <div class="fr-text--lg fr-pb-2w fr-mb-1v">2. Choisissez un psychologue</div>
-                <div class="fr-text--sm fr-mb-1v">Vous choisissez, parmi la liste des psychologues partenaires, le
-                    professionnel qui accompagnera votre enfant et vous.
-                </div>
+        </div>
+        <div class="fr-col-xs-12 fr-col-md-3">
+            <div class="fr-text--lg fr-pb-2w fr-mb-1v">2. Choisissez un psychologue</div>
+            <div class="fr-text--sm fr-mb-1v">Vous choisissez, parmi la liste des psychologues partenaires, le
+                professionnel qui accompagnera votre enfant et vous.
             </div>
-            <div class="fr-col-xs-12 fr-col-md-3">
-                <div class="fr-text--lg fr-pb-2w fr-mb-1v">3. Faites bénéficier votre enfant d'un suivi</div>
-                <div class="fr-text--sm fr-mb-1v">Vous prenez rendez-vous avec le psychologue choisi, qui suivra votre
-                    enfant pendant 10 séances au maximum.
-                </div>
+        </div>
+        <div class="fr-col-xs-12 fr-col-md-3">
+            <div class="fr-text--lg fr-pb-2w fr-mb-1v">3. Faites bénéficier votre enfant d'un suivi</div>
+            <div class="fr-text--sm fr-mb-1v">Vous prenez rendez-vous avec le psychologue choisi, qui suivra votre
+                enfant pendant 10 séances au maximum.
             </div>
         </div>
     </div>
-    <div class="fr-centered fr-pt-2w fr-pb-6w fr-bg--alt">
-        <p class="fr-mb-2w">Enfants, ados, parents, psychologues, médecins, vous souhaitez plus d’informations&nbsp;?
-        </p>
-        <a class="fr-btn fr-btn--secondary" href="/faq">Consulter la Foire Aux Questions</a>
-    </div>
+</div>
+<div class="fr-centered fr-py-2w fr-px-10w fr-bg--alt">
+    <p class="fr-text--sm">Le dispositif 100% PsyEnfantAdo vise à répondre aux conséquences de la crise sanitaire sur la santé mentale de
+        jeunes de 3 à 17 ans en souffrance psychologique ne présentant pas de signes de gravité. Ce forfait permet à
+        votre enfant en fonction de ses besoins, une prise en charge de séances chez un psychologue (10 au maximum). Ces
+        séances sont intégralement financées par l’Assurance Maladie, sans avance de frais pour vous.</p>
+</div>
+<div class="fr-centered fr-pb-6w fr-bg--alt">
+    <p class="fr-mb-2w">Enfants, ados, parents, psychologues, médecins, vous souhaitez plus d’informations&nbsp;?</p>
+    <a class="fr-btn fr-btn--secondary" href="/faq">Consulter la Foire Aux Questions</a>
+</div>
 
     <div class="fr-container--fluid fr-bg--light">
         <div class="fr-container">
@@ -114,21 +119,22 @@
 
                 <p class="fr-my-2w">Vous voulez devenir psychologue partenaire du dispositif&nbsp;?</p>
 
-                <% if (formUrl) { %>
-                    <a class="fr-btn fr-btn--alt" href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
-                        Commencer mon inscription
-                    </a>
-                    <% } else { %>
-                        <div class="fr-callout fr-callout-none">
-                            <h4 class="fr-callout__title">Formulaire d’inscription en cours de construction</h4>
-                            <p class="fr-callout__text">
-                                Disponible fin mai
-                            </p>
-                        </div>
-                        <% } %>
-
-            </div>
+            <% if (formUrl) { %>
+                <a class="fr-btn fr-btn--alt"
+                   onclick="gtag('event','conversion',{'allow_custom_scripts':true,'send_to':'DC-2953234/psyen0/itag-0+unique'});"
+                   href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
+                    Commencer mon inscription
+                </a>
+            <% } else { %>
+                <div class="fr-callout fr-callout-none">
+                    <h4 class="fr-callout__title">Formulaire d’inscription en cours de construction</h4>
+                    <p class="fr-callout__text">
+                        Disponible fin mai
+                    </p>
+                </div>
+            <% } %>
         </div>
     </div>
+</div>
 
     <%- include('partials/footer') -%>
