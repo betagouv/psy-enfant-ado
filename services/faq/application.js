@@ -23,4 +23,8 @@ module.exports = [
     q: 'Suis-je informé si ma candidature n’est pas retenue ?',
     r: 'Si votre candidature n’est pas retenue, vous en serez informé par mail. Le motif de refus sera explicité.'
   },
+  {
+    q: 'Je suis déjà partenaire d\'un dispositif expérimental lié au soutien psychologique, dois-je soumettre une nouvelle candidature pour participer au dispositif PsyEnfantAdo ?',
+    r: 'Vous participez déjà à un dispositif expérimental tel que celui mené actuellement dans 4 départements par l’Assurance Maladie « Troubles en santé mentale d’intensité légère à modérée » chez l’adulte ou SantéPsyEtudiant, vous pouvez également rejoindre le dispositif PsyEnfantAdo. Toutefois, comme ces dispositifs sont distincts, il est néanmoins nécessaire de soumettre une candidature via la plateforme et de signer la convention dédiée.'
+  }
 ];
