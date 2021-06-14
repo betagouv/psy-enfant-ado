@@ -26,7 +26,7 @@ const jobs = [
 ];
 
 let activeJobs = 0;
-for (const job of jobs) {
+jobs.forEach((job) => {
   if (job.isActive) {
     console.log(`🚀 The job "${job.name}" is ON ${job.cronTime}`);
     new cron.CronJob(job);
@@ -34,6 +34,6 @@ for (const job of jobs) {
   } else {
     console.log(`❌ The job "${job.name}" is OFF`);
   }
-}
+});
 
 console.log(`Started ${activeJobs} cron jobs`);

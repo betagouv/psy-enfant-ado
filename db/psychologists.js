@@ -23,6 +23,7 @@ module.exports.getPsychologists = async () => {
         .from(module.exports.psychologistsTable)
         .whereNot('archived', true)
         .where('state', demarchesSimplifiees.DOSSIER_STATE.accepte)
+        .orWhere('state', demarchesSimplifiees.DOSSIER_STATE.en_instruction)
         .orderByRaw('RANDOM ()');
   } catch (err) {
     console.error('Impossible de récupérer les psychologistes', err);
@@ -73,7 +74,7 @@ module.exports.savePsychologist = async function savePsychologist(psyList) {
 };
 
 module.exports.getNumberOfPsychologists = async function getNumberOfPsychologists() {
-  return await knex(module.exports.psychologistsTable)
+  return knex(module.exports.psychologistsTable)
     .select('archived', 'state')
     .count('*')
     .groupBy('archived', 'state');

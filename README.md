@@ -10,9 +10,12 @@ Vous devez avoir npm installé et [docker-compose](https://docs.docker.com/compo
 git clone https://github.com/betagouv/psy-enfant-ado
 cd psy-enfant-ado
 docker-compose up -d # start PG, create SQL tables, and import some data
+# --> http://localhost:8080
+
 # Or use this if you don't want to use docker-compose
 npm install
 npm run dev
+# --> http://localhost:8080
 ```
 
 ### Test
@@ -21,7 +24,7 @@ docker-compose up -d db init_db # start PG, create SQL tables, and import some d
 npm test
 ```
 
-Alternativement, en une seule ligne (utilisé par la CI) :
+Alternativement, en une seule ligne (utilisée par la CI) :
 ```bash
 docker-compose -f docker-compose.yml -f docker-compose-test.yml up;
 ```

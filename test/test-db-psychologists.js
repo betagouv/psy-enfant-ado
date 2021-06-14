@@ -12,7 +12,7 @@ describe('DB Psychologists', () => {
   const psyList = clean.psyList();
 
   async function testDataPsychologistsExist (dossierNumber) {
-    return await knex(dbPsychologists.psychologistsTable)
+    return knex(dbPsychologists.psychologistsTable)
       .where('dossierNumber', dossierNumber)
       .first();
   }

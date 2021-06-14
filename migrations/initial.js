@@ -37,5 +37,5 @@ exports.down = function (knex) {
   return knex.schema.dropTable(dbPsychologists.psychologistsTable)
   .then(() => {
     knex.schema.dropTable(dbDsApiCursor.dsApiCursorTable);
-  })
+  });
 };

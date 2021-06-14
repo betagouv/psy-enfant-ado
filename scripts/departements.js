@@ -7,9 +7,7 @@ const knex = require('knex')(knexConfig);
 const _ = require('lodash');
 var file = fs.createWriteStream('departments-stats.csv');
 
-log('Dep', 'total');
-
-let deps = [
+const deps = [
   { count: 0, name: '01 - Ain' },
   { count: 0, name: '02 - Aisne' },
   { count: 0, name: '03 - Allier' },
@@ -124,6 +122,8 @@ function displayList (list) {
   });
 }
 
+log('Dep', 'total');
+
 try {
   knex.select().table('psychologists').then((valids) => {
 
@@ -144,6 +144,7 @@ try {
 
     log('', '');
     log('Nombre total de dossier déposés', valids.length);
+    log('Nombre total de dossier en construction', enConstruction.length);
     log('Nombre total de dossier en instruction', enInstruction.length);
     log('Nombre total de dossier en construction', enConstruction.length);
     log('Nombre total de dossier en accepté', accepte.length);

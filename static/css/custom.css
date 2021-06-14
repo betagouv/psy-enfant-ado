@@ -52,3 +52,20 @@ a.fr-btn--alt[href]:hover,
     border: 0;
     height: 100px;
 }
+
+#psy-table.tabulator {
+    font-size: 12px;
+}
+#psy-table.tabulator .tabulator-header .tabulator-col,
+#psy-table.tabulator .tabulator-row .tabulator-cell {
+    border-right: none;
+}
+#psy-table.tabulator .tabulator-header .tabulator-col {
+    border-bottom: 0.125rem solid var(--g600);
+    background-color: var(--beige);
+    color: var(--g700);
+}
+#psy-table.tabulator .tabulator-placeholder span {
+    font-weight: normal;
+    text-align: center;
+}

@@ -31,12 +31,11 @@ module.exports.saveLatestCursor = async function saveLatestCursor (cursor) {
   try {
     const now = date.getDateNowPG();
     // eslint-disable-next-line func-names
-    return await knex.transaction((trx) => { // add transaction in case 2 cron jobs modify this cursor
-      return trx.into(module.exports.dsApiCursorTable)
-        .insert({ id: 1, cursor, updatedAt: now })
-        .onConflict('id')
-        .merge();
-    });
+    return await knex.transaction((trx) => trx.into(module.exports.dsApiCursorTable) // add transaction in case 2 cron jobs modify this cursor
+      .insert({ id: 1, cursor, updatedAt: now })
+      .onConflict('id')
+      .merge()
+    );
   } catch (err) {
     console.error(`Impossible de sauvegarder le dernier cursor ${cursor} de l'api DS`, err);
     throw new Error('Impossible de sauvegarder le dernier cursor de l\'api DS');

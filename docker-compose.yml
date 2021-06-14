@@ -25,7 +25,6 @@ services:
       DATABASE_URL: postgres://db:db@db:5432/db
     ports:
       - "8080:8080"
-      - "9229:9229"
     depends_on:
       - init_db
     restart: on-failure

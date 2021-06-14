@@ -33,7 +33,7 @@ describe('Import Data from DS to PG', () => {
     await cronDemarchesSimplifiees.importLatestDataFromDSToPG();
 
     sinon.assert.called(graphqlRequest);
-    const counts = await dbPsychologists.getNumberOfPsychologists()
+    const counts = await dbPsychologists.getNumberOfPsychologists();
     const accepted = counts.find(myElement => (!myElement.archived && myElement.state === 'accepté'));
     const enInstruction = counts.find(myElement => (!myElement.archived && myElement.state === 'en_instruction'));
 
