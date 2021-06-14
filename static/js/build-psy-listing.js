@@ -56,6 +56,12 @@ var table = new Tabulator('#psy-table', {
   resizableRows: false,
   resizableColumns: true,
   columnHeaderVertAlign: 'middle',
+  placeholder: 'Pas de psycologues disponibles dans votre département. <br/>' +
+    'Mais notre annuaire est mise à jour quotidiennement, revenez la consulter dans quelques jours.<br/><br/><br/>' +
+    'Vous êtes psychologue et voulez devenir partenaire du dispositif&nbsp;?<br/><br/>' +
+    '<a class="fr-btn fr-btn--alt" ' +
+    'onclick="gtag(\'event\',\'conversion\',{\'allow_custom_scripts\':true,\'send_to\':\'DC-2953234/psyen0/itag-0+unique\'});" ' +
+    'href="/#je-suis-psychologue">En savoir plus</a>',
   columns: [
     {
       title: 'Nom',
@@ -99,14 +105,14 @@ var table = new Tabulator('#psy-table', {
       }
     },
     {
-      title: 'Visio',
+      title: 'À distance',
       field: 'teleconsultation',
-      headerTooltip: 'Téléconsultation',
+      headerTooltip: 'À distance',
       width: 91,
       responsive: 0,
       sorter: 'boolean',
       hozAlign: 'center',
-      tooltip: 'Est ce que le psychologue accepte la téléconsultation ?',
+      tooltip: 'Est ce que le psychologue accèpte la téléconsultation ?',
       formatter: 'tickCross',
       cssClass: 'fr-p-3v'
     },

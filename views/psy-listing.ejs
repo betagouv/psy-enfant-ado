@@ -24,11 +24,7 @@
                     <select class="fr-select midlength-input" id="departement-filter-value">
                         <option value="" disabled selected>Séléctionner</option>
                         <% deps.forEach(function(d){ %>
-                            <option value="<%- d.name %>"
-                                    <% if (d.count === 0) { %>disabled
-                                    <% } %>
-                            ><%- d.name %> (<%- d.count %>)
-                            </option>
+                            <option value="<%- d.name %>"><%- d.name %></option>
                         <% }); %>
                     </select>
                 </div>

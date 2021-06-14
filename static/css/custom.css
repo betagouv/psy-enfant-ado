@@ -65,3 +65,7 @@ a.fr-btn--alt[href]:hover,
     background-color: var(--beige);
     color: var(--g700);
 }
+#psy-table.tabulator .tabulator-placeholder span {
+    font-weight: normal;
+    text-align: center;
+}
