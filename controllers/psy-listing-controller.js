@@ -1,9 +1,9 @@
 const _ = require('lodash');
-const deps = require('../data/departements.json');
+const DEPS = require('../data/departements.json');
 const dbPsychologists = require('../db/psychologists');
 
 const countPsyByDepartments = (psyList) => {
-  return deps.map((dep) => {
+  return DEPS.map((dep) => {
     const count = _.filter(psyList, { departement: dep }, 0).length;
     return { name: dep, count };
   });
@@ -25,7 +25,7 @@ module.exports.getPsychologist = async function getPsychologist (req, res) {
     console.error('getPsychologist', err);
     res.render('psy-listing', {
       psyList: [],
-      deps,
+      deps: DEPS,
     });
   }
 };
