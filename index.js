@@ -73,9 +73,7 @@ app.use((req, res, next) => {
 app.get('/', landingController.getLanding);
 app.get('/faq', faqController.getFaq);
 
-if (config.featurePsyList) {
-  app.get('/trouver-un-psychologue', psyListingController.getPsychologist);
-}
+app.get('/trouver-un-psychologue', psyListingController.getPsychologist);
 
 app.get('/mentions-legales', (req, res) => {
   res.render('legal-notice', {
