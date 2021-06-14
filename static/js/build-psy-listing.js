@@ -56,8 +56,8 @@ var table = new Tabulator('#psy-table', {
   resizableRows: false,
   resizableColumns: true,
   columnHeaderVertAlign: 'middle',
-  placeholder: 'Pas de psycologues disponibles dans votre département. <br/>' +
-    'Mais notre annuaire est mise à jour quotidiennement, revenez la consulter dans quelques jours.<br/><br/><br/>' +
+  placeholder: 'Il n’y a pas de psychologues disponibles dans votre département. <br/>' +
+    'Notre annuaire est mise à jour quotidiennement, revenez le consulter dans quelques jours.<br/><br/><br/>' +
     'Vous êtes psychologue et voulez devenir partenaire du dispositif&nbsp;?<br/><br/>' +
     '<a class="fr-btn fr-btn--alt" ' +
     'onclick="gtag(\'event\',\'conversion\',{\'allow_custom_scripts\':true,\'send_to\':\'DC-2953234/psyen0/itag-0+unique\'});" ' +
