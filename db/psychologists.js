@@ -74,7 +74,7 @@ module.exports.savePsychologist = async function savePsychologist(psyList) {
 };
 
 module.exports.getNumberOfPsychologists = async function getNumberOfPsychologists() {
-  return await knex(module.exports.psychologistsTable)
+  return knex(module.exports.psychologistsTable)
     .select('archived', 'state')
     .count('*')
     .groupBy('archived', 'state');
