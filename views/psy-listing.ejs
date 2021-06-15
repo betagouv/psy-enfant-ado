@@ -1,7 +1,13 @@
 <%- include('partials/header') -%>
-<!--[if IE]>
-<script type="text/javascript" src="/static/polyfill/polyfill.min.js"></script>
-<![endif]-->
+
+<% if(isIE) { %>
+    <script data-name="ie-specific" type="text/javascript" src="/static/polyfill/polyfill.min.js"></script>
+    <div class="fr-mx-8w fr-my-2w fr-py-2w fr-callout">
+        <p class="fr-mb-0">Ce site n'est pas entièrement compatible avec <strong>internet explorer</strong>.<br/>
+            Si vous rencontrez des problèmes d'affichages <strong>veuillez changer de browser</strong>.</p>
+    </div>
+<% } %>
+
 <link href="/static/tabulator-tables/css/tabulator_simple.css" rel="stylesheet">
 <script type="text/javascript" src="/static/tabulator-tables/js/tabulator.min.js"></script>
 <div class="fr-container">

@@ -37,9 +37,6 @@ app.use('/static/documents', express.static('static/documents'));
 app.use('/static/gouvfr', express.static(
   path.join(__dirname, 'node_modules/@gouvfr/dsfr/dist'), { setHeaders: setNoIndexHeaders }
 ));
-app.use('/static/jquery', express.static(
-  path.join(__dirname, 'node_modules/jquery/dist'), { setHeaders: setNoIndexHeaders }
-));
 app.use('/static/polyfill', express.static(
   path.join(__dirname, 'node_modules/promise-polyfill/dist'), { setHeaders: setNoIndexHeaders }
 ));
@@ -58,7 +55,6 @@ app.use(session({
 }));
 
 app.use(expressSanitizer());
-
 app.use((req, res, next) => {
   res.locals.appName = appName;
   res.locals.appDescription = appDescription;
@@ -70,6 +66,10 @@ app.use((req, res, next) => {
   res.locals.errors = req.flash('error');
   res.locals.infos = req.flash('info');
   res.locals.successes = req.flash('success');
+
+  const userAgent = req.get('User-Agent').toLowerCase();
+  res.locals.isIE = (userAgent.indexOf('msie') !== -1 || userAgent.indexOf('trident') !== -1);
+
   next();
 });
 
