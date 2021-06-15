@@ -1,50 +1,6 @@
-function findFilterForField (fieldName) {
-  var filters = table.getFilters();
-  for (var i = 0; i < filters.length; i++) {
-    if (filters[i].field === fieldName) {
-      return filters[i];
-    }
-  }
-  return undefined;
-}
-
-function upsertFilterForField (fieldName, newValue) {
-  var filter = findFilterForField(fieldName);
-
-  if (!filter) {
-    // New filter : this is the first input into search field by user
-    table.addFilter(fieldName, 'like', newValue);
-    return;
-  }
-  // Existing filter : update it
-  table.removeFilter(fieldName, 'like', filter.value);
-  table.addFilter(fieldName, 'like', newValue);
-}
-
-var setupFilter = function (fieldName, trigger) {
-  var filterEl = document.getElementById(fieldName + '-filter-value');
-
-  // Trigger setFilter function with correct parameters
-  function updateFilter () {
-    upsertFilterForField(fieldName, filterEl.value);
-  }
-
-  filterEl.addEventListener(trigger, updateFilter);
-};
-
-setupFilter('lastName', 'keyup');
-setupFilter('departement', 'change');
-
-var showTable = function () {
-  document.getElementById('psy-list-container').style.display = 'block';
-  document.getElementById('departement-filter-value').removeEventListener('change', showTable);
-};
-
-document.getElementById('departement-filter-value').addEventListener('change', showTable);
 
 var psyListElement = document.getElementById('psy-list');
 var psyList = JSON.parse(psyListElement.textContent);
-
 var table = new Tabulator('#psy-table', {
   data: psyList,
   tooltipsHeader: true,
@@ -139,3 +95,47 @@ var table = new Tabulator('#psy-table', {
   ]
 });
 table.setLocale('fr-fr');
+
+function findFilterForField (fieldName) {
+  var filters = table.getFilters();
+  for (var i = 0; i < filters.length; i++) {
+    if (filters[i].field === fieldName) {
+      return filters[i];
+    }
+  }
+  return undefined;
+}
+
+function upsertFilterForField (fieldName, newValue) {
+  var filter = findFilterForField(fieldName);
+
+  if (!filter) {
+    // New filter : this is the first input into search field by user
+    table.addFilter(fieldName, 'like', newValue);
+    return;
+  }
+  // Existing filter : update it
+  table.removeFilter(fieldName, 'like', filter.value);
+  table.addFilter(fieldName, 'like', newValue);
+}
+
+var setupFilter = function (fieldName, trigger) {
+  var filterEl = document.getElementById(fieldName + '-filter-value');
+
+  // Trigger setFilter function with correct parameters
+  function updateFilter () {
+    upsertFilterForField(fieldName, filterEl.value);
+  }
+
+  filterEl.addEventListener(trigger, updateFilter);
+};
+
+setupFilter('lastName', 'keyup');
+setupFilter('departement', 'change');
+
+var showTable = function () {
+  document.getElementById('psy-list-container').style.display = 'block';
+  document.getElementById('departement-filter-value').removeEventListener('change', showTable);
+};
+
+document.getElementById('departement-filter-value').addEventListener('change', showTable);
