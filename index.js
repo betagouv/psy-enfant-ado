@@ -67,7 +67,8 @@ app.use((req, res, next) => {
   res.locals.infos = req.flash('info');
   res.locals.successes = req.flash('success');
 
-  const userAgent = req.get('User-Agent').toLowerCase();
+  let userAgent = req.get('User-Agent') || '';
+  userAgent = userAgent.toLowerCase();
   res.locals.isIE = (userAgent.indexOf('msie') !== -1 || userAgent.indexOf('trident') !== -1);
 
   next();
