@@ -1,10 +1,9 @@
-
 var psyListElement = document.getElementById('psy-list');
 var psyList = JSON.parse(psyListElement.textContent);
 var table = new Tabulator('#psy-table', {
   data: psyList,
   tooltipsHeader: true,
-  layout: 'fitColumns',
+  layout: 'fitData',
   responsiveLayout: 'hide',
   tooltips: true,
   pagination: false,
@@ -23,8 +22,7 @@ var table = new Tabulator('#psy-table', {
       title: 'Nom',
       field: 'lastName',
       sorter: 'string',
-      maxWidth: 400,
-      minWidth: 100,
+      width: 230,
       responsive: 0,
       cssClass: 'fr-p-3v',
       formatter: function (cell) {
@@ -35,8 +33,7 @@ var table = new Tabulator('#psy-table', {
       title: 'Adresse',
       field: 'departement',
       sorter: 'string',
-      maxWidth: 400,
-      minWidth: 250,
+      width: 300,
       responsive: 0,
       headerSort: false,
       cssClass: 'fr-p-3v',
@@ -50,7 +47,7 @@ var table = new Tabulator('#psy-table', {
       title: 'Contact',
       field: 'email',
       sorter: 'string',
-      maxWidth: 200,
+      width: 230,
       responsive: 0,
       headerSort: false,
       cssClass: 'fr-p-3v',
@@ -64,7 +61,7 @@ var table = new Tabulator('#psy-table', {
       title: 'À distance',
       field: 'teleconsultation',
       headerTooltip: 'À distance',
-      width: 91,
+      width: 130,
       responsive: 0,
       sorter: 'boolean',
       hozAlign: 'center',
@@ -78,14 +75,14 @@ var table = new Tabulator('#psy-table', {
       formatter: 'textarea',
       headerSort: false,
       responsive: 0,
-      width: 120,
+      width: 140,
       cssClass: 'fr-p-3v'
     },
     {
       title: 'Site web',
       field: 'website',
       sorter: 'string',
-      maxWidth: 500,
+      width: 350,
       responsive: 0,
       formatter: 'link',
       formatterParams: { labelField: 'website', target: '_blank' },

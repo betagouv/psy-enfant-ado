@@ -99,13 +99,7 @@ function parsePsychologist (apiResponse) {
   console.debug(`Parsing ${apiResponse.demarche.dossiers.nodes.length} psychologists from DS API`);
 
   const dossiers = apiResponse.demarche.dossiers.nodes;
-
-  if (dossiers.length > 0) {
-    return dossiers.map((dossier) => parseDossierMetadata(dossier));
-  }
-  console.error('Aucun psychologiste trouvé.');
-
-  return [];
+  return dossiers.map((dossier) => parseDossierMetadata(dossier));
 }
 
 /**
