@@ -22,11 +22,11 @@ var table = new Tabulator('#psy-table', {
       title: 'Nom',
       field: 'lastName',
       sorter: 'string',
-      width: 230,
+      width: 170,
       responsive: 0,
       cssClass: 'fr-p-3v',
       formatter: function (cell) {
-        return cell.getRow().getData().lastName + ' ' + cell.getRow().getData().firstNames;
+        return '<strong>' + cell.getRow().getData().lastName + '</strong><br/><strong>' + cell.getRow().getData().firstNames + '</strong>';
       }
     },
     {
@@ -131,7 +131,11 @@ setupFilter('lastName', 'keyup');
 setupFilter('departement', 'change');
 
 var showTable = function () {
-  document.getElementById('psy-list-container').style.display = 'block';
+  var el = document.getElementsByClassName('psy-list-elements-to-show');
+  for (var i = 0; i < el.length; i++) {
+    el[i].style.display = 'block';
+  }
+
   document.getElementById('departement-filter-value').removeEventListener('change', showTable);
 };
 

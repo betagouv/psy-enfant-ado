@@ -104,7 +104,7 @@ const deps = [
   { count: 0, name: '93 - Seine Saint Denis' },
   { count: 0, name: '94 - Val de Marne' },
   { count: 0, name: '95 - Val d\'Oise' },
-  { count: 0, name: '97 - Guadeloupe' },
+  { count: 0, name: '971 - Guadeloupe' },
   { count: 0, name: '97 - Martinique' },
   { count: 0, name: '97 - Guyane' },
   { count: 0, name: '974 - Ile de la Réunion' },

@@ -11,11 +11,8 @@
 <link href="/static/tabulator-tables/css/tabulator_simple.css" rel="stylesheet">
 <script type="text/javascript" src="/static/tabulator-tables/js/tabulator.min.js"></script>
 <div class="fr-container">
-    <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
+    <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters fr-mt-3w">
         <div class="fr-container fr-mb-3w">
-            <%- include('partials/ariane', { items: [ { label: 'Accueil' , url: '/' }, { label: 'Trouver un psychologue' }
-            ], }) -%>
-
             <h1>Trouver un psychologue partenaire, <small class="d-block">une fois muni(e) d’une ordonnance</small></h1>
             <%- include('partials/notifications') -%>
             <% if (psyList.length > 0) { %>
@@ -30,23 +27,25 @@
                     vous pourrez contacter un psychologue partenaire par téléphone, email ou par son site web.</p>
                 <p class="fr-mb-4w">Vous ne pouvez pas contacter un psychologue sans cette ordonnance.
                 </p>
-                <div class="fr-input-group fr-col-xs-12 fr-col-md-3">
-                    <label class="fr-label" for="departement-filter-value">Votre département</label>
-                    <select class="fr-select midlength-input" id="departement-filter-value">
-                        <option value="" disabled selected>Séléctionner</option>
-                        <% deps.forEach(function(d){ %>
-                            <option value="<%- d.name %>"><%- d.name %></option>
-                        <% }); %>
-                    </select>
-                </div>
-
-                <div id="psy-list-container" style="display: none;">
+                <div class="fr-grid-row fr-grid-row--gutters">
                     <div class="fr-input-group fr-col-xs-12 fr-col-md-3">
+                        <label class="fr-label" for="departement-filter-value">Votre département</label>
+                        <select class="fr-select midlength-input" id="departement-filter-value">
+                            <option value="" disabled selected>Séléctionner</option>
+                            <% deps.forEach(function(d){ %>
+                                <option value="<%- d.name %>"><%- d.name %></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                    <div class="fr-input-group fr-col-xs-12 fr-col-md-3 psy-list-elements-to-show"
+                         style="display: none;">
                         <label class="fr-label" for="lastName-filter-value">Rechercher par nom</label>
                         <input class="fr-input midlength-input" id="lastName-filter-value" type="text"
                                placeholder="Delgado">
                     </div>
-                    <div id="psy-table" class="fr-mt-6w"></div>
+                </div>
+                <div class="psy-list-elements-to-show" style="display: none;">
+                    <div id="psy-table" class="fr-mt-2w"></div>
                     <!-- Import data as recommended by OWASP :
         https://cheatsheetseries.owasp.org/cheatsheets/Cross_Site_Scripting_Prevention_Cheat_Sheet.html#html-entity-encoding
                   -->
