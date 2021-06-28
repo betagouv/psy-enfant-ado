@@ -41,9 +41,6 @@ app.use('/static/polyfill', express.static(
   path.join(__dirname, 'node_modules/promise-polyfill/dist'), { setHeaders: setNoIndexHeaders }
 ));
 app.use('/static/tabulator-tables', express.static('./node_modules/tabulator-tables/dist', { setHeaders: setNoIndexHeaders }));
-app.use('/static/tarteaucitron', express.static(
-  path.join(__dirname, 'node_modules/tarteaucitronjs'), { setHeaders: setNoIndexHeaders }
-));
 app.use('/static', express.static('static', { setHeaders: setNoIndexHeaders }));
 
 app.use(session({
