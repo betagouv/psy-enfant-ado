@@ -43,7 +43,6 @@
     "pg": "^8.6.0",
     "promise-polyfill": "8.2.0",
     "tabulator-tables": "^4.9.3",
-    "tarteaucitronjs": "1.9.1",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
