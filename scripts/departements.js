@@ -1,5 +1,4 @@
 /* eslint-disable no-process-exit */
-'use strict';
 
 const fs = require('fs');
 const knexConfig = require('../knexfile');
@@ -125,12 +124,15 @@ function displayList (list) {
 log('Dep', 'total');
 
 try {
-  knex.select().table('psychologists').then((valids) => {
+  knex.select().table('psychologists').then((all) => {
 
-    valids = _.reject(_.reject(valids, { state: 'refuse' }), { state: 'sans_suite' });
+    const sansSuite = _.filter(all, { state: 'sans_suite' });
+    const refuse = _.filter(all, { state: 'refuse' });
+
+    const valids = _.reject(_.reject(all, { state: 'refuse' }), { state: 'sans_suite' });
 
     valids.forEach((psy) => {
-      let dep = _.find(deps, { name: psy.departement });
+      const dep = _.find(deps, { name: psy.departement });
       if (!dep) console.log('>>>>>>>>>', psy.departement);
       dep.count++;
     });
@@ -144,7 +146,8 @@ try {
 
     log('', '');
     log('Nombre total de dossier déposés', valids.length);
-    log('Nombre total de dossier en construction', enConstruction.length);
+    log('Nombre total de dossier en sansSuite', sansSuite.length);
+    log('Nombre total de dossier en refuse', refuse.length);
     log('Nombre total de dossier en instruction', enInstruction.length);
     log('Nombre total de dossier en construction', enConstruction.length);
     log('Nombre total de dossier en accepté', accepte.length);
@@ -159,4 +162,3 @@ try {
   console.error('Impossible de récupérer les psychologistes', err);
   throw new Error('Impossible de récupérer les psychologistes');
 }
-
