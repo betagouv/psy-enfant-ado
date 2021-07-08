@@ -47,14 +47,13 @@ var table = new Tabulator('#psy-table', {
       title: 'Contact',
       field: 'email',
       sorter: 'string',
-      width: 230,
+      width: 100,
       responsive: 0,
       headerSort: false,
       cssClass: 'fr-p-3v',
       formatter: function (cell) {
         var d = cell.getRow().getData();
-        return '<a href="' + d.email + '">' + d.email + '</a><br/>' +
-          '<a href="tel:' + d.phone + '">' + d.phone + '</a>';
+        return '<a href="tel:' + d.phone + '">' + d.phone + '</a>';
       }
     },
     {
