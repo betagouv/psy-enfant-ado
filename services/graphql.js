@@ -14,7 +14,7 @@ const graphQLClient = new GraphQLClient(endpoint, {
  * @see https://demarches-simplifiees-graphql.netlify.app/pageinfo.doc.html
  * @param {*} cursor : String
  */
-function getWhereConditionAfterCursor (cursor) {
+function getWhereConditionAfterCursor(cursor) {
   return cursor ? `(after: "${cursor}")` : '';
 }
 
@@ -22,7 +22,7 @@ function getWhereConditionAfterCursor (cursor) {
  * log errors from DS
  * @param {*} apiResponse
  */
-function logErrorsFromDS (apiResponse) {
+function logErrorsFromDS(apiResponse) {
   if (apiResponse.response) {
     if (apiResponse.response.errors.length > 0) {
       apiResponse.response.errors.forEach((err) => {
@@ -45,7 +45,7 @@ function logErrorsFromDS (apiResponse) {
  mandatory field "usager.email" is used as the login email
  * @see https://demarches-simplifiees-graphql.netlify.app/demarche.doc.html
  */
-async function requestPsychologist (afterCursor) {
+async function requestPsychologist(afterCursor) {
   const paginationCondition = getWhereConditionAfterCursor(afterCursor);
   const query = gql`
     {

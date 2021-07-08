@@ -29,8 +29,8 @@ exports.up = function (knex) {
           table.text('cursor');
           table.timestamp('createdAt').defaultTo(knex.fn.now());
           table.timestamp('updatedAt');
-        })
-      })
+        });
+      });
 };
 
 exports.down = function (knex) {

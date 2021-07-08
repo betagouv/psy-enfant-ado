@@ -75,5 +75,4 @@ module.exports.getNumberOfPsychologists = async function getNumberOfPsychologist
     .select('archived', 'state')
     .count('*')
     .groupBy('archived', 'state');
-
 };

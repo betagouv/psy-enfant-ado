@@ -4,7 +4,8 @@ const fs = require('fs');
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig);
 const _ = require('lodash');
-var file = fs.createWriteStream('departments-stats.csv');
+
+const file = fs.createWriteStream('departments-stats.csv');
 
 const deps = [
   { count: 0, name: '01 - Ain' },
@@ -110,12 +111,12 @@ const deps = [
   { count: 0, name: '98 - Mayotte' },
 ];
 
-function log (text, count) {
-  file.write('"' + text + '";' + count + '\n');
+function log(text, count) {
+  file.write(`"${text}";${count}\n`);
   console.log(text, ':', count);
 }
 
-function displayList (list) {
+function displayList(list) {
   list.forEach((item) => {
     log(item.name, item.count);
   });
@@ -125,7 +126,6 @@ log('Dep', 'total');
 
 try {
   knex.select().table('psychologists').then((all) => {
-
     const sansSuite = _.filter(all, { state: 'sans_suite' });
     const refuse = _.filter(all, { state: 'refuse' });
 
@@ -157,7 +157,6 @@ try {
       process.exit();
     }, 200);
   });
-
 } catch (err) {
   console.error('Impossible de récupérer les psychologistes', err);
   throw new Error('Impossible de récupérer les psychologistes');
