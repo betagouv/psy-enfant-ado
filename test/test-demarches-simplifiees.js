@@ -37,7 +37,7 @@ describe('Demarches Simplifiess', () => {
           archived: false,
           state: 'en_instruction',
           adeli: '339308207',
-          address: `15 Impasse de la 4ème République 33140 Villenave-d'Ornon`,
+          address: '15 Impasse de la 4ème République 33140 Villenave-d\'Ornon',
           phone: '0600000000',
           email: 'pj@beta.beta.gouv.fr',
           website: 'https://beta.gouv.fr',
@@ -55,7 +55,6 @@ describe('Demarches Simplifiess', () => {
     const parseWebsite = demarchesSimplifiees.__get__('parseWebsite');
 
     it('should lowercase website', async () => {
-
       const apiResponse = {
         champs: [{
           id: 'Q2hhbXAtMTYzOTQwMQ==',
@@ -68,7 +67,6 @@ describe('Demarches Simplifiess', () => {
     });
 
     it('should trim website', async () => {
-
       const apiResponse = {
         champs: [{
           id: 'Q2hhbXAtMTYzOTQwMQ==',
@@ -81,7 +79,6 @@ describe('Demarches Simplifiess', () => {
     });
 
     it('should exclude if contains space in the middle', async () => {
-
       const apiResponse = {
         champs: [{
           id: 'Q2hhbXAtMTYzOTQwMQ==',
@@ -94,7 +91,6 @@ describe('Demarches Simplifiess', () => {
     });
 
     it('should exclude if not contains dot', async () => {
-
       const apiResponse = {
         champs: [{
           id: 'Q2hhbXAtMTYzOTQwMQ==',
@@ -108,7 +104,6 @@ describe('Demarches Simplifiess', () => {
     });
 
     it('should add https:// if not their', async () => {
-
       const apiResponse = {
         champs: [{
           id: 'Q2hhbXAtMTYzOTQwMQ==',
@@ -125,7 +120,6 @@ describe('Demarches Simplifiess', () => {
     const parsePhone = demarchesSimplifiees.__get__('parsePhone');
 
     it('should return the phone if formatted', async () => {
-
       const apiResponse = {
         champs: [{
           label: 'Numéro de téléphone',
@@ -137,7 +131,6 @@ describe('Demarches Simplifiess', () => {
     });
 
     it('should remove all not needed chars', async () => {
-
       const apiResponse = {
         champs: [{
           label: 'Numéro de téléphone',

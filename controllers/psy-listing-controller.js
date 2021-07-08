@@ -2,14 +2,12 @@ const _ = require('lodash');
 const DEPS = require('../data/departements.json');
 const dbPsychologists = require('../db/psychologists');
 
-const countPsyByDepartments = (psyList) => {
-  return DEPS.map((dep) => {
-    const count = _.filter(psyList, { departement: dep }, 0).length;
-    return { name: dep, count };
-  });
-};
+const countPsyByDepartments = (psyList) => DEPS.map((dep) => {
+  const count = _.filter(psyList, { departement: dep }, 0).length;
+  return { name: dep, count };
+});
 
-module.exports.getPsychologist = async function getPsychologist (req, res) {
+module.exports.getPsychologist = async function getPsychologist(req, res) {
   try {
     const time = `getting all psychologists from Postgres (query id #${Math.random().toString()})`;
     console.time(time);

@@ -4,7 +4,6 @@ require('dotenv').config();
 
 const pstCtrl = rewire('../controllers/psy-listing-controller');
 describe('DB Psychologists', () => {
-
   it('countPsyByDepartments', () => {
     const result = pstCtrl.__get__('countPsyByDepartments')([
       { departement: '01 - Ain' },

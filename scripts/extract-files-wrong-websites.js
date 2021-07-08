@@ -3,7 +3,8 @@
 const fs = require('fs');
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig);
-var file = fs.createWriteStream('files.csv');
+
+const file = fs.createWriteStream('files.csv');
 file.write('dossierNumber,website\n');
 
 try {
@@ -24,7 +25,6 @@ try {
     });
     process.exit();
   });
-
 } catch (err) {
   console.error('Impossible de récupérer les psychologistes', err);
   throw new Error('Impossible de récupérer les psychologistes');

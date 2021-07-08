@@ -11,7 +11,7 @@ exports.DOSSIER_STATE = {
   sans_suite: 'sans_suite',
 };
 
-function getChampValue (champData, attributeName, stringValue = true) {
+function getChampValue(champData, attributeName, stringValue = true) {
   const potentialStringValue = champData.find((champ) => champ.label.includes(attributeName));
 
   if (typeof potentialStringValue === 'undefined') {
@@ -27,7 +27,7 @@ function getChampValue (champData, attributeName, stringValue = true) {
 
 const FORBIDDEN_CHARS = new RegExp([' ', ';'].join('|'));
 
-function parseWebsite (dossier, dossierNumber) {
+function parseWebsite(dossier, dossierNumber) {
   const website = getChampValue(dossier.champs, 'Avez-vous un site web');
   if (!website) return '';
 
@@ -39,13 +39,13 @@ function parseWebsite (dossier, dossierNumber) {
   }
 
   if (!formatted.startsWith('http://') && !formatted.startsWith('https://')) {
-    formatted = 'https://' + formatted;
+    formatted = `https://${formatted}`;
   }
 
   return formatted;
 }
 
-function parsePhone (dossier) {
+function parsePhone(dossier) {
   const phone = getChampValue(dossier.champs, 'Numéro de téléphone');
   if (!phone) return '';
 
@@ -56,11 +56,11 @@ function parsePhone (dossier) {
  * transform string to boolean
  * @param {*} inputString 'true' or 'false'
  */
-function parseTeleconsultation (inputString) {
+function parseTeleconsultation(inputString) {
   return inputString === 'true';
 }
 
-function parseDossierMetadata (dossier) {
+function parseDossierMetadata(dossier) {
   const { state } = dossier;
   const { archived } = dossier;
   const lastName = dossier.demandeur.nom.trim();
@@ -95,7 +95,7 @@ function parseDossierMetadata (dossier) {
   };
 }
 
-function parsePsychologist (apiResponse) {
+function parsePsychologist(apiResponse) {
   console.debug(`Parsing ${apiResponse.demarche.dossiers.nodes.length} psychologists from DS API`);
 
   const dossiers = apiResponse.demarche.dossiers.nodes;
@@ -107,7 +107,7 @@ function parsePsychologist (apiResponse) {
  * @param {*} cursor
  * @param {*} accumulator
  */
-async function getAllPsychologistList (cursor, accumulator = []) {
+async function getAllPsychologistList(cursor, accumulator = []) {
   const apiResponse = await graphql.requestPsychologist(cursor);
   const { pageInfo } = apiResponse.demarche.dossiers;
 
@@ -132,7 +132,7 @@ async function getAllPsychologistList (cursor, accumulator = []) {
  * if we have more than 100 elements in DS, we have to use pagination (cursor)
  * cursor : String - next page to query the API
  */
-module.exports.getPsychologistList = async function getPsychologistList (cursor) {
+module.exports.getPsychologistList = async function getPsychologistList(cursor) {
   const time = `Fetching all psychologists from DS (query id #${Math.random().toString()})`;
 
   console.time(time);

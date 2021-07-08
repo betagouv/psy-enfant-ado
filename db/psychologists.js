@@ -9,9 +9,7 @@ module.exports.getPsychologists = async () => {
   try {
     return knex.column(
       knex.raw('UPPER("lastName") as "lastName"'), // force to use quote otherwise knex understands it as "lastname"
-      'adeli',
       'firstNames',
-      'email',
       'address',
       'departement',
       'phone',
@@ -77,5 +75,4 @@ module.exports.getNumberOfPsychologists = async function getNumberOfPsychologist
     .select('archived', 'state')
     .count('*')
     .groupBy('archived', 'state');
-
 };
