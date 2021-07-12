@@ -53,4 +53,8 @@ module.exports = [
     q: 'Vous ne trouvez pas la réponse à votre question ici ?',
     r: 'Nous vous invitons à contacter votre organisme d’Assurance Maladie par téléphone au 3646.',
   },
+  {
+    q: 'Puis-je choisir un psychologue hors de mon département de résidence ?',
+    r: 'Il n\'y a pas de limitation géographique pour les consultations, votre enfant peut consulter un psychologue hors de votre département de résidence.',
+  }
 ];
