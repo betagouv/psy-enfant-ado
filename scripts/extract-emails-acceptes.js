@@ -1,25 +1,25 @@
 /* eslint-disable no-process-exit */
 
+const fs = require('fs');
 const knexConfig = require('../knexfile');
 const knex = require('knex')(knexConfig);
 const _ = require('lodash');
-// var file = fs.createWriteStream('emails-psy.csv');
-//
-// file.write('"Email";"FirstName";"LastName"\n');
+
+const file = fs.createWriteStream('emails-psy.csv');
+
+file.write('"Email";"FirstName";"LastName"\n');
 
 try {
   knex.select().table('psychologists').then((all) => {
-    // const accepte = _.filter(all, { state: 'accepte'});
-    // const accepte = _.filter(all, { state: 'accepte', archived: false });
+    const accepte = _.filter(all, { state: 'accepte', archived: false });
 
-    all.forEach((item) => {
+    accepte.forEach((item) => {
       if (_.filter(all, { email: item.email }).length > 1) {
-        console.log('>>>>');
-        console.log(item.dossierNumber, item.email);
+        file.write(`"${item.email}";"${item.firstName}";"${item.lastName}"\n`);
       }
     });
 
-    // console.log('Nombre total de dossier en accepté', accepte.length);
+    console.log('Nombre total de dossier en accepté', accepte.length);
 
     setTimeout(() => {
       process.exit();
