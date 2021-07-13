@@ -146,11 +146,11 @@ try {
 
     log('', '');
     log('Nombre total de dossier déposés', valids.length);
-    log('Nombre total de dossier en sansSuite', sansSuite.length);
-    log('Nombre total de dossier en refuse', refuse.length);
+    log('Nombre total de dossier sans suite', sansSuite.length);
+    log('Nombre total de dossier refusés', refuse.length);
     log('Nombre total de dossier en instruction', enInstruction.length);
     log('Nombre total de dossier en construction', enConstruction.length);
-    log('Nombre total de dossier en accepté', accepte.length);
+    log('Nombre total de dossier acceptés', accepte.length);
     log('Nombre de départements sans dossiers', noDossier.length);
 
     setTimeout(() => {
