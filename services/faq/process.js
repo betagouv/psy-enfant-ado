@@ -20,4 +20,9 @@ module.exports = [
     r: 'Non, le forfait n’est pas renouvelable.<br/>'
       + 'Si la situation ne s’est pas améliorée à l’issue de la prise en charge, il est nécessaire que l’enfant consulte un médecin afin d’être orienté vers des soins adaptés.',
   },
+  {
+    q: 'Puis-je prendre en charge un jeune qui aurait 18 ans lors de son suivi ?',
+    r: 'Le dispositif s\'adresse aux patients de 3 à 17 ans inclus.<br/>'
+      + 'Néanmoins, si la prise en charge d\'un patient débute alors qu\'il a 17 ans, son parcours de soutien psychologique peut se poursuivre même s\'il atteint ses 18 ans avant la fin du nombre de séances convenu (jusqu\'à 10).',
+  }
 ];
