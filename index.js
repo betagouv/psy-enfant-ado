@@ -72,6 +72,8 @@ app.use((req, res, next) => {
 });
 
 app.get('/', landingController.getLanding);
+app.get('/parent', landingController.getParent);
+app.get('/psychologue', landingController.getPsy);
 app.get('/faq', faqController.getFaq);
 
 app.get('/trouver-un-psychologue', psyListingController.getPsychologist);

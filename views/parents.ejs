@@ -1,0 +1,74 @@
+<%- include('partials/header') -%>
+
+<div class="fr-container fr-p-10w">
+    <h1>
+        Je suis parent
+    </h1>
+</div>
+<div class="fr-container--fluid fr-centered fr-pt-4w fr-pb-2w fr-bg--alt">
+    <div class="fr-container">
+        <div class="fr-grid-row fr-grid-row--center">
+            <div class="fr-col-xs-12">
+                <h2>Comment ça se passe&nbsp;? </h2>
+                <h3>Trois étapes indispensables</h3>
+            </div>
+        </div>
+
+        <div class="fr-grid-row fr-grid-row--center">
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-text--lg fr-pb-2w fr-mb-1v">1. Consultez un médecin</div>
+                <div class="fr-text--sm fr-mb-1v">Tout médecin peut orienter votre enfant vers un accompagnement
+                    psychologique (le pédiatre, le médecin généraliste, le médecin scolaire, celui du service de PMI,
+                    de l’hôpital...)
+                </div>
+            </div>
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-text--lg fr-pb-2w fr-mb-1v">2. Choisissez un psychologue</div>
+                <div class="fr-text--sm fr-mb-1v">Vous choisissez, parmi la liste des psychologues partenaires, le
+                    professionnel qui accompagnera votre enfant et vous.
+                </div>
+            </div>
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-text--lg fr-pb-2w fr-mb-1v">3. Faites bénéficier votre enfant d'un suivi</div>
+                <div class="fr-text--sm fr-mb-1v">Vous prenez rendez-vous avec le psychologue choisi, qui suivra votre
+                    enfant pendant 10 séances au maximum.
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="fr-centered fr-py-2w fr-p-10w">
+    <% if (config.featurePsyList) { %>
+        <h4 class="fr-callout__title">Annuaire des psychologues partenaires</h4>
+        <p class="fr-text--sm">ANNUAIRE ?</p>
+
+        <a class="fr-btn fr-btn" href="/trouver-un-psychologue">Trouver un psychologue partenaire</a>
+    <% } else { %>
+        <div class="fr-callout fr-callout-none">
+            <h4 class="fr-callout__title">Annuaire en cours de construction</h4>
+            <p class="fr-callout__text">
+                Disponible le 15 juin
+            </p>
+        </div>
+    <% } %>
+</div>
+
+<div class="fr-container--fluid fr-bg--light fr-mb-4w">
+    <div class="fr-container">
+        <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
+            <div class="fr-col fr-col-xs-10 fr-col-md-10 fr-my-4w">
+
+
+                <p class="fr-my-2w">Des questions sur le dispositif&nbsp;?</p>
+                <a class="fr-btn fr-btn--secondary" href="/faq#parent">Consulter la Foire Aux
+                    Questions</a>
+                <p class="fr-my-2w">Nous vous suggérons aussi ce site de conseils pour gérer les
+                    difficultés pendant cette période de crise :</p>
+                <a target="_blank" rel="noopener"
+                   href="https://filsantejeunes.com/mal-etre">filsantejeunes.com/mal-etre</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>

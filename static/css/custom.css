@@ -36,16 +36,14 @@ a.fr-btn--alt[href]:hover,
     box-shadow: none;
 }
 
-.w-100 {
-    width: 100%;
-}
-
 .w-max-200 {
     max-width: 200px;
 }
 
 .hero {
-    min-height: 350px
+    min-height: 220px;
+    z-index: -1;
+    position: relative;
 }
 
 .frame {
@@ -80,4 +78,11 @@ a.fr-btn--alt[href]:hover,
         background: #fafbfc;
         border-left: 3px solid #000091;
     }
+}
+.gradient-bg {
+    background: rgb(69,13,40);
+    background: linear-gradient(90deg, rgba(69,13,40,1) 70%, rgba(225,141,126,1) 100%);}
+.card {
+    background: white;
+    border-radius: 4px;
 }

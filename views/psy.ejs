@@ -1,0 +1,77 @@
+<%- include('partials/header') -%>
+<div class="fr-container fr-p-10w">
+    <h1>
+        Je suis psychologue
+    </h1>
+</div>
+<div class="fr-container--fluid fr-centered fr-pt-4w fr-py-6w fr-bg--alt">
+    <div class="fr-container">
+
+        <div class="fr-grid-row fr-grid-row--center">
+            <div class="fr-col-xs-12">
+                <h3>Trois étapes indispensables</h3>
+            </div>
+        </div>
+
+        <div class="fr-grid-row fr-grid-row--center">
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-text--lg fr-pb-2w fr-mb-1v">1.</div>
+                <div class="fr-text--sm fr-mb-1v">Je candidate en ligne sur demarches simplifiées. Une fois ma
+                    candidature acceptée, mes coordonnées sont publiées sur l’annuaire en ligne
+
+                </div>
+            </div>
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-text--lg fr-pb-2w fr-mb-1v">2.</div>
+                <div class="fr-text--sm fr-mb-1v">Les familles, munies d’une ordonnance, prennent rendez-vous avec moi
+                    pour un bilan, puis un parcours de suivi psychothérapeutique
+                </div>
+            </div>
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-text--lg fr-pb-2w fr-mb-1v">3.</div>
+                <div class="fr-text--sm fr-mb-1v">A la fin du parcours de suivi (jusqu’à 10 séances), j’adresse la
+                    feuille de soins et l’ordonnance à la CPAM de mon territoire pour être
+                    rémunéré.e/facturé.e/rétribué.e
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="fr-container" id="je-suis-psychologue">
+    <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
+        <div class="fr-col fr-col-xs-10 fr-col-md-10 fr-my-4w">
+            <h2 class="fr-mb-2w">
+                Vous souhaitez participer au programme d'accompagnement psychologique des enfants et des
+                adolescents&nbsp;?
+                Merci&nbsp;!
+            </h2>
+            <p class="fr-mb-2w">
+                Une fois inscrit(e), et en cas d'éligibilité, vos coordonnées apparaîtront dans l'annuaire public
+                des psychologues partenaires sur cette plateforme. La caisse d’assurance maladie à laquelle vous êtes
+                rattaché(e) vous transmettra rapidement la convention signée. Celle-ci garantit le remboursement de
+                l'ensemble des séances que vous réaliserez dans le cadre de ce dispositif.
+            </p>
+
+            <p class="fr-my-2w">Des questions sur le dispositif&nbsp;?</p>
+            <a class="fr-btn fr-btn--secondary" href="/faq#psy">Consulter la Foire Aux Questions</a>
+
+            <p class="fr-my-2w">Vous voulez devenir psychologue partenaire du dispositif&nbsp;?</p>
+
+            <% if (formUrl) { %>
+                <a class="fr-btn fr-btn--alt" href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
+                    Commencer mon inscription
+                </a>
+            <% } else { %>
+                <div class="fr-callout fr-callout-none">
+                    <h4 class="fr-callout__title">Formulaire d’inscription en cours de construction</h4>
+                    <p class="fr-callout__text">
+                        Disponible fin mai
+                    </p>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') -%>
