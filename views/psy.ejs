@@ -1,37 +1,65 @@
 <%- include('partials/header') -%>
-<div class="fr-container fr-p-10w">
-    <h1>
-        Je suis psychologue
-    </h1>
-</div>
-<div class="fr-container--fluid fr-centered fr-pt-4w fr-py-6w fr-bg--alt">
-    <div class="fr-container">
 
+<div class="fr-container">
+    <div class="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-my-4w">
+        <div class="fr-col-5 fr-col-offset-1 fr-pr-4w fr-pt-6w">
+            <h1>Je suis psychologue</h1>
+            <p>Je souhaite m’informer sur le dispositif ou devenir partenaire</p>
+        </div>
+        <div class="fr-col-3 fr-col-offset-2--right">
+            <img class="hero" src="/static/images/psy.png"
+                 alt="En parler, c’est déjà se soigner"/>
+        </div>
+    </div>
+</div>
+<div class="fr-container--fluid fr-centered fr-pt-4w fr-py-6w">
+    <div class="fr-container">
         <div class="fr-grid-row fr-grid-row--center">
             <div class="fr-col-xs-12">
-                <h3>Trois étapes indispensables</h3>
+                <h2>Les étapes clés</h2>
             </div>
         </div>
 
         <div class="fr-grid-row fr-grid-row--center">
             <div class="fr-col-xs-12 fr-col-md-3">
-                <div class="fr-text--lg fr-pb-2w fr-mb-1v">1.</div>
-                <div class="fr-text--sm fr-mb-1v">Je candidate en ligne sur demarches simplifiées. Une fois ma
-                    candidature acceptée, mes coordonnées sont publiées sur l’annuaire en ligne
+                <div class="fr-centered fr-m-2w fr-px-2w fr-py-3w fr-bg--light card">
+                    <div class="fr-bg--light-2 fr-p-1v fr-text--xl fr-m-auto step">
+                        <span class="number">1.</span>
+                    </div>
+                    <div class="fr-p-2w">
+                        <strong class="fr-text--lg d-block fr-mb-2w">Candidature</strong>
+                        <a href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
+                            Je candidate en ligne
+                        </a> sur demarches simplifiées. Une fois
+                        ma candidature acceptée, mes coordonnées sont publiées sur l’annuaire en ligne
+                    </div>
+                </div>
+            </div>
+            <div class="fr-col-xs-12 fr-col-md-3">
+                <div class="fr-centered fr-m-2w fr-px-2w fr-py-3w fr-bg--light card">
 
+                    <div class="fr-bg--light-2 fr-p-1v fr-text--xl fr-m-auto step">
+                        <span class="number">2.</span>
+                    </div>
+                    <div class="fr-p-2w">
+                        <strong class="fr-text--lg d-block fr-mb-2w">Rendez-vous</strong>
+                        Les familles, munies d’une ordonnance, prennent rendez-vous avec moi
+                        pour un bilan, puis un parcours de suivi psychothérapeutique
+                    </div>
                 </div>
             </div>
             <div class="fr-col-xs-12 fr-col-md-3">
-                <div class="fr-text--lg fr-pb-2w fr-mb-1v">2.</div>
-                <div class="fr-text--sm fr-mb-1v">Les familles, munies d’une ordonnance, prennent rendez-vous avec moi
-                    pour un bilan, puis un parcours de suivi psychothérapeutique
-                </div>
-            </div>
-            <div class="fr-col-xs-12 fr-col-md-3">
-                <div class="fr-text--lg fr-pb-2w fr-mb-1v">3.</div>
-                <div class="fr-text--sm fr-mb-1v">A la fin du parcours de suivi (jusqu’à 10 séances), j’adresse la
-                    feuille de soins et l’ordonnance à la CPAM de mon territoire pour être
-                    rémunéré.e/facturé.e/rétribué.e
+                <div class="fr-centered fr-m-2w fr-px-2w fr-py-3w fr-bg--light card">
+
+                    <div class="fr-bg--light-2 fr-p-1v fr-text--xl fr-m-auto step">
+                        <span class="number">3.</span>
+                    </div>
+                    <div class="fr-p-2w">
+                        <strong class="fr-text--lg d-block fr-mb-2w">Remboursement</strong>
+                        A la fin du parcours de suivi (jusqu’à 10 séances), j’adresse la
+                        feuille de soins et l’ordonnance à la CPAM de mon territoire pour être
+                        remboursé.e
+                    </div>
                 </div>
             </div>
         </div>
@@ -52,12 +80,6 @@
                 rattaché(e) vous transmettra rapidement la convention signée. Celle-ci garantit le remboursement de
                 l'ensemble des séances que vous réaliserez dans le cadre de ce dispositif.
             </p>
-
-            <p class="fr-my-2w">Des questions sur le dispositif&nbsp;?</p>
-            <a class="fr-btn fr-btn--secondary" href="/faq#psy">Consulter la Foire Aux Questions</a>
-
-            <p class="fr-my-2w">Vous voulez devenir psychologue partenaire du dispositif&nbsp;?</p>
-
             <% if (formUrl) { %>
                 <a class="fr-btn fr-btn--alt" href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
                     Commencer mon inscription
@@ -70,6 +92,13 @@
                     </p>
                 </div>
             <% } %>
+
+            <h3 class="fr-my-2w">Des questions sur le dispositif&nbsp;?</h3>
+            <a class="fr-btn fr-btn--secondary" href="/faq#psy">Consulter la Foire Aux Questions</a>
+
+            <p class="fr-mt-4w">Vous avez d'autres questions, n’hésitez pas à envoyer un
+                message à l’adresse : <strong>psyenfantado@beta.gouv.fr</strong>.</p>
+
         </div>
     </div>
 </div>
