@@ -84,7 +84,8 @@
         </div>
     </div>
 </div>
-<div class="fr-container fr-py-2w fr-p-10w">
+<div class="fr-container fr-py-6w">
+    <h2 class="fr-pl-4w">Trouver un psychologue partenaire du dispositif</h2>
     <%- include('partials/listing.ejs') -%>
 </div>
 
@@ -100,14 +101,15 @@
         </div>
     </div>
 </div>
-<div class="fr-container">
-    <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
+
+<div class="fr-container fr-centered">
+    <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters fr-pb-4w">
         <div class="fr-col-10">
-            <h3 class="fr-my-2w">Des questions sur le dispositif&nbsp;?</h3>
+            <h2 class="fr-my-2w">Des questions sur le dispositif&nbsp;?</h2>
             <a class="fr-btn fr-btn--secondary" href="/faq#parent">Consulter la Foire Aux Questions</a>
 
             <p class="fr-mt-4w">Vous avez d'autres questions, n’hésitez pas à envoyer un
-                message à l’adresse : <strong>psyenfantado@beta.gouv.fr</strong>.</p>
+                message à l’adresse : <strong><%= contactEmail %></strong>.</p>
         </div>
     </div>
 </div>
