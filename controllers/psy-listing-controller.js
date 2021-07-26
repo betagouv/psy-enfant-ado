@@ -23,7 +23,7 @@ const getPsychologist = async function getPsychologist (req, res, view) {
     console.error('getPsychologist', err);
     res.render(view, {
       psyList: [],
-      deps: DEPS,
+      deps: DEPS
     });
   }
 };
