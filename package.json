@@ -21,7 +21,7 @@
   "author": "dev-transverse@beta.gouv.fr",
   "license": "MIT",
   "dependencies": {
-    "@gouvfr/dsfr": "^1.0.0rc1",
+    "@gouvfr/dsfr": "1.0.0",
     "@sentry/integrations": "^6.4.0",
     "@sentry/node": "^6.4.0",
     "@sentry/tracing": "^6.4.0",
