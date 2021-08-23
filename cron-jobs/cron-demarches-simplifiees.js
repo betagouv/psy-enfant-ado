@@ -10,7 +10,7 @@ async function importDataFromDSToPG(cursor) {
 
     const dsAPIData = await demarchesSimplifiees.getPsychologistList(cursor);
 
-    if (dsAPIData.psychologists.length > 0) {
+    if (dsAPIData && dsAPIData.psychologists.length > 0) {
       await dbPsychologists.savePsychologist(dsAPIData.psychologists);
       await dbsApiCursor.saveLatestCursor(dsAPIData.lastCursor);
 
