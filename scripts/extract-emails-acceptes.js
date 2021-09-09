@@ -12,7 +12,7 @@ let output = '"Email";"FirstName";"LastName"\n';
 try {
   knex.select().table('psychologists').then((all) => {
     const accepte = _.map(_.filter(all, { state: 'accepte' }), (item) => {
-      return `"${item.email}";"${item.firstName}";"${item.lastName}"`;
+      return `"${item.email}";"${item.firstNames}";"${item.lastName}"`;
     });
 
     output += _.uniq(accepte).join('\n');

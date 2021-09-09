@@ -12,7 +12,7 @@ const deps = [
   { count: 0, name: '02 - Aisne' },
   { count: 0, name: '03 - Allier' },
   { count: 0, name: '04 - Alpes de Haute Provence' },
-  { count: 0, name: '05 - Hautes Alpes' },
+  { count: 0, name: '05 - Hautes-Alpes' },
   { count: 0, name: '06 - Alpes Maritimes' },
   { count: 0, name: '07 - Ardèche' },
   { count: 0, name: '08 - Ardennes' },
@@ -105,18 +105,18 @@ const deps = [
   { count: 0, name: '94 - Val de Marne' },
   { count: 0, name: '95 - Val d\'Oise' },
   { count: 0, name: '971 - Guadeloupe' },
-  { count: 0, name: '97 - Martinique' },
-  { count: 0, name: '97 - Guyane' },
+  { count: 0, name: '972 - Martinique' },
+  { count: 0, name: '973 - Guyane' },
   { count: 0, name: '974 - Ile de la Réunion' },
-  { count: 0, name: '98 - Mayotte' },
+  { count: 0, name: '976 - Mayotte' },
 ];
 
-function log(text, count) {
+function log (text, count) {
   file.write(`"${text}";${count}\n`);
   console.log(text, ':', count);
 }
 
-function displayList(list) {
+function displayList (list) {
   list.forEach((item) => {
     log(item.name, item.count);
   });
@@ -129,7 +129,7 @@ try {
     const sansSuite = _.filter(all, { state: 'sans_suite' });
     const refuse = _.filter(all, { state: 'refuse' });
 
-    const valids = _.reject(_.reject(all, { state: 'refuse' }), { state: 'sans_suite' });
+    const valids = _.reject(_.reject(_.reject(all, { state: 'refuse' }), { state: 'sans_suite' }), { archived: true });
 
     valids.forEach((psy) => {
       const dep = _.find(deps, { name: psy.departement });
@@ -145,7 +145,7 @@ try {
     displayList(deps);
 
     log('', '');
-    log('Nombre total de dossier déposés', valids.length);
+    log('Nombre total de dossier déposés', all.length);
     log('Nombre total de dossier sans suite', sansSuite.length);
     log('Nombre total de dossier refusés', refuse.length);
     log('Nombre total de dossier en instruction', enInstruction.length);
