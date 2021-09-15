@@ -32,4 +32,8 @@ module.exports = [
     r: 'Le dispositif vise à mobiliser celles et ceux qui disposent du titre règlementé de psychologue. Certains psychologues détiennent d’autres qualifications qu’ils peuvent mentionner dans le formulaire de candidature. <br />'
       + 'Les psychiatres sont déjà conventionnés avec l’Assurance Maladie aussi leurs actes sont déjà pris en charge par l’Assurance Maladie. Ils n’ont donc pas vocation à intégrer le dispositif PsyEnfantAdo.',
   },
+  {
+    q: 'Suis-je soumis.e à l’obligation vaccinale ?',
+    r: 'Dans le cadre de la Loi relative à la gestion de la crise sanitaire et suite à <a href="https://www.conseil-constitutionnel.fr/decision/2021/2021824DC.htm" target="_blank">la décision rendue par le Conseil Constitutionnel le 5 août</a>, des professionnels sont soumis à l’obligation vaccinale dont  les Psychologues. Plus d’informations <a href="https://solidarites-sante.gouv.fr/grands-dossiers/vaccin-covid-19/je-suis-un-professionnel-de-sante-du-medico-social-et-du-social/obligation-vaccinale" target="_blank">ici</a>.',
+  },
 ];
