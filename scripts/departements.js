@@ -72,7 +72,7 @@ const deps = [
   { count: 0, name: '61 - Orne' },
   { count: 0, name: '62 - Pas de Calais' },
   { count: 0, name: '63 - Puy-de-Dôme' },
-  { count: 0, name: '64 - Pyrennées Atlantiques' },
+  { count: 0, name: '64 - Pyrénées Atlantiques' },
   { count: 0, name: '65 - Hautes Pyrénées' },
   { count: 0, name: '66 - Pyrénées Orientales' },
   { count: 0, name: '67 - Bas Rhin' },
