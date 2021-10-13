@@ -4,10 +4,6 @@ const config = require('../../config');
 
 module.exports = [
   {
-    q: 'A partir de quand vos enfants peuvent-ils bénéficier du dispositif ?',
-    r: 'Vos enfants pourront bénéficier du dispositif dès la mise en ligne de l’annuaire des psychologues volontaires, au début du mois de juin.',
-  },
-  {
     q: 'Mon enfant est en souffrance et il a besoin d’une aide psychologique. Que dois-je faire ?',
     r: 'Pour bénéficier de séances intégralement prises en charge par l’Assurance Maladie, vous et votre enfant devez consulter un médecin (celui qui suit habituellement votre enfant, par exemple). A la suite de ce rendez-vous, votre médecin vous orientera en cas de besoin vers un psychologue partenaire du dispositif. Vous pouvez consulter la liste des psychologues sur le site psyenfantado.sante.gouv.fr.<br />'
       + 'Dans tous les cas, si vous êtes inquiets, consultez rapidement votre médecin traitant avec votre enfant. Il pourra vous dire si votre enfant relève d’un suivi avec un psychologue ou s’il faut mieux consulter un psychiatre ou un service spécialisé. Si vous êtes très inquiet et craignez un geste suicidaire ou de violence, appelez le SAMU.',
@@ -31,7 +27,7 @@ module.exports = [
   },
   {
     q: 'Jusqu’à quand mon enfant peut-il bénéficier de ce dispositif d’urgence ?',
-    r: 'Ce dispositif est un dispositif d’urgence temporaire visant à répondre aux conséquences de la crise sanitaire sur la santé mentale des enfants et adolescents. Le médecin pourra orienter vers un psychologue du dispositif, les enfants et adolescents jusqu’au 31 octobre 2021 (date indiquée sur l’ordonnance). Tandis que les séances pourront être réalisées jusqu’au 31 janvier 2022.',
+    r: 'Ce dispositif est un dispositif d’urgence temporaire visant à répondre aux conséquences de la crise sanitaire sur la santé mentale des enfants et adolescents. Le médecin pourra orienter vers un psychologue du dispositif, les enfants et adolescents jusqu’à la fin de l’année (date indiquée sur l’ordonnance).Les séances pourront être réalisées jusqu’au 31 janvier 2022. Il est donc recommandé de commencer le suivi le plus tôt possible.',
   },
   {
     q: 'Puis-je changer de psychologue durant le parcours de prise en charge ?',

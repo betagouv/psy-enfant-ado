@@ -26,5 +26,9 @@ module.exports = [
   {
     q: 'Je suis déjà partenaire d\'un dispositif expérimental lié au soutien psychologique, dois-je soumettre une nouvelle candidature pour participer au dispositif PsyEnfantAdo ?',
     r: 'Vous participez déjà à un dispositif expérimental tel que celui mené actuellement dans 4 départements par l’Assurance Maladie « Troubles en santé mentale d’intensité légère à modérée » chez l’adulte ou SantéPsyEtudiant, vous pouvez également rejoindre le dispositif PsyEnfantAdo. Toutefois, comme ces dispositifs sont distincts, il est néanmoins nécessaire de soumettre une candidature via la plateforme et de signer la convention dédiée.'
+  },
+  {
+    q: 'Pourrais-je participer au dispositif national unifié annoncé par le Président de la République ?',
+    r: 'Lors de la clôture des assises de la santé mentale et de la psychiatrie, mardi 28 septembre dernier, le président de la République a annoncé <a href="https://solidarites-sante.gouv.fr/prevention-en-sante/sante-mentale/accompagnement-psychologique/article/vers-un-remboursement-des-seances-de-psychologues-en-2022" target="_blank">le remboursement par l’assurance maladie</a>, à partir de 2022, sur adressage d’un médecin, de séances d’accompagnement psychologique réalisé par un psychologue volontaire conventionné avec l’assurance maladie. Nous vous informerons en fin d\'année des conditions d\'accès au nouveau dispositif.'
   }
 ];
