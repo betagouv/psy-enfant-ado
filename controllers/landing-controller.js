@@ -4,7 +4,7 @@ const formUrl = config.demarchesSimplifieesUrl;
 
 module.exports.getLanding = async function getLanding (req, res) {
 
-  res.render('landing', { formUrl, config });
+  res.render('landing', { config });
 };
 
 module.exports.getPsy = async function getPsy (req, res) {

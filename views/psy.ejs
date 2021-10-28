@@ -4,7 +4,7 @@
     <div class="fr-grid-row fr-grid-row--center fr-grid-row--middle fr-my-4w">
         <div class="fr-col-5 fr-col-offset-1 fr-pr-4w fr-pt-6w">
             <h1>Je suis psychologue</h1>
-            <p>Je souhaite m’informer sur le dispositif ou devenir partenaire</p>
+            <p>Je souhaite m’informer sur le dispositif</p>
         </div>
         <div class="fr-col-3 fr-col-offset-2--right">
             <img class="hero" src="/static/images/psy.png"
@@ -16,46 +16,34 @@
     <div class="fr-container">
         <div class="fr-grid-row fr-grid-row--center">
             <div class="fr-col-xs-12">
-                <h2>Les étapes clés</h2>
+                <h2>Les étapes clés pour les psychologues partenaires du dispositif</h2>
             </div>
         </div>
 
         <div class="fr-grid-row fr-grid-row--center">
             <div class="fr-col-xs-12 fr-col-md-3">
                 <div class="fr-centered fr-m-2w fr-px-2w fr-py-3w fr-bg--light card">
+
                     <div class="fr-bg--light-2 fr-p-1v fr-text--xl fr-m-auto step">
                         <span class="number">1.</span>
                     </div>
                     <div class="fr-p-2w">
-                        <strong class="fr-text--lg d-block fr-mb-2w">Candidature</strong>
-                        <a href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">Je candidate en ligne</a> sur
-                        demarches simplifiées. Une fois ma candidature acceptée, mes coordonnées sont publiées
-                        sur <a href="/trouver-un-psychologue" target="_blank">l’annuaire en ligne</a>
+                        <strong class="fr-text--lg d-block fr-mb-2w">Rendez-vous</strong>
+                        Les familles, munies d’une ordonnance, prennent rendez-vous avec vous pour un bilan, puis un
+                        parcours de suivi psychologique à réaliser avant le 31 janvier 2022.
+
                     </div>
                 </div>
             </div>
             <div class="fr-col-xs-12 fr-col-md-3">
                 <div class="fr-centered fr-m-2w fr-px-2w fr-py-3w fr-bg--light card">
-
                     <div class="fr-bg--light-2 fr-p-1v fr-text--xl fr-m-auto step">
                         <span class="number">2.</span>
                     </div>
                     <div class="fr-p-2w">
-                        <strong class="fr-text--lg d-block fr-mb-2w">Rendez-vous</strong>
-                        Les familles, munies d’une ordonnance, prennent rendez-vous avec moi
-                        pour un bilan, puis un parcours de suivi psychothérapeutique
-                    </div>
-                </div>
-            </div>
-            <div class="fr-col-xs-12 fr-col-md-3">
-                <div class="fr-centered fr-m-2w fr-px-2w fr-py-3w fr-bg--light card">
-                    <div class="fr-bg--light-2 fr-p-1v fr-text--xl fr-m-auto step">
-                        <span class="number">3.</span>
-                    </div>
-                    <div class="fr-p-2w">
                         <strong class="fr-text--lg d-block fr-mb-2w">Prise en charge</strong>
-                        A la fin du parcours de suivi (jusqu’à 10 séances), j’adresse la feuille de soins et
-                        l’ordonnance à la CPAM de mon département pour obtenir le paiement des séances effectuées
+                        A la fin du parcours de suivi (jusqu’à 10 séances), vous adressez la feuille de soins et
+                        l’ordonnance à la CPAM de votre département pour obtenir le paiement des séances effectuées
                     </div>
                 </div>
             </div>
@@ -67,31 +55,21 @@
     <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
         <div class="fr-col fr-col-xs-10 fr-col-md-10 fr-my-4w">
             <h2 class="fr-mb-2w">
-                Vous souhaitez participer au programme d'accompagnement psychologique des enfants et des
-                adolescents&nbsp;?
-                Merci&nbsp;!
+                Vous participez au programme d'accompagnement psychologique des enfants et des adolescents : Merci !
             </h2>
             <p class="fr-mb-2w">
-                Une fois inscrit(e), et en cas d'éligibilité, vos coordonnées apparaîtront dans l'annuaire public
-                des psychologues partenaires sur cette plateforme.</p>
-            <p class="fr-mb-2w">La caisse d’assurance maladie à laquelle vous êtes
-                rattaché(e) vous transmettra rapidement la convention signée.</p>
-            <p class="fr-mb-2w"> Celle-ci garantit le remboursement de
-                l'ensemble des séances que vous réaliserez dans le cadre de ce dispositif.</p>
-            </p>
-            <% if (formUrl) { %>
-                <a class="fr-btn fr-btn--alt" href="<%= formUrl %>" target="_blank" rel="noopener noreferrer">
-                    Commencer mon inscription
-                </a>
-            <% } else { %>
-                <div class="fr-callout fr-callout-none">
-                    <h4 class="fr-callout__title">Formulaire d’inscription en cours de construction</h4>
-                    <p class="fr-callout__text">
-                        Disponible fin mai
-                    </p>
-                </div>
-            <% } %>
+                Une fois conventionné.e avec l’assurance maladie, vos coordonnées apparaissent dans l'annuaire public
+                des psychologues partenaires sur cette plateforme. </p>
 
+            <p class="fr-mb-2w"><strong>Les candidatures sont closes depuis le 31/10/21. Si vous avez candidaté avant
+                    cette date, votre dossier est en cours de traitement ou a été accepté. Vous êtes alors référencé.e
+                    sur l’annuaire en ligne.</strong></p>
+            <p class="fr-mb-2w">Le médecin peut orienter vers vous, des enfants et adolescents, jusqu’à la fin de
+                l’année (date indiquée sur l’ordonnance). Les séances pourront être réalisées jusqu’au 31 janvier
+                2022.</p>
+            <p> La caisse d’assurance maladie à laquelle vous êtes rattaché(e) garantit le remboursement de l'ensemble
+                des séances que vous réaliserez dans le cadre de ce dispositif.</p>
+            </p>
         </div>
     </div>
 </div>
@@ -102,7 +80,7 @@
             <a class="fr-btn fr-btn--secondary" href="/faq#psy">Consulter la Foire Aux Questions</a>
 
             <p class="fr-mt-4w">Vous avez d'autres questions, n’hésitez pas à envoyer un
-                message à l’adresse : <strong><%= contactEmail %></strong>.</p>
+                message à l’adresse : <strong><%= contactEmail; %></strong>.</p>
         </div>
     </div>
 </div>
