@@ -73,6 +73,47 @@
         </div>
     </div>
 </div>
+<div class="fr-container--fluid fr-bg--light">
+    <div class="fr-container fr-centered">
+        <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters">
+            <div class="fr-col-8 fr-my-4w">
+                <p class="fr-text fr-mb-4v">
+                    A partir de début 2022, un nouveau dispositif proposera des séances d’accompagnement
+                    psychologique auprès d'enfants comme d'adultes réalisé par un psychologue volontaire conventionné
+                    avec l’assurance maladie.</p>
+                <p class="fr-mt-4w">
+                    Vous êtes psychologue et vous souhaitez en savoir plus pour candidater, laissez-nous votre email&nbsp;!</p>
+                <form id="sb_form"
+                      onsubmit="process2(
+    'https://services.sarbacane.com/core/v1/forms/contacts/upsert?listID&#x3D;gK9pKC6aT7ehlKKhbmLt9A&amp;formID&#x3D;hgLXy0uPQ0GSIAjQUj4hgQ&amp;timezone&#x3D;Europe/Paris', 'https://forms.sbc08.com/', '5a5873edb85b530da84d23f7', 'false', 'message',
+    '', 'https://services.sarbacane.com/core/v1/transactional/sendmessage/optin', 'Merci', 'Votre email a bien été enregistré.',
+    'Vous allez recevoir un email', 'Vous devrez cliquer sur le lien de confirmation pour valider votre inscription', 'Erreur',
+    'Une erreur inattendue s%27est produite.', 'Le formulaire est en cours d%27édition, veuillez patienter quelques minutes avant d%27essayer à nouveau.', '',
+    '', ''
+  );
+  return false;"
+                      method="post">
+                    <label id="form-header-title"></label>
+
+                    <span style="display: flex;flex-direction: row;">
+    <label id="label-EMAIL_ID">Votre email</label>
+  </span>
+                    <input id="input-email" type="email" name="email" required="true" class="fr-input" sb-form-input>
+                    <div id="div-submitInput" class="fr-mt-2w">
+                        <button id="submitInput" type="submit" value="Valider" class="fr-btn fr-btn--alt fr-h5">
+                            Valider
+                        </button>
+                        <div class="loader" style="display:none"></div>
+                    </div>
+                </form>
+
+                <p class="fr-text--sm fr-mt-4w">Pour savoir ce qu'on fait de votre e-mail, vous pouvez voir notre <a
+                            href="/donnees-personnelles-et-gestion-des-cookies#mention-donnees-perso">politique de
+                        confidentialité.</a></p>
+            </div>
+        </div>
+    </div>
+</div>
 <div class="fr-container fr-centered">
     <div class="fr-grid-row fr-grid-row--center fr-grid-row--gutters fr-pb-4w">
         <div class="fr-col-10">
@@ -84,4 +125,5 @@
         </div>
     </div>
 </div>
+<script type="text/javascript" src="https://forms.sbc08.com/form.js"></script>
 <%- include('partials/footer') -%>
