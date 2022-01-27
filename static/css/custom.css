@@ -2,9 +2,13 @@
     text-align: center;
 }
 
-.fr-accordion-group li:before {
-    content: none; /* overwrite DSFR default */
+ul.fr-accordion-group {
+    list-style-type: none;
 }
+
+/*.fr-accordion-group li:before {*/
+/*    content: none; !* overwrite DSFR default *!*/
+/*}*/
 
 .fr-bg--alt {
     background-color: #e6cf0b;
@@ -45,7 +49,7 @@ a.fr-btn--alt[href]:hover,
 }
 
 .hero {
-    min-height: 220px;
+    min-height: 400px;
     z-index: -1;
     position: relative;
 }
@@ -54,9 +58,11 @@ a.fr-btn--alt[href]:hover,
     border: 0;
     height: 100px;
 }
+
 .d-block {
     display: block;
 }
+
 #psy-table.tabulator {
     font-size: 12px;
 }
@@ -83,19 +89,27 @@ a.fr-btn--alt[href]:hover,
         border-left: 3px solid #000091;
     }
 }
+
 .gradient-bg {
-    background: rgb(69,13,40);
-    background: linear-gradient(90deg, rgba(69,13,40,1) 70%, rgba(225,141,126,1) 100%);}
+    background: rgb(69, 13, 40);
+    background: linear-gradient(90deg, rgba(69, 13, 40, 1) 70%, rgba(225, 141, 126, 1) 100%);
+}
+
 .card {
     border-radius: 4px;
     height: 100%;
 }
+
 .card.white {
     background: white;
 }
+
 .step {
-    width: 50px; height: 50px; border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
 }
+
 .step .number {
     color: #fff;
 }
