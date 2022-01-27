@@ -66,7 +66,6 @@ app.use((req, res, next) => {
     "psychologie sans avance de frais pour tous les enfants de 3 à 17 ans.";
   res.locals.appRepo = appRepo;
   res.locals.page = req.url;
-  res.locals.contactEmail = config.contactEmail;
   res.locals.errors = req.flash("error");
   res.locals.infos = req.flash("info");
   res.locals.successes = req.flash("success");
