@@ -6,10 +6,6 @@ ul.fr-accordion-group {
     list-style-type: none;
 }
 
-/*.fr-accordion-group li:before {*/
-/*    content: none; !* overwrite DSFR default *!*/
-/*}*/
-
 .fr-bg--alt {
     background-color: #e6cf0b;
 }
@@ -26,16 +22,6 @@ ul.fr-accordion-group {
     color: #3f3e3e;
     border: solid 1px #3f3e3e;
     box-shadow: none;
-}
-
-.fr-btn--alt {
-    background-color: #611438;
-}
-
-a.fr-btn--alt[href]:hover,
-.fr-btn--alt:hover {
-    background-color: #450d28;
-    background-image: none;
 }
 
 .fr-callout.fr-callout-none {
