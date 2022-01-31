@@ -2,6 +2,7 @@
     text-align: center;
 }
 
+ul.no-list-style,
 ul.fr-accordion-group {
     list-style-type: none;
 }
