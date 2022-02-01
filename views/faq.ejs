@@ -3,29 +3,7 @@
 <div class="fr-container fr-my-3w">
 
     <div class="fr-grid-row fr-grid-row--gutters fr-b__two-col">
-        <nav class="fr-col-12 fr-col-md-3 fr-sidemenu fr-sidemenu--sticky" aria-label="Menu latéral">
-            <div class="fr-sidemenu__inner">
-                <ul class="fr-sidemenu__list">
-                    <li class="fr-sidemenu__item">
-                        <a class="fr-sidemenu__link" href="#enfant" target="_self">J’ai moins de 18 ans</a>
-                    </li>
-                    <li class="fr-sidemenu__item">
-                        <a class="fr-sidemenu__link" href="#parent" target="_self">Je suis parent</a>
-                    </li>
-                    <li class="fr-sidemenu__item">
-                        <a class="fr-sidemenu__link" href="#psy" target="_self">Je suis psychologue</a>
-                    </li>
-                    <li class="fr-sidemenu__item">
-                        <a class="fr-sidemenu__link" href="#doctor" target="_self">Je suis médecin</a>
-                    </li>
-                    <li class="fr-sidemenu__item">
-                        <a class="fr-sidemenu__link" href="#other" target="_self">Autres questions</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <div class="fr-container fr-col-12 fr-col-md-9">
+        <div class="fr-container fr-col-12">
 
             <div class="fr-mb-3w">
                 <ul class="fr-accordion-group">
@@ -33,153 +11,25 @@
                         <%- include('partials/faq-item', {...q, id: 'general' + i}); %>
                     <% }); %>
                 </ul>
-                <h2 id="enfant">J’ai moins de 18 ans</h2>
-                <div>
-                    <div>
-                        <span class="fr-fi-arrow-right-line fr-fi--md"></span>
-                        <span>Vous voulez plus d&lsquo;infos sur le dispositif ?</span>
-                    </div>
-                    <div class="fr-grid-row">
-                        <div class="fr-col-12 fr-col-md">
-                            <a target="_blank"
-                               class="fr-btn fr-btn--alt fr-mt-2w fr-mr-2w"
-                               href="/static/documents/Guide-PsyEnfantAdo-Patients.pdf">
-                                Voir la brochure à destination des patients
-                            </a>
-                        </div>
-                        <div class="fr-col-12 fr-col-md">
-                            <a target="_blank"
-                               class="fr-btn fr-mt-2w fr-mr-2w"
-                               href="/static/documents/Flyer-enfants-ados.pdf">
-                                Voir le flyer enfants/ados
-                            </a>
-                        </div>
-                    </div>
-                    <div class="fr-text--xs fr-mt-2w">
-                        Note : si vous utilisez Safari et que le flyer ne s&lsquo;affiche pas (&quot;Module bloqué&quot;),
-                        essayez Firefox ou Chrome.
-                    </div>
-                </div>
-
-                <ul class="fr-accordion-group">
-                    <% faq.children.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'children' + i}); %>
-                    <% }); %>
-                </ul>
-
-                <h2 id="parent">Je suis parent (ou titulaire de l’autorité parentale)</h2>
-                <div>
-                    <div>
-                        <span class="fr-fi-arrow-right-line fr-fi--md"></span>
-                        <span>Vous voulez plus d&lsquo;infos sur le dispositif ?</span>
-                    </div>
-                    <div class="fr-grid-row">
-                        <div class="fr-col-12 fr-col-md">
-                            <a target="_blank"
-                               class="fr-btn fr-btn--alt fr-mt-2w fr-mr-2w"
-                               href="/static/documents/Guide-PsyEnfantAdo-Patients.pdf">
-                                Voir la brochure à destination des patients
-                            </a>
-                        </div>
-                        <div class="fr-col-12 fr-col-md">
-                            <a target="_blank"
-                               class="fr-btn fr-mt-2w fr-mr-2w"
-                               href="/static/documents/Flyer-parents.pdf">
-                                Voir le flyer parent
-                            </a>
-                        </div>
-                    </div>
-                    <div class="fr-text--xs fr-mt-2w">
-                        Note : si vous utilisez Safari et que le flyer ne s&lsquo;affiche pas (&quot;Module bloqué&quot;),
-                        essayez Firefox ou Chrome.
-                    </div>
-                </div>
-                <ul class="fr-accordion-group">
-                    <% faq.parent.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'parent' + i}); %>
-                    <% }); %>
-                </ul>
 
                 <h2 id="psy">Je suis psychologue</h2>
                 <div>
-                    <div>
-                        <span class="fr-fi-arrow-right-line fr-fi--md"></span>
-                        <span>Vous voulez plus d&lsquo;infos sur le dispositif ?</span>
-                    </div>
-                    <div>
-                        <a target="_blank"
-                           class="fr-btn fr-btn--alt fr-mt-2w fr-mr-2w"
-                           href="/static/documents/Guide-PsyEnfantAdo-Psychologues.pdf">
-                            Voir la brochure à destination des psychologues
-                        </a>
-                    </div>
-                    <div class="fr-text--xs fr-mt-2w">
-                        Note : si vous utilisez Safari et que le flyer ne s&lsquo;affiche pas (&quot;Module bloqué&quot;),
-                        essayez Firefox ou Chrome.
-                    </div>
+                    <a target="_blank"
+                       class="fr-btn fr-btn--alt fr-mt-2w fr-mr-2w"
+                       href="/static/documents/Guide-PsyEnfantAdo-Psychologues.pdf">
+                        Voir la brochure à destination des psychologues
+                    </a>
                 </div>
-                <h3>Eligibilité</h3>
-                <ul class="fr-accordion-group">
-                    <% faq.eligibility.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'eligibility' + i}); %>
-                    <% }); %>
-                </ul>
-
-                <h3>Candidature</h3>
-                <ul class="fr-accordion-group">
-                    <% faq.application.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'application' + i}); %>
-                    <% }); %>
-                </ul>
-
-                <h3>Déroulé</h3>
-                <ul class="fr-accordion-group">
-                    <% faq.process.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'process' + i}); %>
-                    <% }); %>
-                </ul>
-
-                <h3>Tarif des séances et remboursement</h3>
+                <div class="fr-text--xs fr-mt-2w">
+                    Note : si vous utilisez Safari et que le flyer ne s&lsquo;affiche pas (&quot;Module bloqué&quot;),
+                    essayez Firefox ou Chrome.
+                </div>
+                <h3>Remboursement</h3>
                 <ul class="fr-accordion-group">
                     <% faq.pricing.forEach(function(q, i){ %>
                         <%- include('partials/faq-item', {...q, id: 'pricing' + i}); %>
                     <% }); %>
                 </ul>
-
-                <h2 id="doctor">Je suis médecin généraliste</h2>
-                <div>
-                    <div>
-                        <span class="fr-fi-arrow-right-line fr-fi--md"></span>
-                        <span>Vous voulez plus d&lsquo;infos sur le dispositif ?</span>
-                    </div>
-                    <div>
-                        <a target="_blank"
-                           class="fr-btn fr-btn--alt fr-mt-2w fr-mr-2w"
-                           href="/static/documents/Guide-PsyEnfantAdo-Medecin.pdf">
-                            Voir la brochure à destination des médecins
-                        </a>
-                    </div>
-                    <div class="fr-text--xs fr-mt-2w">
-                        Note : si vous utilisez Safari et que le flyer ne s&lsquo;affiche pas (&quot;Module bloqué&quot;),
-                        essayez Firefox ou Chrome.
-                    </div>
-                </div>
-
-                <ul class="fr-accordion-group">
-                    <% faq.doctor.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'doctor' + i}); %>
-                    <% }); %>
-                </ul>
-
-                <h2 id="doctor">Autre questions</h2>
-
-                <ul class="fr-accordion-group">
-                    <% faq.other.forEach(function(q, i){ %>
-                        <%- include('partials/faq-item', {...q, id: 'other' + i}); %>
-                    <% }); %>
-                </ul>
-                <p><strong>En cas de questions supplémentaires relative à la plateforme, n’hésitez pas à envoyer un
-                        message à l’adresse : <%= contactEmail %>.</strong></p>
 
             </div>
         </div>
