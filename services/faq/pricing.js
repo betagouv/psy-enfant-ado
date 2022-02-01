@@ -11,10 +11,6 @@ module.exports = [
     r: 'Les modalités de facturation et de remboursement sont détaillées dans le guide pratique mis à disposition des psychologues. ',
   },
   {
-    q: 'Qu’est-il envisagé en cas d’absence d’un patient alors qu’il était attendu ? les psychologues seront-ils payés ?',
-    r: 'Dans le cadre de dispositif, si le patient ne vient pas à la séance, le psychologue ne peut facturer un acte à l’Assurance Maladie. En effet, seuls les actes réalisés peuvent être facturés et remboursés par l’Assurance Maladie. ',
-  },
-  {
     q: 'Vous ne trouvez pas la réponse à votre question ici ?',
     r: 'Si vous êtes déjà partenaire du dispositif, nous vous invitons à contacter votre organisme d’Assurance Maladie par téléphone au 3608.',
   },
