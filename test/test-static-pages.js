@@ -15,13 +15,6 @@ describe('Static pages', () => {
       expect(res.text).to.contains('En parler, c’est déjà se soigner');
     }));
 
-  it('/faq should display the FAQ', () => chai.request(app)
-    .get('/faq')
-    .then(async (res) => {
-      expect(res).to.have.status(200);
-      expect(res.text).to.contains('J’ai moins de 18 ans');
-    }));
-
   it('/robots.txt should display the robots.txt', () => chai.request(app)
     .get('/robots.txt')
     .then(async (res) => {
