@@ -1,3 +1,11 @@
+# Archivé
+
+https://www.psyenfantado.sante.gouv.fr/ redirige désormais vers https://monpsy.sante.gouv.fr/.
+
+Le nouveau dépôt est : https://github.com/SocialGouv/mon-psy-sante
+
+---------
+
 # PsyEnfantAdo | https://www.psyenfantado.sante.gouv.fr/
 Faites bénéficier votre enfant d’un accompagnement psychologique gratuit
 
